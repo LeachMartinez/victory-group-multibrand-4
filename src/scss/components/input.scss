@@ -1,0 +1,32 @@
+.input {
+  margin-top: -4px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-color-gray;
+
+  &__wrapper {
+    position: relative;
+    padding: 10px 8px 8px 46px;
+    border: 1px solid $border-color-gray;
+    border-radius: $border-radius;
+    cursor: text;
+    transition: 0.3s ease-in;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      border: 1px solid $accent-color;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%);
+    }
+  }
+}
+

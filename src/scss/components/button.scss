@@ -1,0 +1,23 @@
+.button {
+  padding: 0;
+  padding-block: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  &.main {
+    color: $white;
+    background: $accent-color;
+  }
+
+  &.secondary {
+    color: $black;
+    border: 1px solid $black;
+    background: transparent;
+  }
+}
