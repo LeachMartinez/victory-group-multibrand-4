@@ -60,6 +60,27 @@
   background-color: $accent-color;
 }
 
+.menu-icon {
+  mask-image: url("../images/icons/menu.svg");
+  -webkit-mask-image: url("../images/icons/menu.svg");
+  background-color: $accent-color;
+}
+
+.cross-icon {
+  mask-image: url("../images/icons/cross.svg");
+  -webkit-mask-image: url("../images/icons/cross.svg");
+  background-color: $accent-color;
+}
+
+.phone-icon {
+  mask-image: url("../images/icons/phone.svg");
+  -webkit-mask-image: url("../images/icons/phone.svg");
+  background-color: $accent-color;
+}
+
+.menu-icon,
+.cross-icon,
+.phone-icon,
 .arrow-icon,
 .alert-icon,
 .plus-icon,

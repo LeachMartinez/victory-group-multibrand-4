@@ -12,6 +12,10 @@ body {
 }
 
 header {
+  .mobile-header {
+    display: none;
+  }
+
   .info {
     background: $black;
     padding: 6px 0;
@@ -111,6 +115,7 @@ header {
 
     &:last-child {
       .breadcrumbs__text {
+        padding: 0;
         color: $black;
       }
 
@@ -221,6 +226,9 @@ header {
         margin-bottom: 12px;
         background: $white;
         border-radius: $border-radius;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .discount-badge {
           color: $white;
@@ -239,8 +247,8 @@ header {
         }
 
         img {
-          max-width: 660px;
-          max-height: 494PX;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
 
@@ -305,6 +313,12 @@ header {
         .label-icon {
           width: 24px;
           height: 24px;
+        }
+
+        .label-text {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
 
         .label-name {
@@ -585,8 +599,13 @@ header {
   align-items: center;
   flex-direction: column;
 
+  &__wrapper {
+    width: 100%;
+  }
+
   .slider {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     gap: 12px;
     margin-bottom: 40px;
@@ -722,6 +741,194 @@ header {
         mask-image: url("../images/icons/minus.svg");
         -webkit-mask-image: url("../images/icons/minus.svg");
       }
+    }
+  }
+}
+
+
+@media (max-width: 1331px) {
+  .container {
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    margin: auto 16px;
+  }
+
+  header {
+    position: relative;
+
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11.5px 16px;
+      background: $white;
+
+      .menu-icon, .phone-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .info {
+      display: none;
+    }
+
+    .header {
+      display: none;
+    }
+  }
+
+  .main {
+    &__info {
+      flex-wrap: wrap;
+      
+      &__item {
+        width: 100%;
+      }
+    }
+  }
+
+  .conditions {
+    &__settings {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    &__calculator {
+      width: 100%;
+    }
+
+    &__offer {
+      width: 100%;
+    }
+  }
+
+  .compare {
+    .slider {
+      width: 1332px;
+    }
+    &__list {
+      width: 1332px;
+    }
+
+    &__wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 831px) {
+
+  .main__title__wrapper {
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+
+  .main {
+    padding: 20px 0;
+  }
+
+  .main__title__text {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .main__title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .main__title__desc {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .main__title__badge {
+    width: 195px;
+    padding: 0 11px 0 27px;
+  }
+}
+
+@media (max-width: 554px) {
+  .main__info__preview__photo {
+    height: 240px;
+    margin-bottom: 4px;
+  }
+
+  .main__info__preview__colors {
+    padding: 7px 8px;
+  }
+
+  .main__info__preview {
+    .preview-info {
+      left: 12px;
+      bottom: 8px;
+    }
+
+    .preview-info__desc {
+      font-size: 14px;
+    }
+  }
+  .main__info {
+    gap: 40px;
+  }
+
+  .main__info__settings {
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    .label__wrapper {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      row-gap: 8px;
+      column-gap: 12px;
+      width: calc(100% - 16px);
+      // margin-bottom: 6px;
+      margin-bottom: 97px;
+    }
+
+    .label {
+      padding: 8px;
+      width: 100%;
+      flex-direction: row;
+    }
+
+    .total {
+      order: 2;
+    }
+
+    .discount__options {
+      gap: 23px;
+      order: 2;
+
+      .toggle {
+        width: 78%;
+      }
+    }
+
+    .discount__total {
+      order: 2;
+    }
+
+    .total__actions {
+      flex-direction: row-reverse;
+      background: $white;
+      width: 100%;
+      padding: 12px 16px;
+      left: 0;
+      bottom: 0;
+      position: fixed;
+    }
+  }
+
+  .discount__option {
+    &:first-child {
+      display: none;
     }
   }
 }
