@@ -433,6 +433,47 @@ header {
     padding: 40px;
     border-radius: $border-radius;
     gap: 40px;
+
+    .range__wrapper {
+      height: 2px;
+      display: flex;
+      margin-bottom: 9px;
+    }
+
+    &__range {
+      display: flex;
+      flex-direction: column;
+
+      .range__top {
+        display: flex;
+        border-radius: $border-radius $border-radius 0 0;
+        padding: 10px 16px;
+        background: $white;
+        flex-direction: column;
+      }
+
+      .range__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        line-height: 20px;
+        color: $text-color-darkGray;
+      }
+
+      .range__title {
+        font-size: 14px;
+        line-height: 20px;
+        color: $text-color-darkGray;
+        margin-bottom: 4px;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
   }
 
   &__offer {
@@ -514,6 +555,7 @@ header {
 
   &__calculator {
     width: 50%;
+    height: 270px;
 
     &__total {
       font-size: 20px;
@@ -521,6 +563,8 @@ header {
       color: $accent-color;
 
       &__wrapper {
+        margin-bottom: 22px;
+        margin-top: -2px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -625,6 +669,58 @@ header {
           width: 24px;
           height: 24px;
         }
+      }
+    }
+  }
+}
+
+.parameters {
+  display: flex;
+  flex-direction: column;
+  margin-top: 23px;
+  gap: 24px;
+
+  &__name {
+    color: $text-color-darkGray;
+  }
+
+  .parameter {
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    &__item {
+      margin-top: 9px;
+      width: 324px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      border-radius: $border-radius;
+      background: #F3F6FB;
+
+      .icon-wrapper {
+        border-radius: $border-radius;
+        background-color: $black;
+      }
+
+      .plus-icon, .minus-icon {
+        width: 24px;
+        height: 24px;
+        background: $white;
+      }
+
+      .plus-icon {
+        mask-image: url("../images/icons/plus.svg");
+        -webkit-mask-image: url("../images/icons/plus.svg");
+      }
+
+      .minus-icon {
+        mask-image: url("../images/icons/minus.svg");
+        -webkit-mask-image: url("../images/icons/minus.svg");
       }
     }
   }
