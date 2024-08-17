@@ -1,6 +1,3 @@
 import '../scss/app.scss';
-
-/* Your JS Code goes here */
-
-/* Demo JS */
+import './range.js';
 import './demo.js';

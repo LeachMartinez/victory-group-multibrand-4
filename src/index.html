@@ -174,33 +174,33 @@
           <div class="discount__options">
             <div class="discount__option">
               <div class="toggle">
-                <input type="checkbox" name="toggle" id="toggle-button-1" class="toggle__button">
-                <label for="toggle-button-1" class="toggle__text">Скидка по Trade-in</label>
+                <input type="checkbox" name="toggle" id="trade-in-checkbox" class="toggle__button">
+                <label for="trade-in-checkbox" class="toggle__text">Скидка по Trade-in</label>
               </div>
               <b class="discount__option__value">- 170 000 ₽</b>
             </div>
             <div class="discount__option">
               <div class="toggle">
-                <input type="checkbox" name="toggle" id="toggle-button-2" class="toggle__button">
-                <label for="toggle-button-2" class="toggle__text">Покупка в кредит</label>
+                <input type="checkbox" name="toggle" id="credit-checkbox" class="toggle__button">
+                <label for="credit-checkbox" class="toggle__text">Покупка в кредит</label>
               </div>
               <b class="discount__option__value">-250 000 ₽</b>
             </div>
             <div class="discount__option">
               <div class="toggle">
-                <input type="checkbox" name="toggle" id="toggle-button-3" class="toggle__button">
-                <label for="toggle-button-3" class="toggle__text">Скидка по программе утилизации</label>
+                <input type="checkbox" name="toggle" id="disposal-program-checkbox" class="toggle__button">
+                <label for="disposal-program-checkbox" class="toggle__text">Скидка по программе утилизации</label>
               </div>
               <b class="discount__option__value">-80 000 ₽</b>
             </div>
           </div>
           <div class="discount__total">
             <span class="discount__total__name">Ваша выгода</span>
-            <b class="discount__total__sum">330 000 ₽</b>
+            <b class="discount__total__sum" id="benefit-value">330 000 ₽</b>
           </div>
           <div class="total">
             <div class="total__wrapper">
-              <b class="total__sum">от 7 070 000 ₽</b>
+              <b class="total__sum" id="total-sum-value">от 7 070 000 ₽</b>
               <span class="total__credit">В кредит от 89 000 ₽/мес</span>
             </div>
             <b class="total__desc">Цена без учета скидки: от 7 400 000 ₽</b>
@@ -222,16 +222,17 @@
           <div class="conditions__calculator">
             <div class="conditions__calculator__total__wrapper">
               <b class="conditions__calculator__total__name">Сумма кредита</b>
-              <b class="conditions__calculator__total">7 070 000 ₽</b>
+              <b class="conditions__calculator__total" id="credit-sum-value">7 070 000 ₽</b>
             </div>
             <div class="conditions__settings__range__wrapper">
               <div class="conditions__settings__range">
                 <div class="range__top">
                   <span class="range__title">Первоначальный взнос</span>
-                  <b class="range__value">4 000 000 ₽</b>
+                  <b class="range__value" id="first-payment-value">4 000 000 ₽</b>
                 </div>
                 <div class="range__wrapper">
                   <input class="range" type="range" min="0" max="90" value="40">
+                  <div class="range__progress"></div>
                 </div>
                 <div class="range__bottom">
                   <span class="range__min-value">0%</span>
@@ -241,10 +242,11 @@
               <div class="conditions__settings__range">
                 <div class="range__top">
                   <span class="range__title">Срок кредита</span>
-                  <b class="range__value">6 мес.</b>
+                  <b class="range__value" id="credit-period-value">6 мес.</b>
                 </div>
                 <div class="range__wrapper">
                   <input class="range" type="range" min="0" max="90" value="40">
+                  <div class="range__progress"></div>
                 </div>
                 <div class="range__bottom">
                   <span class="range__min-value">6 мес.</span>
@@ -263,9 +265,9 @@
                 Ежемесячный платеж
               </span>
               <div class="conditions__offer__payment__actions">
-                <button class="conditions__offer__payment__minus minus-icon"></button>
-                <b class="conditions__offer__payment">30 000 ₽</b>
-                <button class="conditions__offer__payment__plus plus-icon"></button>
+                <button class="conditions__offer__payment__minus minus-icon" id="minus-month-payment"></button>
+                <b class="conditions__offer__payment" id="month-payment-value">30 000 ₽</b>
+                <button class="conditions__offer__payment__plus plus-icon" id="plus-month-payment"></button>
               </div>
             </div>
             <div>

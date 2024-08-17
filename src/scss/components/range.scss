@@ -8,6 +8,17 @@
   height: 2px;
   background: $border-color-gray;
 
+  &__wrapper {
+    position: relative;
+  }
+
+  &__progress {
+    background: $accent-color;
+    position: absolute;
+    height: 2px;
+    width: 0%;
+  }
+
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none; 
