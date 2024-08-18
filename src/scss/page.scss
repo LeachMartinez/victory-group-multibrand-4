@@ -604,11 +604,36 @@ header {
   }
 
   .slider {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: row;
     gap: 12px;
     margin-bottom: 40px;
+
+    &__right {
+      right: calc(50% + -709px);
+      transform: translateY(-50%);
+    }
+
+    &__left {
+      transform: translateY(-50%) rotate(180deg);
+      left: calc(50% + -709px);
+    }
+
+    &__button {
+      cursor: pointer;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: $border-radius;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid $border-color-gray;
+      top: 50%;
+    }
   }
 
   &__title {
@@ -626,6 +651,10 @@ header {
     width: 324px;
     border-radius: $border-radius;
     background: $white;
+
+    &.hidden {
+      display: none;
+    }
 
     &__top {
       display: flex;
@@ -720,6 +749,10 @@ header {
       padding: 10px 0;
       border-radius: $border-radius;
       background: #F3F6FB;
+
+      &.hidden {
+        display: none;
+      }
 
       .icon-wrapper {
         border-radius: $border-radius;

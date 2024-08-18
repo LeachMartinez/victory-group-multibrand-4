@@ -150,6 +150,32 @@ PLUS_PAYMENT_BUTTON.on('click', () => {
   updatePaymentValues();
 });
 
+$('.slider__button').on('click', (event) => {
+  if (event.target.classList.contains('prev')) {
+
+    // let index = currentIndex - 1;
+    // if (index < 0) {
+    //   index = slides.length - 1;
+    // }
+    // showSlide(index);
+  } else if (event.target.classList.contains('next')) {
+    // let index = currentIndex + 1;
+    // if (index >= slides.length) {
+    //   index = 0;
+    // }
+    // showSlide(index);
+  }
+});
+
+// function showSlide(index) {
+//   slides[currentIndex].add('hidden');
+//   slides[index].removeClass('hidden');
+//   currentIndex = index;
+// }
+
+// const slides = $('.slider .compare__item');
+// let currentIndex = 0;
+
 updateDiscountValues();
 updatePaymentValues();
 updateCreditPeriod();
