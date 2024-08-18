@@ -1,16 +1,16 @@
 import $ from 'jquery';
 
 let carPrice = 7400000;
+let monthPayment = 30000;
+let creditPeriod = 6;
+let firstPayment = 4000000;
 const ORIGINAL_CAR_PRICE = 7400000;
 const MONTH_PAYMENT_GAP = 10000;
-const monthPayment = 30000;
-
 const DISCOUNTS = {
   tradeIn: 170000,
   credit: 250000,
   disposal: 80000,
 };
-
 // Ваша выгода
 const BENEFIT_VALUE = $('#benefit-value');
 // от {сумма}
@@ -27,40 +27,86 @@ const CREDIT_SUM_VALUE = $('#credit-sum-value');
 const CREDIT_PERIOD = $('#credit-period-value');
 // Первоначальный взнос
 const FIRST_PAYMENT_VALUE = $('#first-payment-value');
+// Инпут периода кредита
+const CREDIT_PERIOD_INPUT = $('#credit-period-input');
 
-updateDiscountValues();
-$('#trade-in-checkbox').on('change', (event) => {
-  calculateDiscount(DISCOUNTS.tradeIn, event.target.checked);
-  updateDiscountValues();
-});
-
-$('#credit-checkbox').on('change', (event) => {
-  calculateDiscount(DISCOUNTS.credit, event.target.checked);
-  updateDiscountValues();
-});
-
-$('#disposal-program-checkbox').on('change', (event) => {
-  calculateDiscount(DISCOUNTS.disposal, event.target.checked);
-  updateDiscountValues();
-});
-
-function calculateDiscount(amount, isActive) {
-  if (isActive) {
-    carPrice -= amount;
-    return;
-  }
-
-  carPrice += amount;
-}
-
-function updateDiscountValues() {
-  BENEFIT_VALUE.text(convertPrice(ORIGINAL_CAR_PRICE - carPrice));
-  TOTAL_SUM_VALUE.text(convertPrice(carPrice));
-  CREDIT_SUM_VALUE.text(convertPrice(carPrice));
+/**
+ * расчет первого платежа
+ * @param {val} amount кол-во месяцев
+ */
+function calculateFirstPaymentValue(val) {
+  const currentVal = val || Number($('#first-payment-input').val());
+  firstPayment = (carPrice * currentVal) / 100;
+  monthPayment = Math.round((carPrice - firstPayment) / creditPeriod);
+  updatePaymentValues();
 }
 
 /**
- *
+ * расчет срока кредита
+ * @param {val} amount кол-во месяцев
+ */
+function calculatePeriodValue(val) {
+  creditPeriod = val;
+  monthPayment = Math.round((carPrice - firstPayment) / creditPeriod);
+  updatePaymentValues();
+}
+
+/**
+ * расчет месячного платежа
+ * @param {number} amount число на которе увеличивается/уменьшается платеж
+ */
+function calculatePayment(amount) {
+  if (monthPayment + amount < 10) return;
+  monthPayment += amount;
+  creditPeriod = Math.round((carPrice - firstPayment) / monthPayment);
+
+  CREDIT_PERIOD_INPUT.val(creditPeriod);
+  CREDIT_PERIOD_INPUT.trigger('change');
+  updateCreditPeriod();
+}
+
+/**
+ * расчет скидок
+ * @param {number} amount скидка
+ */
+function calculateDiscount(amount) {
+  carPrice += amount;
+  calculateFirstPaymentValue();
+}
+
+/**
+ * обновление значений периода
+ */
+function updateCreditPeriod() {
+  CREDIT_PERIOD.text(`${creditPeriod} мес.`);
+}
+
+/**
+ * обновление цены с учетом скидок
+ */
+function updateDiscountValues() {
+  BENEFIT_VALUE.text(convertPrice(ORIGINAL_CAR_PRICE - carPrice));
+  TOTAL_SUM_VALUE.text(`от ${convertPrice(carPrice)}`);
+  CREDIT_SUM_VALUE.text(convertPrice(carPrice));
+  updateFirstPaymentValue();
+}
+
+/**
+ * Обновление значений ежемесячного платежа
+ */
+function updatePaymentValues() {
+  MONTH_PAYMENT_VALUE.text(convertPrice(monthPayment));
+}
+
+/**
+ * Обновление значений первоначального взноса
+ */
+function updateFirstPaymentValue() {
+  FIRST_PAYMENT_VALUE.text(convertPrice(firstPayment));
+}
+
+/**
+ * Конвертация числа в формат цены, например 1000000 -> 1 000 000 ₽
  * @param {number} price цена
  * @returns {string} отформатированная цена
  */
@@ -68,3 +114,43 @@ function convertPrice(price) {
   const formatter = new Intl.NumberFormat('ru');
   return formatter.format(price) + ' ₽';
 }
+
+$('#trade-in-checkbox').on('change', (event) => {
+  calculateDiscount(event.target.checked ? -DISCOUNTS.tradeIn : DISCOUNTS.tradeIn);
+  updateDiscountValues();
+});
+
+$('#credit-checkbox').on('change', (event) => {
+  calculateDiscount(event.target.checked ? -DISCOUNTS.credit : DISCOUNTS.credit);
+  updateDiscountValues();
+});
+
+$('#disposal-program-checkbox').on('change', (event) => {
+  calculateDiscount(event.target.checked ? -DISCOUNTS.disposal : DISCOUNTS.disposal);
+  updateDiscountValues();
+});
+
+CREDIT_PERIOD_INPUT.on('input', (event) => {
+  calculatePeriodValue(event.target.value);
+  updateCreditPeriod();
+});
+
+$('#first-payment-input').on('input', (event) => {
+  calculateFirstPaymentValue(event.target.value);
+  updateFirstPaymentValue();
+});
+
+MINUS_PAYMENT_BUTTON.on('click', () => {
+  calculatePayment(-MONTH_PAYMENT_GAP);
+  updatePaymentValues();
+});
+
+PLUS_PAYMENT_BUTTON.on('click', () => {
+  calculatePayment(MONTH_PAYMENT_GAP);
+  updatePaymentValues();
+});
+
+updateDiscountValues();
+updatePaymentValues();
+updateCreditPeriod();
+updateFirstPaymentValue();
