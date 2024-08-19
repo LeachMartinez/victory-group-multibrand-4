@@ -151,30 +151,32 @@ PLUS_PAYMENT_BUTTON.on('click', () => {
 });
 
 $('.slider__button').on('click', (event) => {
-  if (event.target.classList.contains('prev')) {
-
-    // let index = currentIndex - 1;
-    // if (index < 0) {
-    //   index = slides.length - 1;
-    // }
-    // showSlide(index);
-  } else if (event.target.classList.contains('next')) {
-    // let index = currentIndex + 1;
-    // if (index >= slides.length) {
-    //   index = 0;
-    // }
-    // showSlide(index);
+  if ($(event.currentTarget).hasClass('prev')) {
+    let indexes = [currentIndexes[0] - 1, currentIndexes[1] - 1];
+    if (indexes[0] < 0) {
+      indexes = [0, 4];
+    }
+    showSlide(indexes);
+  } else if ($(event.currentTarget).hasClass('next')) {
+    let indexes = [currentIndexes[0] + 1, currentIndexes[1] + 1];
+    if (indexes[1] >= slides.length) {
+      indexes = [2, 6];
+    }
+    showSlide(indexes);
   }
 });
 
-// function showSlide(index) {
-//   slides[currentIndex].add('hidden');
-//   slides[index].removeClass('hidden');
-//   currentIndex = index;
-// }
-
-// const slides = $('.slider .compare__item');
-// let currentIndex = 0;
+function showSlide(index) {
+  $('.parameter .parameter__item').addClass('hidden');
+  slides.addClass('hidden');
+  for (let i = index[0]; i < index[1]; i++) {
+    $(`.parameter__item[data-index="${i + 1}"]`).removeClass('hidden');
+    $(slides[i]).removeClass('hidden');
+  }
+  currentIndexes = index;
+}
+const slides = $('.slider .compare__item');
+let currentIndexes = [0, 4];
 
 updateDiscountValues();
 updatePaymentValues();
