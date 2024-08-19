@@ -166,6 +166,18 @@ $('.slider__button').on('click', (event) => {
   }
 });
 
+$('.menu-icon').on('click', () => {
+  $('.mobile-menu').addClass('active');
+});
+
+$('.mobile-menu__backdrop').on('click', () => {
+  $('.mobile-menu').removeClass('active');
+});
+
+$('.mobile-menu__content .cross').on('click', () => {
+  $('.mobile-menu').removeClass('active');
+});
+
 function showSlide(index) {
   $('.parameter .parameter__item').addClass('hidden');
   slides.addClass('hidden');
