@@ -1,0 +1,35 @@
+.car-brands {
+  &__container.container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+
+  &__item {
+    border-radius: $border-radius;
+    background: $white;
+    padding: 8px 16px;
+
+    &__text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        background-color: $black;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 40px;
+    justify-content: center;
+    display: flex;
+    gap: 12px;
+  }
+}

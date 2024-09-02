@@ -1,7 +1,12 @@
+// @import "bootstrap/scss/bootstrap";
+@import 'mixins';
 @import 'base/vars';
 @import 'base/reset';
 @import 'base/fonts';
 @import 'base/icons';
+@import 'base/typography';
+@import 'layouts/header';
+@import 'pages/main';
 @import 'page';
 @import 'components/button';
 @import 'components/input';

@@ -1,22 +1,102 @@
 .input {
-  margin-top: -4px;
-  line-height: 20px;
-  font-size: 14px;
-  font-weight: 400;
-  color: $text-color-gray;
+  position: absolute;
+  top: 26px;
+  left: 16px;
+  width: calc(100% - 32px);
+  font-size: 16px;
+  line-height: 24px;
+  background: transparent;
+  color: transparent;
+  @include transition;
+
+  &::placeholder {
+    color: transparent;
+    @include transition;
+  }
+
+  &:focus, &:not(:placeholder-shown) {
+    color: $black;
+
+    &::placeholder {
+      color: $grey-3;
+    }
+  }
+
+  &:focus + .input__label, &:not(:placeholder-shown) + .input__label {
+    position: absolute;
+    top: 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $dark-grey
+  }
+
+  &__label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: $grey-3;
+    font-size: 16px;
+    line-height: 24px;
+    @include transition;
+  }
 
   &__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    height: 56px;
+    align-items: center;
     position: relative;
-    padding: 10px 8px 8px 46px;
-    border: 1px solid $border-color-gray;
+    padding: 15px;
+    border: 1px solid $grey-3;
     border-radius: $border-radius;
     cursor: text;
-    transition: 0.3s ease-in;
-    display: flex;
-    align-items: center;
+    @include transition;
 
     &:hover {
-      border: 1px solid $accent-color;
+      .input__label {
+        color: $dark-grey
+      }
+    }
+
+    &:has(.input:not(:placeholder-shown)) {
+      border-color: $dark-grey;
+    }
+
+    &:has(.input:focus) {
+      border-color: $blue-main;
+    }
+
+    &.search {
+      padding: 9px 12px;
+      height: auto;
+
+      .input {
+        color: black;
+        line-height: 20px;
+        position: static;
+        border-color: $grey-3;
+
+        &:hover {
+          &::placeholder {
+            color: $dark-grey;
+          }
+        }
+
+        &::placeholder {
+          color: $grey-3;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIxIDIxTDE3LjUwMDEgMTcuNU0yMCAxMS41QzIwIDE2LjE5NDQgMTYuMTk0NCAyMCAxMS41IDIwQzYuODA1NTggMjAgMyAxNi4xOTQ0IDMgMTEuNUMzIDYuODA1NTggNi44MDU1OCAzIDExLjUgM0MxNi4xOTQ0IDMgMjAgNi44MDU1OCAyMCAxMS41WiIgc3Ryb2tlPSIjOUNBNUIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
+        width: 24px;
+        height: 24px;
+        left: 10px;
+        top: 7px;
+      }
     }
 
     .search-icon {

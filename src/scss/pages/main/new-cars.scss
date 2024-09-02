@@ -1,0 +1,56 @@
+.new-cars {
+  margin-bottom: 40px;
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, 1fr);
+
+    .car-item {
+      border: 1px solid $grey-2;
+      border-radius: $border-radius;
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+        background: $white;
+        border-radius: 0 0 $border-radius $border-radius;
+      }
+
+      &__badges {
+        display: flex;
+        gap: 8px;
+      }
+      
+      &__badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4px 12px;
+        border-radius: $border-radius;
+      }
+
+      &__credit {
+        background: $sky-blue;
+        color: $blue-dark;
+      }
+
+      &__profit {
+        background: $black;
+        color: $grey-2;
+      }
+    }
+  }
+}

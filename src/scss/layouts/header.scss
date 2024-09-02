@@ -1,0 +1,84 @@
+header {
+  .mobile-header {
+    display: none;
+  }
+
+  .info {
+    background: $black;
+    padding: 6px 0;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $text-color-light;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
+    &__location, &__worktime {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      font-style: normal;
+    }
+  }
+
+  .header {
+    background: $white;
+    padding: 11px 0;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $text-color-light;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+
+    &__navigation {
+      display: flex;
+      gap: 6px;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid transparent;
+        border-bottom: 1px solid $text-color-light;
+        border-radius: $border-radius;
+        transition: 0.3s ease-in;
+        cursor: pointer;
+
+        &:hover, &.active {
+          border: 1px solid $accent-color;
+          .header__navigation__text {
+            color: $black;
+          }
+        }
+      }
+      
+      &__text {
+        padding: 8px 12px;
+        color: $dark-grey;
+        @include button-text;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__button-text {
+      padding: 10px 20px;
+    }
+  }
+}

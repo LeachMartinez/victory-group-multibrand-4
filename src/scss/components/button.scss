@@ -1,23 +1,99 @@
 .button {
   padding: 0;
   padding-block: 0;
+  border-radius: $border-radius;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: $border-radius;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+  @include button-text;
+  @include transition;
 
   &.main {
+    background: $blue-main;
     color: $white;
-    background: $accent-color;
+
+    &:hover {
+      background: $blue-dark;
+    }
+
+    &:active {
+      background: $blue-dark;
+      color: $grey-2;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      background: $grey-3;
+      color: $light-gray;
+    }
   }
 
-  &.secondary {
+  &.outline {
     color: $black;
     border: 1px solid $black;
     background: transparent;
+
+    &.size-s {
+      padding: 5px 15px;
+    }
+  
+    &.size-m {
+      padding: 9px 19px;
+    }
+  
+    &.size-l {
+      padding: 13px 23px;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border: 1px solid $grey-3;
+      color: $grey-3;
+    }
+  }
+
+  &.light {
+    color: $white;
+
+    &:hover {
+      border-color: $white;
+      background: $white;
+      color: $black;
+    }
+
+    &:active {
+      border-color: $white;
+      background: $white;
+      color: $grey-3;
+    }
+  }
+
+  &.dark {
+    color: $black;
+
+    &:hover {
+      border-color: $black;
+      background: $black;
+      color: $grey-2;
+    }
+    
+    &:active {
+      border-color: $black;
+      background: $black;
+      color: $grey-3;
+    }
+  }
+
+  &.size-s {
+    padding: 6px 16px;
+  }
+
+  &.size-m {
+    padding: 10px 20px;
+  }
+
+  &.size-l {
+    padding: 14px 24px;
   }
 }

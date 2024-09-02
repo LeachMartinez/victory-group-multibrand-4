@@ -1,0 +1,82 @@
+h1 {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+h2 {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+h3 {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  
+  @media (max-width: 768px) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+h4 {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.regular-text-l {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.regular-text-m {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.regular-text-s {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.button-text {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin button-text {
+  font-family: 'PTRootUI', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
