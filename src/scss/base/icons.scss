@@ -150,6 +150,13 @@
   background-color: $accent-color;
 }
 
+.check-icon {
+  mask-image: url("../images/icons/check.svg");
+  -webkit-mask-image: url("../images/icons/check.svg");
+  background-color: $accent-color;
+}
+
+.check-icon,
 .Changan-icon,
 .Chery-icon,
 .Geely-icon,

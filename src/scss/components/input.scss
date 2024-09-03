@@ -67,6 +67,16 @@
       border-color: $blue-main;
     }
 
+    &.input-default {
+      .input {
+        top: 50%;
+        transform: translateY(-50%);
+        &::placeholder {
+          color: $grey-3;
+        }
+      }
+    }
+
     &.search {
       padding: 9px 12px;
       height: auto;

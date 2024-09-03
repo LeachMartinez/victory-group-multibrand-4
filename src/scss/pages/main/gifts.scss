@@ -1,0 +1,22 @@
+.gifts {
+  display: flex;
+  gap: 12px;
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+
+    h2 {
+      width: 33.66%;
+    }
+  }
+
+  &__item {
+    width: 212px;
+    height: 200px;
+    background-color: $white;
+    border-radius: $border-radius;
+    padding: 24px;
+  }
+}
