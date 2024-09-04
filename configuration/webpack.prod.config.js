@@ -13,7 +13,7 @@ module.exports = merge(webpackConfiguration, {
 
   /* Optimization configuration */
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         parallel: true,

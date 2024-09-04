@@ -20,6 +20,7 @@ const htmlPluginEntries = templateFiles.map(
   (template) => new HTMLWebpackPlugin({
     inject: true,
     hash: false,
+    minify: false,
     filename: template.output,
     template: path.resolve(environment.paths.source, template.input),
   }),
@@ -65,7 +66,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'images/*/[name].[hash:6][ext]',
+          filename: 'images/[name].[hash:6][ext]',
         },
       },
       {
@@ -78,6 +79,25 @@ module.exports = {
     ],
   },
   optimization: {
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // получает имя, то есть node_modules/packageName/not/this/part.js
+            // или node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+            // имена npm-пакетов можно, не опасаясь проблем, использовать
+            // в URL, но некоторые серверы не любят символы наподобие @
+            return `${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
     minimizer: [
       '...',
       new ImageMinimizerPlugin({
