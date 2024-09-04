@@ -1,0 +1,68 @@
+.competitors {
+  display: flex;
+  padding: 40px 80px;
+  background: #0B297F;
+  border-radius: $border-radius;
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: $white;
+  }
+
+  &__badge {
+    padding: 8px 24px;
+    border-radius: $border-radius;
+    background: $purple;
+    width: fit-content;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 45%;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+
+    .button.main {
+      color: $blue-main;
+      background: $white;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &__license {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      color: $grey-3;
+    }
+
+    a {
+      color: $sky-blue;
+    }
+  }
+}

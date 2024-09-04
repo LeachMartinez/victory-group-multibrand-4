@@ -1,0 +1,78 @@
+.promo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    border-radius: $border-radius;
+    background: $white;
+  }
+
+  &__header {
+    height: 260px;
+  }
+
+  &__content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .input__wrapper {
+      height: 49px;
+    }
+
+    .input__label {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .input:focus + .input__label {
+      top: 10px;
+    }
+
+    .input {
+      top: 16px;
+    }
+
+    &__license {
+      text-align: center;
+
+      span {
+        color: $grey-3;
+      }
+
+      a {
+        color: $blue-main;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
