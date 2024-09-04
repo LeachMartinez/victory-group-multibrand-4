@@ -156,6 +156,13 @@
   background-color: $accent-color;
 }
 
+.play-icon {
+  mask-image: url("../images/icons/play-circle.svg");
+  -webkit-mask-image: url("../images/icons/play-circle.svg");
+  background-color: $accent-color;
+}
+
+.play-icon,
 .check-icon,
 .Changan-icon,
 .Chery-icon,

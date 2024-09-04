@@ -1,0 +1,47 @@
+.most-popular {
+  border-radius: $border-radius;
+  background: $sky-blue;
+  padding: 80px 0 136px 0;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__tabs {
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 12px;
+    row-gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__text {
+    background: $black;
+    width: 100%;
+    text-align: center;
+    color: $white;
+    padding: 8px 0;
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &__pagination {
+    height: 56px;
+  }
+}

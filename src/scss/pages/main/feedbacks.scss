@@ -1,0 +1,127 @@
+.feedbacks {
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  &__actions {
+    margin-top: 40px;
+    justify-content: center;
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+  }
+}
+
+.feedback {
+  padding: 26px 24px;
+  border-radius: $border-radius;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__user {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+      background: $blue-main;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid $green;
+    color: $green;
+  }
+
+  &__content {
+    height: 280px;
+    max-height: 280px;
+
+    .feedback__type-image, .feedback__type-video {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        border-radius: $border-radius;
+      }
+    }
+    
+    .feedback__type-video {
+      position: relative;
+      cursor: pointer;
+
+      .play-icon {
+        position: absolute;
+        width: 72px;
+        height: 72px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $white;
+      }
+
+      img {
+        filter:brightness(0.4);
+      } 
+    }
+
+    .feedback__type-text {
+      height: 260px;
+      max-height: 260px;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 11;
+    }
+  }
+
+  &__date {
+    color: $dark-grey;
+  }
+}
