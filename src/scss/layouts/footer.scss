@@ -1,0 +1,165 @@
+.footer {
+  &__form {
+    border-radius: 40px 40px 0 0;
+    padding: 80px 0;
+    background-position: 51% 42%;
+    background-image: url("../images/content/footer-form-bg.png");
+    background-repeat: no-repeat;
+    background-size: 122%;
+
+    &__content {
+      display: flex;
+      border-radius: $border-radius;
+      padding: 40px 80px;
+      background: $black;
+      gap: 44px;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    &__text {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      &__title {
+        color: $white;
+      }
+
+      &__desc {
+        color: $grey-2;
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 46.7%;
+    }
+
+    &__action {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__license {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        color: $grey-3;
+      }
+
+      a {
+        color: $blue-main
+      }
+    }
+  }
+
+
+  &__contents {
+    background: $black;
+    padding-top: 40px;
+
+    hr {
+      margin: 0;
+      color: rgba(100, 105, 112, 0.30);
+      background-color: rgba(100, 105, 112, 0.30);
+      border-color: rgba(100, 105, 112, 0.30);
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+
+      &__text {
+        display: flex;
+        gap: 24px;
+
+        .info__worktime, .info__location {
+          display: flex;
+          color: $grey-2;
+          align-items: center;
+          gap: 4px;
+          font-style: normal;
+        }
+      }
+    }
+
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 19px;
+      margin-bottom: 18px;
+
+      &__actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+
+        li {
+          .regular-text-m {
+            color: $grey-3;
+            @include transition;
+  
+            &:hover {
+              color: $grey-2;
+            }
+  
+            &.active {
+              color: $grey-2;
+            }
+          }
+        }
+      }
+    }
+
+    &__categories {
+      margin-top: 28px;
+      margin-bottom: 22px;
+      display: flex;
+      gap: 12px;
+
+      &__item {
+        width: 212px;
+      }
+
+      &__title {
+        color: $dark-grey;
+        margin-bottom: 16px;
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        
+        &__item {
+          color: $grey-3;
+          @include transition;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+
+    }
+
+    &__bottom-text {
+      color: $dark-grey;
+      margin-top: 20px;
+      padding-bottom: 40px;
+    }
+  }
+}

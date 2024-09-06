@@ -94,6 +94,7 @@ html {
 *:before,
 *:after {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 // HTML5 display definitions

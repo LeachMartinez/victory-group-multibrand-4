@@ -1,0 +1,47 @@
+.about-info {
+  border-radius: $border-radius;
+  background: url("../images/content/about-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px 13%;
+  padding: 40px 80px;
+  
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    color: $white;
+
+    &__wrapper {
+      background: $black;
+      border-radius: $border-radius;
+      padding: 24px;
+      width: 324px;
+      height: 260px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__about {
+    width: 324px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 24px 24px 24px;
+    background: $sky-blue;
+    border-radius: $border-radius;
+    justify-content: space-between;
+
+    &:first-child {
+      margin-right: 177px;
+    }
+
+    &__wrapper {
+      display: flex;
+      gap: 12px;
+    }
+  }
+}

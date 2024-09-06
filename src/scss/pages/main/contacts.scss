@@ -1,0 +1,39 @@
+.contacts { 
+  display: flex;
+  gap: 12px;
+
+  &__map {
+    border-radius: $border-radius;
+    background: #aeaeae;
+    width: 70%;
+  }
+
+  &__text {
+    padding: 40px 40px 104px 40px;
+    width: 34.2%;
+    background: $white;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .main {
+      width: 55.5%;
+    }
+
+    .outline {
+      width: 51%;
+    }
+  }
+
+  &__container.container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}
