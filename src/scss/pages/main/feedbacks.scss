@@ -57,6 +57,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .user-icon {
+        width: 24px;
+        height: 24px;
+        background: $sky-blue;
+      }
     }
 
     &__info {

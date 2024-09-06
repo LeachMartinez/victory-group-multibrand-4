@@ -162,6 +162,13 @@
   background-color: $accent-color;
 }
 
+.user-icon {
+  mask-image: url("../images/icons/user-icon.svg");
+  -webkit-mask-image: url("../images/icons/user-icon.svg");
+  background-color: $accent-color;
+}
+
+.user-icon,
 .play-icon,
 .check-icon,
 .Changan-icon,

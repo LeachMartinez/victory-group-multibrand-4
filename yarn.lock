@@ -5080,6 +5080,21 @@ jpegtran-bin@^5.0.0:
     bin-wrapper "^4.0.0"
     logalot "^2.0.0"
 
+jquery-fancybox@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/jquery-fancybox/-/jquery-fancybox-3.1.0.tgz#7e438bcb58539bcd4a4262f8d87d6c448ea3cf68"
+  integrity sha512-zV9Mnwv7Vc2RqkY41g3cXibmtMdo28kEYt77ccut1x5rS0thPQRE4Jol9iNGFUJa8fCejW9zCOgjIp0s3pkuKw==
+
+jquery-validation@^1.21.0:
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.21.0.tgz#78fc05ab76020912a246af3661b3f54a438bca93"
+  integrity sha512-xNot0rlUIgu7duMcQ5qb6MGkGL/Z1PQaRJQoZAURW9+a/2PGOUxY36o/WyNeP2T9R6jvWB8Z9lUVvvQWI/Zs5w==
+
+jquery.inputmask@^3.3.4:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/jquery.inputmask/-/jquery.inputmask-3.3.4.tgz#ff4a8fd196f9fe28a17fd77a2da579c15a78a606"
+  integrity sha512-HEhTAOGntIBPSoBU+HdyJCGV/Us16/TirRL7c+cJD9yC8tsDxLWIvNLJpaHJQcVw/e3n3lg1tAGgnMxYlGCMrw==
+
 jquery@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
@@ -7549,6 +7564,11 @@ svgo@^3.2.0:
     css-what "^6.1.0"
     csso "^5.0.5"
     picocolors "^1.0.0"
+
+swiper@^11.1.12:
+  version "11.1.12"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.1.12.tgz#563b90dd0162925025878c2ec4e136cc46bcb4f4"
+  integrity sha512-PUkCToYAZMB4kP7z+YfPnkMHOMwMO71g8vUhz2o5INGIgIMb6Sb0XiP6cEJFsiFTd7FRDn5XCbg+KVKPDZqXLw==
 
 table@^3.7.8:
   version "3.8.3"

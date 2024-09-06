@@ -1,4 +1,5 @@
 .competitors {
+  position: relative;
   display: flex;
   padding: 40px 80px;
   background: #0B297F;
@@ -64,5 +65,17 @@
     a {
       color: $sky-blue;
     }
+  }
+
+  &__image {
+    position: absolute;
+    right: -5px;
+    top: 0;
+    background-image: url("../images/content/purple-car.png");
+    background-position: 0% 59%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 48%;
+    height: 100%;
   }
 }
