@@ -5,8 +5,12 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const { ProvidePlugin } = require('webpack');
 const environment = require('./configuration/environment');
+
+function ppath(p) {
+  return path.join(__dirname, p);
+}
 
 const templateFiles = fs
   .readdirSync(environment.paths.source)
@@ -79,25 +83,25 @@ module.exports = {
     ],
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // получает имя, то есть node_modules/packageName/not/this/part.js
-            // или node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+    // splitChunks: {
+    //   chunks: 'all',
+    //   maxInitialRequests: Infinity,
+    //   minSize: 0,
+    //   cacheGroups: {
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name(module) {
+    //         // получает имя, то есть node_modules/packageName/not/this/part.js
+    //         // или node_modules/packageName
+    //         const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
 
-            // имена npm-пакетов можно, не опасаясь проблем, использовать
-            // в URL, но некоторые серверы не любят символы наподобие @
-            return `${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },
+    //         // имена npm-пакетов можно, не опасаясь проблем, использовать
+    //         // в URL, но некоторые серверы не любят символы наподобие @
+    //         return `${packageName.replace('@', '')}`;
+    //       },
+    //     },
+    //   },
+    // },
     minimizer: [
       '...',
       new ImageMinimizerPlugin({
@@ -128,6 +132,22 @@ module.exports = {
       }),
     ],
   },
+  resolve: {
+    alias: {
+      // jquery is NOT a peer dependency in jquery.inputmask so a alias
+      // is used here to force jquery.inputmask to use your jquery
+      // version
+      jquery: ppath('node_modules/jquery/dist/jquery'),
+      // Switch dependency lib accordingly (this one uses jquery)
+      'inputmask.dependencyLib': ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask.dependencyLib'),
+      // Core library (order of these aliases shouldn't matter FYI)
+      inputmask: ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask'),
+      // Allows use of jquery input mask via jquery chaining api/$('selector').inputmask(...)
+      'jquery.inputmask': ppath('node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask'),
+      // Add extensions following the pattern below remember to import them as necessary in your .js files
+      'inputmask.numeric.extensions': ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask.numeric.extensions'),
+    },
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
@@ -147,6 +167,11 @@ module.exports = {
           },
         },
       ],
+    }),
+    new ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
     }),
   ].concat(htmlPluginEntries),
   target: 'web',
