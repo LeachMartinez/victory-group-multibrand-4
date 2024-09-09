@@ -2,13 +2,15 @@ import 'jquery.inputmask';
 import $ from 'jquery';
 
 import Swiper from 'swiper';
-import { Grid, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Grid, Navigation, Pagination } from 'swiper/modules';
 
 import './range.js';
 import './select.js';
+import './timer.js';
 
 import 'swiper/css/bundle';
 import '../scss/app.scss';
+import Timer from './timer.js';
 
 const app = {
   runMasks: () => {
@@ -75,12 +77,65 @@ const app = {
       navigation: defaultNavigation,
     });
 
+    let bannerSwiperSettings = {
+      modules: [Pagination, Autoplay],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+    }
+
+    if (
+      window.__victorySettings && 
+      window.__victorySettings.bannerSwiperSettings
+    ) {
+      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings
+    }
+
+    const bannerSwiper = new Swiper(".banner-swiper", {
+      ...bannerSwiperSettings,
+      pagination: {
+        clickable: false,
+        el: ".banner-swiper-pagination",
+        renderBullet: function (index, className) {
+          console.log(className);
+          
+          return (`
+            <div class="banner-swiper-bullet ${className}">
+              <div class="banner-swiper-progress"></div> 
+            </div>
+          `);
+        },
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          const progressInPercents = Math.round(progress * 100);
+          $(".swiper-pagination-bullet-active .banner-swiper-progress").css({
+            "width": `${progressInPercents}%`,
+            "height": "4px",
+            "background": "#9CA5B3"
+          })
+        }
+      }
+    })
+
     return {
       newCarsSwiper,
       mostPopularSwiper,
+      bannerSwiper,
     };
   },
+  runTimers: () => {
+    const timer = new Timer(new Date(2024, 9, 9), ".timer")
+    timer.countdownTimer()
+    const timerUpdateAction = timer.countdownTimer.bind(timer) 
+    timer.timerId = setInterval(timerUpdateAction, 1000);
+
+  }
 };
 
 app.runMasks();
 app.runSwiper();
+app.runTimers();

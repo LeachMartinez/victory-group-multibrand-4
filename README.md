@@ -10,3 +10,7 @@ $ yarn
 ```sh
 $ yarn dev
 ```
+
+## Необходимые файлы
+- src
+- configuration

@@ -93,6 +93,7 @@
       justify-content: center;
 
       img {
+        object-fit: cover;
         border-radius: $border-radius;
       }
     }

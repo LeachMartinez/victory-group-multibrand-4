@@ -6,6 +6,16 @@
   width: fit-content !important;
 }
 
+.banner-swiper-pagination {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  justify-content: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
 .swiper-pagination-bullet {
   margin: 0 !important; 
   display: flex;
@@ -23,6 +33,25 @@
     height: 40px;
     background: $black;
     color: $white;
+  }
+
+  &.banner-swiper-bullet {
+    border-radius: 4px;
+    min-height: 4px;
+    width: 4px;
+    height: 4px;
+    background: $grey-3;
+    display: flex;
+    justify-content: flex-end;
+
+    &.swiper-pagination-bullet-active {
+      background: $black;
+      width: 60px;
+    }
+
+    .banner-swiper-progress {
+      border-radius: 4px;
+    }
   }
 }
 

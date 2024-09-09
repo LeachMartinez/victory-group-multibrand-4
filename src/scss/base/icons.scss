@@ -168,6 +168,13 @@
   background-color: $accent-color;
 }
 
+.help-icon {
+  mask-image: url("../images/icons/help-circle.svg");
+  -webkit-mask-image: url("../images/icons/help-circle.svg");
+  background-color: $accent-color;
+}
+
+.help-icon,
 .user-icon,
 .play-icon,
 .check-icon,

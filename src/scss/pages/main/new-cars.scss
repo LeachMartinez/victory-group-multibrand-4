@@ -87,7 +87,29 @@
     color: $grey-2;
   }
 
+  &__original-price {
+    color: $dark-grey;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    text-decoration: line-through;
+  }
+
   &__price {
     color: $blue-main;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__wrapper {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .help-icon{
+
+      background: $black;
+    }
   }
 }

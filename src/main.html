@@ -140,22 +140,52 @@
         </div>
       </section>
     </header>
-    <section class="container main__banner__container">
-      <div class="main__banner">
-        <h2 class="header-text-xl">
-          Автокредит от 7,9% <br>
-          на все автомобили
-        </h2>
-        <span class="regular-text-m">
-          Подберем для вас выгодное предложение <br>
-          по автокредиту от 16 банков-партнеров
-        </span>
-        <div class="main__banner__buttons">
-          <button class="button outline light size-l">Подобрать авто</button>
-          <button class="button main size-l">Оставить заявку</button>
+    <section class="container main__banner__container banner-swiper swiper">
+      <div class="swiper-wrapper">
+        <div class="main__banner swiper-slide">
+          <h2 class="header-text-xl">
+            Автокредит от 7,9% <br>
+            на все автомобили
+          </h2>
+          <span class="regular-text-m">
+            Подберем для вас выгодное предложение <br>
+            по автокредиту от 16 банков-партнеров
+          </span>
+          <div class="main__banner__buttons">
+            <button class="button outline light size-l">Подобрать авто</button>
+            <button class="button main size-l">Оставить заявку</button>
+          </div>
+        </div>
+        <div class="main__banner swiper-slide">
+          <h2 class="header-text-xl">
+            Автокредит от 7,9% <br>
+            на все автомобили
+          </h2>
+          <span class="regular-text-m">
+            Подберем для вас выгодное предложение <br>
+            по автокредиту от 16 банков-партнеров
+          </span>
+          <div class="main__banner__buttons">
+            <button class="button outline light size-l">Подобрать авто</button>
+            <button class="button main size-l">Оставить заявку</button>
+          </div>
+        </div>
+        <div class="main__banner swiper-slide">
+          <h2 class="header-text-xl">
+            Автокредит от 7,9% <br>
+            на все автомобили
+          </h2>
+          <span class="regular-text-m">
+            Подберем для вас выгодное предложение <br>
+            по автокредиту от 16 банков-партнеров
+          </span>
+          <div class="main__banner__buttons">
+            <button class="button outline light size-l">Подобрать авто</button>
+            <button class="button main size-l">Оставить заявку</button>
+          </div>
         </div>
       </div>
-      <div class="slider slider-buttons"></div>
+      <div class="banner-swiper-pagination"></div>
     </section>
     <section class="container car-brands__container">
       <div class="car-brands">
@@ -510,9 +540,10 @@
             </div>
             <div class="car-item__text">
               <h4 class="header-text-s">Chery Tiggo 4 Pro 18 YEARS EDITION</h4>
-              <span>
-                <h3 class="header-text-m car-item__price">от 7 400 000 ₽</h3>
-              </span>
+              <div class="car-item__price__wrapper">
+                <h3 class="header-text-m car-item__price">от 7 400 000 ₽ <span class="help-icon"></span></h3>
+                <span class="car-item__original-price">7 400 000 ₽</span>
+              </div>
               <div class="car-item__badges">
                 <span class="car-item__badge car-item__credit regular-text-s">89 000 ₽/мес</span>
                 <span class="car-item__badge car-item__profit regular-text-s">Выгода 400 000 ₽</span>
@@ -530,9 +561,10 @@
             </div>
             <div class="car-item__text">
               <h4 class="header-text-s">Chery Tiggo 4 Pro 18 YEARS EDITION</h4>
-              <span>
-                <h3 class="header-text-m car-item__price">от 7 400 000 ₽</h3>
-              </span>
+              <div class="car-item__price__wrapper">
+                <h3 class="header-text-m car-item__price">от 7 400 000 ₽ <span class="help-icon"></span></h3>
+                <span class="car-item__original-price">7 400 000 ₽</span>
+              </div>
               <div class="car-item__badges">
                 <span class="car-item__badge car-item__credit regular-text-s">89 000 ₽/мес</span>
                 <span class="car-item__badge car-item__profit regular-text-s">Выгода 400 000 ₽</span>
@@ -550,9 +582,10 @@
             </div>
             <div class="car-item__text">
               <h4 class="header-text-s">Chery Tiggo 4 Pro 18 YEARS EDITION</h4>
-              <span>
-                <h3 class="header-text-m car-item__price">от 7 400 000 ₽</h3>
-              </span>
+              <div class="car-item__price__wrapper">
+                <h3 class="header-text-m car-item__price">от 7 400 000 ₽ <span class="help-icon"></span></h3>
+                <span class="car-item__original-price">7 400 000 ₽</span>
+              </div>
               <div class="car-item__badges">
                 <span class="car-item__badge car-item__credit regular-text-s">89 000 ₽/мес</span>
                 <span class="car-item__badge car-item__profit regular-text-s">Выгода 400 000 ₽</span>
@@ -901,8 +934,7 @@
         </div>
       </div>
       <div class="feedbacks__actions">
-        <a class="button outline dark size-l" href="#">Оставить отзыв</a>
-        <a class="button main size-l" href="#">Читать все отзывы</a>
+        <a class="button outline dark size-l" href="#">Читать все отзывы</a>
       </div>
     </section>
     <section class="container promo__container">
