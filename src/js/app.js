@@ -3,7 +3,9 @@ import $ from 'jquery';
 
 import Swiper from 'swiper';
 import { Grid, Navigation, Pagination } from 'swiper/modules';
+
 import './range.js';
+import './select.js';
 
 import 'swiper/css/bundle';
 import '../scss/app.scss';

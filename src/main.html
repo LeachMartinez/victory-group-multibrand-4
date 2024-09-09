@@ -504,6 +504,7 @@
               <span class="check-icon car-item__check"></span>
               <span class="car-item__in-stock-badge__text regular-text-s">В наличии</span>
             </div>
+            <div class="car-item__sale-badge regular-text-m">-30%</div>
             <div class="car-item__image">
               <img src="./images/content/car.png" alt="car">
             </div>
@@ -523,6 +524,7 @@
               <span class="check-icon car-item__check"></span>
               <span class="car-item__in-stock-badge__text regular-text-s">В наличии</span>
             </div>
+            <div class="car-item__sale-badge regular-text-m">-30%</div>
             <div class="car-item__image">
               <img src="./images/content/car.png" alt="car">
             </div>
@@ -542,6 +544,7 @@
               <span class="check-icon car-item__check"></span>
               <span class="car-item__in-stock-badge__text regular-text-s">В наличии</span>
             </div>
+            <div class="car-item__sale-badge regular-text-m">-30%</div>
             <div class="car-item__image">
               <img src="./images/content/car.png" alt="car">
             </div>
@@ -557,6 +560,8 @@
             </div>
           </div>
         </div>
+        <div class="percent-1"></div>
+        <div class="percent-2"></div>
       </div>
       <div class="day-offer__bottom">
         <div class="day-offer__bottom__item day-offer__sale">
@@ -574,23 +579,28 @@
               <button class="button main size-l">Узнать подробнее</button>
             </div>
           </div>
+          <div class="percent-2"></div>
         </div>
         <div class="day-offer__bottom__item day-offer__timer">
           <h3 class="header-text-m day-offer__timer__title">До конца акции осталось:</h3>
           <div class="timer">
             <div class="timer__item timer__hours">
+              <div class="timer__border"></div>
               <span class="header-text-l">00</span>
               <span class="regular-text-m">часов</span>
             </div>
             <div class="timer__item timer__minutes">
+              <div class="timer__border"></div>
               <span class="header-text-l">00</span>
               <span class="regular-text-m">минут</span>  
             </div>
             <div class="timer__item timer__seconds">
+              <div class="timer__border"></div>
               <span class="header-text-l">00</span>
               <span class="regular-text-m">секунд</span>  
             </div>
           </div>
+          <div class="percent-2"></div>
         </div>
       </div>
     </section>
@@ -703,9 +713,24 @@
           <label class="input__wrapper input-default">
             <input class="input js-phone-mask" placeholder="+7 (900) 000-00-00" type="text">
           </label>
-          <label class="input__wrapper input-default">
-            <input class="input js-phone-mask" placeholder="+7 (900) 000-00-00" type="text">
-          </label>
+          <div class="select">
+            <label class="input__wrapper">
+              <input type="text" class="input" placeholder="Время звонка" readonly>
+              <span class="input__label">Время звонка</span>
+              <span class="arrow-icon"></span>
+              <select class="select-values">
+                <div class="Menu__group-title">сегодня</div>
+                <option value="11:00-15:00">с&nbsp;11:00&nbsp;до&nbsp;15:00</option>
+                <option value="15:00-19:00">с&nbsp;15:00&nbsp;до&nbsp;19:00</option>
+                <option value="19:00-23:00">с&nbsp;19:00&nbsp;до&nbsp;23:00</option>
+              </select>
+            </label>
+            <div class="select-list-wrapper">
+              <div class="select-list">
+              </div>
+            </div>
+            <div class="select-backdrop"></div>
+          </div>
         </div>
         <div class="free-help__form__action">
           <div class="free-help__form__action__text">

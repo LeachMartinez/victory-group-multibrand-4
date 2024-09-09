@@ -26,6 +26,17 @@
   border: 1px solid $grey-2;
   border-radius: $border-radius;
 
+  &__sale-badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: fit-content;
+    background: $red;
+    color: $white;
+    border-radius: 0px 16px;
+    padding: 4px 12px;
+  }
+
   &__in-stock-badge {
     position: absolute;
     display: flex;

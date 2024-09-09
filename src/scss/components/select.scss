@@ -1,0 +1,116 @@
+.select {
+  position: relative;
+  z-index: 2;
+  @include transition;
+
+  .input__wrapper {
+    z-index: 2;
+    .arrow-icon {
+      background-color: $grey-3;
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%) rotate(90deg);
+      @include transition;
+    }
+  }
+
+  select {
+    display: none;
+  }
+  
+  &.opened {
+    @include transition;
+
+    .select-backdrop {
+      display: block;
+    }
+
+    .input__wrapper {
+      border-color: $blue-main;
+      @include transition;
+
+      .arrow-icon {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
+
+    .select-list-wrapper {
+      padding: 16px;
+
+      .select-list {
+        height: auto;
+      }
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 352px;
+    height: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    @include transition;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      border-radius: 4px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background: $grey-2; 
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $grey-3; 
+      border-radius: 10px;
+    }
+
+    &-wrapper {
+      z-index: 2;
+      position: absolute;
+      top: 64px;
+      width: 100%;
+      border-radius: $border-radius;
+      background: $white;
+      padding: 0;
+      @include transition;
+    }
+  }
+
+  &-title {
+    color: $dark-grey;
+  }
+
+  &-item {
+    color: $dark-grey;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    @include transition;
+
+    &:hover {
+      color: $blue-main;
+    }
+  }
+
+  &-backdrop {
+    display: none;
+    position: fixed;
+    background: transparent;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    cursor: pointer;
+  }
+}
