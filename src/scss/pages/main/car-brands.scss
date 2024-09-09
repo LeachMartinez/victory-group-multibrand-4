@@ -8,6 +8,10 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
 
+  &__more {
+    display: none;
+  }
+
   &__item {
     border-radius: $border-radius;
     background: $white;

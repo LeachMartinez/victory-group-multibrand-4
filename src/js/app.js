@@ -110,7 +110,7 @@ const app = {
         },
       },
       on: {
-        autoplayTimeLeft(s, time, progress) {
+        autoplayTimeLeft(_, __, progress) {
           const progressInPercents = Math.round(progress * 100);
           $(".swiper-pagination-bullet-active .banner-swiper-progress").css({
             "width": `${progressInPercents}%`,
@@ -128,14 +128,27 @@ const app = {
     };
   },
   runTimers: () => {
+    // "2024/10/07"
     const timer = new Timer(new Date(2024, 9, 9), ".timer")
     timer.countdownTimer()
     const timerUpdateAction = timer.countdownTimer.bind(timer) 
     timer.timerId = setInterval(timerUpdateAction, 1000);
+  },
+  runListeners: () => {
+    $("#show-more-btn").on("click", (event) => {
+      const target = $(event.currentTarget)
+      if (target.text() === "Показать все марки") {
+        $(".car-brands__more").show();
+        return target.text("Скрыть марки");
+      }
 
+      $(".car-brands__more").hide();
+      return target.text("Показать все марки");
+    })
   }
 };
 
 app.runMasks();
 app.runSwiper();
 app.runTimers();
+app.runListeners();

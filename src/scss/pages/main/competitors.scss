@@ -53,8 +53,9 @@
     .button.main {
       color: $blue-main;
       background: $white;
-
+      
       &:hover {
+        background: $blue-main;
         color: $white;
       }
     }
