@@ -34,7 +34,20 @@ const app = {
     });
   },
   runSwiper: () => {
-    const swiper = new Swiper('.swiper', {
+    const defaultSwiperBullets = (index, className) => '<span class="' + className + '">' + (index + 1) + '</span>';
+    const defaultPagination = {
+      el: '.swiper-pagination',
+      clickable: true,
+      renderBullet: defaultSwiperBullets,
+    };
+
+    const defaultNavigation = {
+      enabled: true,
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    };
+
+    const newCarsSwiper = new Swiper('.new-cars-swiper', {
       modules: [Grid, Pagination, Navigation],
       slidesPerGroup: 4,
       slidesPerView: 4,
@@ -43,19 +56,27 @@ const app = {
         rows: 2,
         fill: 'row',
       },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + '</span>';
-        },
-      },
-      navigation: {
-        enabled: true,
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
     });
+
+    const mostPopularSwiper = new Swiper('.most-popular-swiper', {
+      modules: [Grid, Pagination, Navigation],
+      slidesPerGroup: 4,
+      slidesPerView: 4,
+      spaceBetween: 12,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
+    return {
+      newCarsSwiper,
+      mostPopularSwiper,
+    };
   },
 };
 

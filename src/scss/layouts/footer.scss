@@ -7,6 +7,12 @@
     background-repeat: no-repeat;
     background-size: 122%;
 
+    .input {
+      &:not(:placeholder-shown) {
+        color: $white;
+      }
+    }
+
     &__content {
       display: flex;
       border-radius: $border-radius;

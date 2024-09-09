@@ -51,6 +51,10 @@
       border: 1px solid $grey-3;
       color: $grey-3;
     }
+
+    &.light {
+      border: 1px solid $white;
+    }
   }
 
   &.light {

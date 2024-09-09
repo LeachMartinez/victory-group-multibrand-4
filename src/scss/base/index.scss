@@ -1,0 +1,26 @@
+@import 'vars';
+@import 'reset';
+@import 'fonts';
+@import 'icons';
+@import 'typography';
+
+* {
+  font-family: 'PTRootUI', sans-serif;
+}
+
+body {
+  background: $body-background-color;
+}
+
+.container {
+  max-width: 1332px;
+  margin: 0 auto;
+}
+
+.info__mobile {
+  display: none !important;
+}
+
+.mobile-menu {
+  display: none;
+}

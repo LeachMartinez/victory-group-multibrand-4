@@ -35,6 +35,12 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    .input {
+      &:not(:placeholder-shown) {
+        color: $white;
+      }
+    }
   }
 
   &__action {

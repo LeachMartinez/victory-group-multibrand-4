@@ -1,7 +1,6 @@
 .most-popular {
-  border-radius: $border-radius;
   background: $sky-blue;
-  padding: 80px 0 136px 0;
+  padding: 80px 0 80px 0;
 
   &__title {
     text-align: center;
@@ -14,21 +13,23 @@
   }
 
   &__items {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 12px;
-    row-gap: 15px;
     margin-bottom: 40px;
   }
 
   &__item {
+    // margin-top: 1px;
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &:nth-child(n + 5) {
+      margin-top: 7px !important;
+    }
   }
 
   &__image {
+    width: 100%;
     border-radius: $border-radius $border-radius 0 0;
   }
 
