@@ -214,6 +214,7 @@ header {
       }
 
       &__content {
+        overflow-y: auto;
         box-shadow: 25px 0 20px -20px rgba(0, 0, 0, 0.45);
         position: fixed;
         left: -100vw;
@@ -297,6 +298,10 @@ header {
 
     &.active {
       display: flex;
+    }
+
+    .brand-icon {
+      background: transparent !important;
     }
   }
 

@@ -184,8 +184,8 @@ const app = {
   runTabs: () => {
     const mostPopularTabs = new Tab('.most-popular__tabs-container');
   },
-  runFindByMark: () => {
-    const findByMark = new FindByMark();
+  runFindByMark: async () => {
+    const findByMark = new FindByMark(await FindByMark.getMarks());
   },
 };
 

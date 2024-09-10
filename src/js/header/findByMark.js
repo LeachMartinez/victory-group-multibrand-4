@@ -1,7 +1,8 @@
+/* eslint-disable camelcase */
 export default class FindByMark {
   colsCount = 6;
 
-  carbrands = ['Aston Martin', 'BMW', 'Honda', 'Baic', 'HMC', 'Rolls Roice', 'Haval'];
+  carbrands = [];
 
   $closeBtn = $('.header-input-search__button');
 
@@ -114,7 +115,9 @@ export default class FindByMark {
 
   fillBrandsList(carbrands) {
     this.$content.empty();
-    this.findAllFirstLetters(carbrands).forEach((letter) => {
+    const brands = carbrands.flatMap((brand) => Object.keys(brand)).sort();
+
+    this.findAllFirstLetters(brands).forEach((letter) => {
       this.$content.append(`
         <div data-letter="${letter}" class="find-by-marks-desktop__item">
           <span class="find-by-marks-desktop__title header-text-l">
@@ -125,10 +128,12 @@ export default class FindByMark {
     });
 
     carbrands.forEach((brand) => {
-      const firstLetter = brand[0].toUpperCase();
+      const brandName = Object.keys(brand)[0];
+      const { url } = brand[brandName];
+      const firstLetter = brandName[0].toUpperCase();
       this.$content.find(`[data-letter="${firstLetter}"`).append(`
-        <a href="#" class="find-by-marks-desktop__mark regular-text-m">
-          ${brand}
+        <a href="${url}" target="_blank" class="find-by-marks-desktop__mark regular-text-m">
+          ${brandName}
         </a>
       `);
     });
@@ -144,23 +149,39 @@ export default class FindByMark {
 
   handleInputSearch(event) {
     const { value } = event.currentTarget;
-    const filteredCarbrands = this.carbrands.filter((carbrand) => carbrand.toLowerCase().includes(value.toLowerCase()));
+    const filteredCarbrands = this.carbrands.filter((carbrand) => {
+      const brand = Object.keys(carbrand)[0].toLocaleLowerCase();
+      return brand.includes(value);
+    });
+
     this.fillBrandsList(filteredCarbrands);
     this.fillMobileBrandsList(filteredCarbrands);
   }
 
   fillMobileBrandsList(carbrands) {
     this.$mobileContent.empty();
+
     carbrands.forEach((brand) => {
+      const brandName = Object.keys(brand)[0];
+      const { url, image_monotone } = brand[brandName];
+
       this.$mobileContent.append(`
-        <a href="#" class="car-brands__item">
+        <a href="${url}" target="_blank" class="car-brands__item">
           <div class="car-brands__item__text">
-            <span class="${brand}-icon brand-icon"></span>
-            <span>${brand}</span>
+            <img src="${image_monotone}" class="brand-icon"></img>
+            <span>${brandName}</span>
           </div>
           <span class="arrow-icon"></span>
         </a>
       `);
     });
+  }
+
+  static async getMarks () {
+    try {
+      return await $.ajax('https://multi-4.vitmp.ru/api/auto/new/mark/list');
+    } catch (error) {
+      return [];
+    }
   }
 }
