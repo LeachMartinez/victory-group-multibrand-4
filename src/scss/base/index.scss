@@ -6,6 +6,7 @@
 
 * {
   font-family: 'PTRootUI', sans-serif;
+  @include transition;
 }
 
 body {
@@ -21,6 +22,17 @@ body {
   display: none !important;
 }
 
-.mobile-menu {
-  display: none;
+a:visited {
+  color: $black;
+}
+
+a {
+  color: $black;
+}
+
+@media(max-width: 1332px) {
+  .container {
+    max-width: auto;
+    margin: 0 32px;
+  }
 }

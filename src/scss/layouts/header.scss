@@ -1,4 +1,8 @@
 header {
+  .mobile-menu {
+    display: none;
+  }
+
   .mobile-header {
     display: none;
   }
@@ -81,4 +85,219 @@ header {
       padding: 10px 20px;
     }
   }
+}
+
+.header-input-search {
+  &__active-action {
+    align-items: center;
+    width: 100%;
+  }
+
+  &__wrapper {
+    &.active {
+      height: 40px;
+      width: 100%;
+    }
+  }
+
+  &__button {
+    display: none;
+    
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.find-by-marks {
+  &-desktop {
+    display: none;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    gap: 10px;
+    columns: 6 212px;
+    
+    &.active {
+      display: block;
+    }
+
+    &__item {
+      page-break-inside: avoid;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      color: $blue-main;
+    }
+  }
+}
+
+@media (max-width: 1220px) {
+  header {
+    position: relative;
+
+    .mobile-menu {
+      display: block;
+
+      .cross {
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        z-index: 2;
+        padding: 0;
+        
+        .cross-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &.active {
+        .mobile-menu__content {
+          left: 0;
+        }
+
+        .mobile-menu__backdrop {
+          opacity: 0.5;
+          z-index: 2;
+        }
+      }
+
+      &__top {
+        padding: 10px 16px;
+        background: $white;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .header-input-search-mobile-button {
+          display: none;
+
+          &.active {
+            display: block;
+          }
+        }
+
+        .header__actions {
+          width: 100%;
+
+          .input__wrapper {
+            width: 100%;
+          }
+        }
+      }
+
+      &__bottom {
+        padding: 10px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        &__location {
+          display: flex;
+          gap: 16px;
+          flex-direction: column;
+        }
+
+        .mobile-menu__actions {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+
+      &__content {
+        box-shadow: 25px 0 20px -20px rgba(0, 0, 0, 0.45);
+        position: fixed;
+        left: -100vw;
+        top: 0;
+        width: 360px;
+        height: 100vh;
+        background: #f0f1f6;
+        z-index: 3;
+        transition: 0.3s left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        nav {
+          height: fit-content;
+          align-items: center;          
+        }
+
+        .header__navigation {
+          height: 100%;
+          flex-direction: column;
+          justify-content: center;
+          gap: 24px;
+          padding: 16px;
+
+          &__item {
+            width: 100%;
+            justify-content: flex-start;
+          }
+
+          &__text {
+            text-align-last: left;
+          }
+        }
+      }
+
+      &__backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        background: #000000;
+        transition: 0.3s opacity;
+      }
+
+      &.active {
+        display: block;
+      }
+    }
+
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11.5px 16px;
+      background: $white;
+
+      .menu-icon, .phone-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .info {
+      display: none;
+    }
+
+    .header {
+      display: none;
+    }
+  }
+
+  .find-by-marks-mobile {
+    display: none;
+    padding: 40px 16px 20px 16px;
+    flex-direction: column;
+    gap: 8px;
+
+    &.active {
+      display: flex;
+    }
+  }
+
 }

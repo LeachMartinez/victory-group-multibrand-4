@@ -8,14 +8,19 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
 
-  &__more {
-    display: none;
-  }
-
   &__item {
     border-radius: $border-radius;
     background: $white;
     padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .arrow-icon {
+      width: 24px;
+      height: 24px;
+      background: $black;
+    }
 
     &__text {
       display: flex;
@@ -28,6 +33,10 @@
         background-color: $black;
       }
     }
+  }
+
+  &__more {
+    display: none;
   }
 
   &__buttons {

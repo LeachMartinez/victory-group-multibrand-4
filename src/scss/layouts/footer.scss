@@ -153,6 +153,10 @@
         &__item {
           color: $grey-3;
           @include transition;
+          
+          &:visited {
+            color: $grey-3;
+          }
 
           &:hover {
             color: $white;

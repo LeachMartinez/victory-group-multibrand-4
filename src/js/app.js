@@ -2,15 +2,18 @@ import 'jquery.inputmask';
 import $ from 'jquery';
 
 import Swiper from 'swiper';
-import { Autoplay, Grid, Navigation, Pagination } from 'swiper/modules';
+import {
+  Autoplay, Grid, Navigation, Pagination,
+} from 'swiper/modules';
 
-import './range.js';
-import './select.js';
-import './timer.js';
+import './ui/range.js';
+import './ui/select.js';
+import Timer from './ui/timer.js';
+import Tab from './ui/tabs.js';
 
 import 'swiper/css/bundle';
 import '../scss/app.scss';
-import Timer from './timer.js';
+import FindByMark from './header/findByMark.js';
 
 const app = {
   runMasks: () => {
@@ -21,6 +24,7 @@ const app = {
           validator: '[4,9]',
         },
       },
+      showMaskOnHover: false,
     });
 
     $('.js-digits-mask').inputmask({
@@ -83,25 +87,23 @@ const app = {
       spaceBetween: 30,
       autoplay: {
         delay: 5000,
-        disableOnInteraction: false
+        disableOnInteraction: false,
       },
-    }
+    };
 
     if (
-      window.__victorySettings && 
-      window.__victorySettings.bannerSwiperSettings
+      window.__victorySettings
+      && window.__victorySettings.bannerSwiperSettings
     ) {
-      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings
+      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings;
     }
 
-    const bannerSwiper = new Swiper(".banner-swiper", {
+    const bannerSwiper = new Swiper('.banner-swiper', {
       ...bannerSwiperSettings,
       pagination: {
         clickable: false,
-        el: ".banner-swiper-pagination",
+        el: '.banner-swiper-pagination',
         renderBullet: function (index, className) {
-          console.log(className);
-          
           return (`
             <div class="banner-swiper-bullet ${className}">
               <div class="banner-swiper-progress"></div> 
@@ -112,14 +114,14 @@ const app = {
       on: {
         autoplayTimeLeft(_, __, progress) {
           const progressInPercents = Math.round(progress * 100);
-          $(".swiper-pagination-bullet-active .banner-swiper-progress").css({
-            "width": `${progressInPercents}%`,
-            "height": "4px",
-            "background": "#9CA5B3"
-          })
-        }
-      }
-    })
+          $('.swiper-pagination-bullet-active .banner-swiper-progress').css({
+            width: `${progressInPercents}%`,
+            height: '4px',
+            background: '#9CA5B3',
+          });
+        },
+      },
+    });
 
     return {
       newCarsSwiper,
@@ -129,26 +131,46 @@ const app = {
   },
   runTimers: () => {
     // "2024/10/07"
-    const timer = new Timer(new Date(2024, 9, 9), ".timer")
-    timer.countdownTimer()
-    const timerUpdateAction = timer.countdownTimer.bind(timer) 
+    const timer = new Timer(new Date(2024, 9, 9), '.timer');
+    timer.countdownTimer();
+    const timerUpdateAction = timer.countdownTimer.bind(timer);
     timer.timerId = setInterval(timerUpdateAction, 1000);
   },
   runListeners: () => {
-    $("#show-more-btn").on("click", (event) => {
-      const target = $(event.currentTarget)
-      if (target.text() === "Показать все марки") {
-        $(".car-brands__more").show();
-        return target.text("Скрыть марки");
+    $('#show-more-btn').on('click', (event) => {
+      const target = $(event.currentTarget);
+      if (target.text() === 'Показать все марки') {
+        $('.car-brands__more').css({ display: 'flex' });
+        return target.text('Скрыть марки');
       }
 
-      $(".car-brands__more").hide();
-      return target.text("Показать все марки");
-    })
-  }
+      $('.car-brands__more').css({ display: 'none' });
+      return target.text('Показать все марки');
+    });
+
+    $('.menu-icon').on('click', () => {
+      $('.mobile-menu').addClass('active');
+    });
+
+    $('.mobile-menu__backdrop').on('click', () => {
+      $('.mobile-menu').removeClass('active');
+    });
+
+    $('.mobile-menu__content .cross').on('click', () => {
+      $('.mobile-menu').removeClass('active');
+    });
+  },
+  runTabs: () => {
+    const mostPopularTabs = new Tab('.most-popular__tabs-container');
+  },
+  runFindByMark: () => {
+    const findByMark = new FindByMark();
+  },
 };
 
+app.runTabs();
 app.runMasks();
 app.runSwiper();
 app.runTimers();
 app.runListeners();
+app.runFindByMark();
