@@ -37,3 +37,14 @@
     margin-bottom: 80px;
   }
 }
+
+@media (max-width: 1332px) {
+  .contacts__actions {
+    .main {
+      width: auto;
+    }
+    .outline {
+      width: auto;
+    }
+  }
+}

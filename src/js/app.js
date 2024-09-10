@@ -43,43 +43,45 @@ const app = {
   },
   runSwiper: () => {
     const defaultSwiperBullets = (index, className) => '<span class="' + className + '">' + (index + 1) + '</span>';
-    const defaultPagination = {
-      el: '.swiper-pagination',
-      clickable: true,
-      renderBullet: defaultSwiperBullets,
-    };
-
     const defaultNavigation = {
       enabled: true,
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     };
 
-    const newCarsSwiper = new Swiper('.new-cars-swiper', {
-      modules: [Grid, Pagination, Navigation],
-      slidesPerGroup: 4,
-      slidesPerView: 4,
-      spaceBetween: 12,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
-      pagination: defaultPagination,
-      navigation: defaultNavigation,
-    });
+    const defaultPagination = {
+      el: '.swiper-pagination',
+      clickable: true,
+      renderBullet: defaultSwiperBullets,
+    };
 
-    const mostPopularSwiper = new Swiper('.most-popular-swiper', {
-      modules: [Grid, Pagination, Navigation],
-      slidesPerGroup: 4,
-      slidesPerView: 4,
-      spaceBetween: 12,
-      grid: {
-        rows: 2,
-        fill: 'row',
+    const slides = {
+      newCars: {
+        slidesPerGroup: 8,
+        slidesPerView: 4,
       },
-      pagination: defaultPagination,
-      navigation: defaultNavigation,
-    });
+      mostPopular: {
+        slidesPerGroup: 4,
+        slidesPerView: 4,
+      },
+    };
+
+    if (
+      window.__victorySettings
+      && window.__victorySettings.bannerSwiperSettings
+    ) {
+      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings;
+    }
+
+    if (window.outerWidth < 1332) {
+      slides.newCars.slidesPerGroup = 6;
+      slides.newCars.slidesPerView = 3;
+    }
+
+    if (window.outerWidth < 1100) {
+      slides.newCars.slidesPerGroup = 1;
+      slides.newCars.slidesPerView = 1;
+    }
 
     let bannerSwiperSettings = {
       modules: [Pagination, Autoplay],
@@ -91,12 +93,31 @@ const app = {
       },
     };
 
-    if (
-      window.__victorySettings
-      && window.__victorySettings.bannerSwiperSettings
-    ) {
-      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings;
-    }
+    const newCarsSwiper = new Swiper('.new-cars-swiper', {
+      modules: [Grid, Pagination, Navigation],
+      slidesPerGroup: slides.newCars.slidesPerGroup,
+      slidesPerView: slides.newCars.slidesPerView,
+      spaceBetween: 12,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
+    const mostPopularSwiper = new Swiper('.most-popular-swiper', {
+      modules: [Grid, Pagination, Navigation],
+      slidesPerGroup: slides.mostPopular.slidesPerGroup,
+      slidesPerView: slides.mostPopular.slidesPerView,
+      spaceBetween: 12,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
 
     const bannerSwiper = new Swiper('.banner-swiper', {
       ...bannerSwiperSettings,
