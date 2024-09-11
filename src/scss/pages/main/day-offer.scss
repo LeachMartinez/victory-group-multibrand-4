@@ -11,6 +11,10 @@
     background: linear-gradient(90deg, rgba(22,22,22,1) 0%, rgba(56,42,142,1) 100%);
     border-radius: $border-radius;
 
+    .mobile {
+      display: none;
+    }
+
     &__title {
       color: $white;
       text-align: center;
@@ -214,6 +218,94 @@
   .day-offer {
     &__main {
       padding: 40px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .day-offer {
+    &__container.container {
+      margin: 0;
+    }
+
+    &__items {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__sale {
+      padding: 40px 0 0 0;
+      background: transparent;
+
+      &__title {
+        margin-bottom: 24px;
+      }
+
+      .day-offer__action {
+        flex-direction: column-reverse;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    }
+
+    &__timer {
+      padding-top: 0;
+      background: transparent;
+
+      &__title {
+        margin-bottom: 8px;
+      }
+
+      .timer {
+        gap: 8px ;
+      }
+
+      .timer__item, .timer__border {
+        width: 76px;
+        height: 76px;
+      }
+
+      .timer__item {
+        .header-text-l {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 28px;
+        }
+
+        .regular-text-m {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+        }
+      }
+    }
+    
+    &__main {
+      padding: 40px 16px;
+      background: linear-gradient(45deg, #151515 21.89%, #382A8E 58.92%), #FFF;
+
+      .mobile {
+        display: block;
+      }
+
+      &__title {
+        margin-bottom: 20px;
+      }
+
+      .percent-1, .percent-2 {
+        display: none;
+      }
+    }
+
+    &__bottom {
+      display: none;
     }
   }
 }

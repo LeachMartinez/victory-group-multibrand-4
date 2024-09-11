@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-export default class FindByMark {
+export default class MarkSearch {
   colsCount = 6;
 
   carbrands = [];

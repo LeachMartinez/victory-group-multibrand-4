@@ -13,7 +13,7 @@ import Tab from './ui/tabs.js';
 
 import 'swiper/css/bundle';
 import '../scss/app.scss';
-import FindByMark from './header/findByMark.js';
+import MarkSearch from './header/MarkSearch.js';
 
 const app = {
   runMasks: () => {
@@ -59,10 +59,19 @@ const app = {
       newCars: {
         slidesPerGroup: 8,
         slidesPerView: 4,
+        spaceBetween: 12,
+        grid: {
+          rows: 2,
+          fill: 'row',
+        },
       },
       mostPopular: {
-        slidesPerGroup: 4,
         slidesPerView: 4,
+        spaceBetween: 12,
+        grid: {
+          rows: 2,
+          fill: 'row',
+        },
       },
     };
 
@@ -81,6 +90,8 @@ const app = {
     if (window.outerWidth < 1100) {
       slides.newCars.slidesPerGroup = 1;
       slides.newCars.slidesPerView = 1;
+      slides.mostPopular.grid.rows = 4;
+      slides.mostPopular.slidesPerView = 1;
     }
 
     let bannerSwiperSettings = {
@@ -94,27 +105,15 @@ const app = {
     };
 
     const newCarsSwiper = new Swiper('.new-cars-swiper', {
+      ...slides.newCars,
       modules: [Grid, Pagination, Navigation],
-      slidesPerGroup: slides.newCars.slidesPerGroup,
-      slidesPerView: slides.newCars.slidesPerView,
-      spaceBetween: 12,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
       pagination: defaultPagination,
       navigation: defaultNavigation,
     });
 
     const mostPopularSwiper = new Swiper('.most-popular-swiper', {
+      ...slides.mostPopular,
       modules: [Grid, Pagination, Navigation],
-      slidesPerGroup: slides.mostPopular.slidesPerGroup,
-      slidesPerView: slides.mostPopular.slidesPerView,
-      spaceBetween: 12,
-      grid: {
-        rows: 2,
-        fill: 'row',
-      },
       pagination: defaultPagination,
       navigation: defaultNavigation,
     });
@@ -181,12 +180,8 @@ const app = {
       $('.mobile-menu').removeClass('active');
     });
   },
-  runTabs: () => {
-    const mostPopularTabs = new Tab('.most-popular__tabs-container');
-  },
-  runFindByMark: async () => {
-    const findByMark = new FindByMark(await FindByMark.getMarks());
-  },
+  runTabs: () => new Tab('.most-popular__tabs-container'),
+  runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
 };
 
 app.runTabs();

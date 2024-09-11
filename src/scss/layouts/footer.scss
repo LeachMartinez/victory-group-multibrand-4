@@ -1,4 +1,8 @@
 .footer {
+  .mobile {
+    display: none;
+  }
+
   &__form {
     border-radius: 40px 40px 0 0;
     padding: 80px 0;
@@ -76,6 +80,75 @@
       color: rgba(100, 105, 112, 0.30);
       background-color: rgba(100, 105, 112, 0.30);
       border-color: rgba(100, 105, 112, 0.30);
+    }
+
+    &__rating {
+      border: 1px solid $dark-grey;
+      border-radius: 16px;
+      padding: 12px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &__logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      &__stars {
+        position: relative;
+        display: flex;
+        align-items: center;
+        unicode-bidi: bidi-override;
+        color: $black;
+        font-size: 28px;
+        line-height: 28px;
+        -webkit-text-stroke: 1px #EAA900;
+        
+
+        .fill {
+          color: #EAA900;
+          padding: 0;
+          position: absolute;
+          z-index: 1;
+          display: block;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+        
+          // Allows us to grab the width of the span elements
+          span {
+            display: inline-block;
+          }
+        }
+
+        .empty-ratings {
+          padding: 0;
+          display: block;
+          z-index: 0;
+        }
+      }
+
+      &__int {
+        color: $sky-blue;
+      }
+
+      &__desc {
+        color: $dark-grey;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
     }
 
     &__info {
@@ -170,6 +243,105 @@
       color: $dark-grey;
       margin-top: 20px;
       padding-bottom: 40px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .footer {
+    .mobile {
+      display: block;
+    }
+    &__contents {
+      &__info {
+        &__text {
+          display: none;
+
+          &.mobile {
+            margin-top: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+        }
+      }
+
+      &__nav {
+        flex-direction: column;
+        align-items: inherit;
+
+        &__actions {
+          justify-content: space-between;
+          width: 100%;
+          gap: 0;
+
+          .button {
+            width: calc(50% - 6px);
+            padding: 0;
+          }
+        }
+
+        nav {
+          width: 100%;
+          margin-bottom: 20px;
+
+          ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+        }
+      }
+
+      &__categories {
+        flex-direction: column;
+        gap: 36px;
+      }
+
+      &__rating {
+        &__wrapper {
+          display: none;
+          
+          &.mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+        }
+      }
+    }
+
+    &__form {
+      padding-top: 80px;
+      padding-bottom: 200px;
+      background-position: center;
+      background-size: cover;
+
+      &__wrapper {
+        width: 100%;
+        gap: 12px;
+      }
+
+      &__content {
+        padding: 40px 16px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &__text {
+        margin-top: 0;
+        gap: 12px;
+      }
+
+      &__action {
+        flex-direction: column-reverse;
+        text-align: center;
+
+        .button {
+          width: 100%;
+        }
+      }
     }
   }
 }

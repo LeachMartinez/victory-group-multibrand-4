@@ -16,6 +16,7 @@
   }
 
   .pagination {
+    max-width: 100%;
     height: 56px;
     margin-bottom: 40px;
   }
@@ -108,7 +109,6 @@
     }
 
     .help-icon{
-
       background: $black;
     }
   }

@@ -139,4 +139,33 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
+
+  .feedback {
+    padding: 16px;
+    gap: 16px;
+
+    &__content {
+      overflow: hidden;
+      height: 180px;
+
+      .feedback__type-text {
+        -webkit-line-clamp: 7;
+        height: 170px;
+      }
+    }
+
+    &__user {
+      &__info {
+        max-height: 46px;
+      }
+
+      &__desc {
+        white-space: nowrap;
+        max-width: 210px;
+        max-height: 23px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
 }

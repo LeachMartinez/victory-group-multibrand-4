@@ -140,14 +140,28 @@
   .promo {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 12px;
+    gap: 20px;
+
+    &__form {
+      &__license {
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     &__header {
+      height: 196px;
+
       img {
         height: 100%;
         width: 100%;
         object-fit: cover;
       }
+    }
+
+    &__content {
+      padding: 16px;
+      gap: 12px;
     }
   }
 }
