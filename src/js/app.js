@@ -8,12 +8,14 @@ import {
 
 import './ui/range.js';
 import './ui/select.js';
+
 import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 import 'swiper/css/bundle';
 import '../scss/app.scss';
 import MarkSearch from './header/MarkSearch.js';
+import configuration from './configuration.js';
 
 const app = {
   runMasks: () => {
@@ -42,6 +44,7 @@ const app = {
     });
   },
   runSwiper: () => {
+    const slides = configuration.sliders;
     const defaultSwiperBullets = (index, className) => '<span class="' + className + '">' + (index + 1) + '</span>';
     const defaultNavigation = {
       enabled: true,
@@ -55,54 +58,17 @@ const app = {
       renderBullet: defaultSwiperBullets,
     };
 
-    const slides = {
-      newCars: {
-        slidesPerGroup: 8,
-        slidesPerView: 4,
-        spaceBetween: 12,
-        grid: {
-          rows: 2,
-          fill: 'row',
-        },
-      },
-      mostPopular: {
-        slidesPerView: 4,
-        spaceBetween: 12,
-        grid: {
-          rows: 2,
-          fill: 'row',
-        },
-      },
-    };
-
-    if (
-      window.__victorySettings
-      && window.__victorySettings.bannerSwiperSettings
-    ) {
-      bannerSwiperSettings = window.__victorySettings.bannerSwiperSettings;
-    }
-
-    if (window.outerWidth < 1332) {
-      slides.newCars.slidesPerGroup = 6;
+    if (window.outerWidth <= 1332) {
       slides.newCars.slidesPerView = 3;
     }
 
-    if (window.outerWidth < 1100) {
+    if (window.outerWidth <= 1100) {
       slides.newCars.slidesPerGroup = 1;
       slides.newCars.slidesPerView = 1;
       slides.mostPopular.grid.rows = 4;
       slides.mostPopular.slidesPerView = 1;
+      slides.catalogSwiper.slidesPerView = 1;
     }
-
-    let bannerSwiperSettings = {
-      modules: [Pagination, Autoplay],
-      slidesPerView: 1,
-      spaceBetween: 30,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-    };
 
     const newCarsSwiper = new Swiper('.new-cars-swiper', {
       ...slides.newCars,
@@ -119,7 +85,8 @@ const app = {
     });
 
     const bannerSwiper = new Swiper('.banner-swiper', {
-      ...bannerSwiperSettings,
+      ...slides.bannerSwiper,
+      modules: [Pagination, Autoplay],
       pagination: {
         clickable: false,
         el: '.banner-swiper-pagination',
@@ -143,10 +110,18 @@ const app = {
       },
     });
 
+    const catalogSwiper = new Swiper('.catalog-swiper', {
+      ...slides.catalogSwiper,
+      modules: [Grid, Pagination, Navigation],
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
     return {
       newCarsSwiper,
       mostPopularSwiper,
       bannerSwiper,
+      catalogSwiper,
     };
   },
   runTimers: () => {

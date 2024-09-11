@@ -1,43 +1,4 @@
-.breadcrumbs {
-  padding: 14px 0;
-  display: flex;
 
-  &__item {
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: url("../images/icons/arrow-light.svg");
-    }
-
-    &:last-child {
-      .breadcrumbs__text {
-        padding: 0;
-        color: $black;
-      }
-
-      &::after {
-        width: 0;
-        height: 0;
-      }
-    }
-  }
-
-  &__text {
-    padding: 0 56px 0 0;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    color: $text-color-darkGray;
-  }
-
-}
 
 .main {
   padding: 40px 0;
