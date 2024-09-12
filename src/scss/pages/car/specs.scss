@@ -1,0 +1,59 @@
+.specs {
+  &__section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__select {
+    &__container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+
+      .select {
+        max-width: 400px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .tabs__wrapper {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    &__item {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid $grey-2;
+      padding: 4px 0 12px 0;
+
+      &__name {
+        color: $dark-grey;
+        width: calc(50% - 6px);
+      }
+      
+      &__value {
+        color: $black;
+        width: calc(50% - 6px);
+      }
+    }
+  }
+}

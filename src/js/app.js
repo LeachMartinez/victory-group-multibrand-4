@@ -84,6 +84,13 @@ const app = {
       navigation: defaultNavigation,
     });
 
+    const carGallerySwiper = new Swiper('.car-gallery-swiper', {
+      ...slides.carGallerySwiper,
+      modules: [Grid, Pagination, Navigation],
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
     const bannerSwiper = new Swiper('.banner-swiper', {
       ...slides.bannerSwiper,
       modules: [Pagination, Autoplay],
@@ -118,6 +125,7 @@ const app = {
     });
 
     return {
+      carGallerySwiper,
       newCarsSwiper,
       mostPopularSwiper,
       bannerSwiper,

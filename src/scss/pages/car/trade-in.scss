@@ -1,0 +1,131 @@
+.trade-in {
+  &__section {
+    background: $sky-blue;
+    border-radius: 40px;
+    padding: 80px 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    border-radius: $border-radius;
+    padding: 40px 36px;
+    max-width: 1108px;
+  }
+
+  &__old-car, &__new-car {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    width: calc(50% - 10px);
+  }
+
+  &__new-car {
+    .trade-in__image {
+      img {
+        height: 100%;
+        max-height: 378px;
+        border-radius: $border-radius;
+      }
+    }
+  }
+
+  &__image {
+    margin-bottom: 12px;
+    border-radius: $border-radius;
+    max-height: 378px;
+    background: #F3F6FB;
+    height: 378px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    img {
+      height: 100%;
+      max-height: 187px;
+      border-radius: $border-radius;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: -45px;
+    transform: translateY(-50%);    
+    width: 70px;
+    height: 70px;
+    background: $black;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    .trade-in-icon {
+      background: $sky-blue;
+      width: 34px;
+      height: 40px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__title {
+      color: $blue-main;
+    }
+
+    &__desc  {
+      color: $black;
+    }
+  }
+
+  &__form {
+    &__title {
+      margin-bottom: 20px;
+    }
+
+    &__fields {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 40px;
+      
+      .input__wrapper {
+        width: calc(100% - 6px);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__license {
+    span {
+      color: $grey-3;
+    }
+
+    a {
+      color: $blue-main
+    }
+  }
+}

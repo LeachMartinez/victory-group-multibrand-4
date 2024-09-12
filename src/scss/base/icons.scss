@@ -102,6 +102,13 @@
   background-color: $accent-color;
 }
 
+.trade-in-icon {
+  mask-image: url("../images/icons/trade-in-icon.svg");
+  -webkit-mask-image: url("../images/icons/trade-in-icon.svg");
+  background-color: $accent-color;
+}
+
+.trade-in-icon,
 .help-icon,
 .user-icon,
 .play-icon,

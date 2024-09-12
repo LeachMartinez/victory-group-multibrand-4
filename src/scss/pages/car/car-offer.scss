@@ -1,0 +1,68 @@
+.car-offer {
+  &__section {
+    padding: 40px 80px;
+    display: flex;
+    padding: 40px 0px 40px 80px;
+    align-items: center;
+    gap: 12px;
+    border-radius: $border-radius;
+    background: linear-gradient(79deg, $black 15.88%, #382A8E 95.81%);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 6px);
+
+    .input {
+      color: $white;
+    }
+
+    &__container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__license {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        color: $grey-3;
+      }
+
+      a {
+        color: $blue-main;
+      }
+    }
+  }
+
+  &__label {
+    background: $red;
+    width: fit-content;
+    border-radius: $border-radius;
+    color: $white;
+    padding: 4px 12px;
+    margin-top: 12px;
+    @include button-text;
+  }
+
+  &__title {
+    color: $white;
+  }
+
+  &__timer {
+    width: calc(50% - 6px);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+}

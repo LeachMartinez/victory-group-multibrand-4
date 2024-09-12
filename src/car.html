@@ -237,7 +237,7 @@
         </ul>
       </nav>
     </section>
-    <main class="container car-main">
+    <main class="container car-main car-main__section">
       <section class="car-main__title__wrapper">
         <span class="car-main__title__text">
           <h1 class="car-main__title">
@@ -335,13 +335,135 @@
             <b class="total__desc">Цена без учета скидки: от 7 400 000 ₽</b>
           </div>
           <div class="total__actions">
-            <button class="button secondary action__reserve">Забронировать</button>
-            <button class="button main">Купить в кредит</button>
+            <button class="button outline dark size-l">Забронировать</button>
+            <button class="button main size-l">Купить в кредит</button>
           </div>
         </div>
       </section>
     </main>
-    <section class="credit-conditions">
+    <section class="container car-offer__section">
+      <form class="car-offer__form">
+        <h2 class="header-text-xl car-offer__title">
+          Предложение дня
+        </h2>
+        <div class="car-offer__label">
+          Скидка на автомобиль -30%
+        </div>
+        <div class="car-offer__form__container">
+          <label class="input__wrapper input-default">
+            <input class="input js-phone-mask" type="text" placeholder="+7 (900) 000-00-00">
+          </label>
+          <div class="car-offer__form__actions">
+            <div class="car-offer__form__license">
+              <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями </span>
+              <a class="regular-text-s" href="#">пользовательского соглашения</a>
+            </div>
+            <button class="button main size-l">Зафиксировать скидку</button>
+          </div>
+        </div>
+      </form>
+      <div class="car-offer__timer">
+        <h3 class="header-text-m day-offer__timer__title">До конца акции осталось:</h3>
+        <div class="timer">
+          <div class="timer__item timer__hours">
+            <div class="timer__border"></div>
+            <span class="header-text-l">00</span>
+            <span class="regular-text-m">часов</span>
+          </div>
+          <div class="timer__item timer__minutes">
+            <div class="timer__border"></div>
+            <span class="header-text-l">00</span>
+            <span class="regular-text-m">минут</span>  
+          </div>
+          <div class="timer__item timer__seconds">
+            <div class="timer__border"></div>
+            <span class="header-text-l">00</span>
+            <span class="regular-text-m">секунд</span>  
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container specs__section">
+      <h2 class="specs__title header-text-xl">Технические характеристики и опции</h2>
+      <div class="specs__select__container">
+        <div class="select filter__item">
+          <label class="input__wrapper" id="car-modification-select">
+            <input type="text" class="input" placeholder="Модификация" readonly>
+            <span class="input__label">Модификация</span>
+            <span class="arrow-icon"></span>
+            <select class="select-values">
+            </select>
+          </label>
+          <div class="select-list-wrapper">
+            <div class="select-list">
+            </div>
+          </div>
+          <div class="select-backdrop"></div>
+        </div>
+        <div class="select filter__item">
+          <label class="input__wrapper" id="car-complectation-select">
+            <input type="text" class="input" placeholder="Комплектация" readonly>
+            <span class="input__label">Комплектация</span>
+            <span class="arrow-icon"></span>
+            <select class="select-values">
+            </select>
+          </label>
+          <div class="select-list-wrapper">
+            <div class="select-list">
+            </div>
+          </div>
+          <div class="select-backdrop"></div>
+        </div>
+      </div>
+      <div class="specs__container">
+        <div class="tabs__wrapper">
+          <div class="tabs">
+            <div class="tabs__item active" data-id="сhinese-tab">
+              Технические характеристики
+            </div>
+            <div class="tabs__item" data-id="сhinese-tab">
+              Опции комплектации
+            </div>
+          </div>
+        </div>
+        <div class="specs__list">
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Рабочий объем двигателя см³</div>
+            <div class="specs__list__item__value regular-text-m">1392</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Максимальная мощность кВт/л.с. (мин.-1) 110/150 (5500)</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+          <div class="specs__list__item">
+            <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+            <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          </div>
+        </div>
+        <div class="button main size-l">Сравнить все комплектации Haval Jolion</div>
+      </div>
+    </section>
+    <section class="credit-conditions credit-conditions__section">
       <div class="container">
         <h2 class="credit-conditions__title">
           Рассчитайте условия по кредиту на Haval Jolion
@@ -422,6 +544,172 @@
             </span>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="container gallery__section">
+      <h2 class="header-text-xl gallery__title">Галлерея</h2>
+      <div class="swiper car-gallery-swiper">
+        <div class="swiper-wrapper">
+          <div class="gallery__item swiper-slide">
+            <img src="./images/content/haval-1.png" alt="car-image">
+          </div>
+          <div class="gallery__item swiper-slide">
+            <img src="./images/content/haval-2.png" alt="car-image">
+          </div>
+          <div class="gallery__item swiper-slide">
+            <img src="./images/content/haval-1.png" alt="car-image">
+          </div>
+          <div class="gallery__item swiper-slide">
+            <img src="./images/content/haval-2.png" alt="car-image">
+          </div>
+          <div class="gallery__item swiper-slide">
+            <img src="./images/content/haval-1.png" alt="car-image">
+          </div>
+        </div>
+        <div class="pagination">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination">
+          </div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+    <section class="container promo__container promo__section">
+      <h2 class="header-text-xl promo__title">Спецпредложения на Haval Jolion в Новосибирске</h2>
+      <div class="promo">
+        <div class="promo__item">
+          <div class="promo__header">
+            <div class="promo__label promo__label__trade-in">
+              скидка <br>
+              <span>по Trade-in</span>
+            </div>
+            <div class="promo__label promo__label__price">200 000 ₽</div>
+            <img src="./images/content/car-banner.png" alt="car-banner">
+          </div>
+          <div class="promo__content">
+            <div class="promo__text">
+              <h3 class="header-text-l">Обменяйте свой автомобиль <br> на новый выгодно</h3>
+              <span class="regular-text-s">До 31 августа обменяйте свой автомобиль на новый <br>
+                со скидкой до 200 000 рублей по программе Trade-in</span>
+            </div>
+            <div class="promo__form">
+              <label class="input__wrapper">
+                <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
+                <span class="input__label">Номер телефона</span>
+              </label>
+              <button class="button main size-l">Участвовать в акции</button>
+              <div class="promo__form__license">
+                <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
+                <a class="regular-text-s" href="#">пользовательского соглашения</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="promo__item">
+          <div class="promo__header">
+            <div class="promo__label">
+              выгодный <br>
+              автокредит
+            </div>
+            <img src="./images/content/car-banner-1.png" alt="car-banner">
+          </div>
+          <div class="promo__content">
+            <div class="promo__text">
+              <h3 class="header-text-l">Скидка 200 000 ₽ при покупке авто в кредит</h3>
+              <span class="regular-text-s">До 31 августа при оформлении автокредита в нашем автосалоне скидка до 200 000 рублей </span>
+            </div>
+            <div class="promo__form">
+              <label class="input__wrapper">
+                <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
+                <span class="input__label">Номер телефона</span>
+              </label>
+              <button class="button main size-l">Участвовать в акции</button>
+              <div class="promo__form__license">
+                <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
+                <a class="regular-text-s" href="#">пользовательского соглашения</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="promo__item">
+          <div class="promo__header">
+            <div class="promo__label">
+              езди <br>
+              сейчас  —
+            </div>
+            <div class="promo__label promo__label__pay">плати потом</div>
+            <img src="./images/content/car-banner-2.png" alt="car-banner">
+          </div>
+          <div class="promo__content">
+            <div class="promo__text">
+              <h3 class="header-text-l">Два первых платежа по кредиту <br> за наш счет</h3>
+              <span class="regular-text-s">При оформлении автокредита в нашем автосалоне два первых платежа по кредиту мы заплатим за вас</span>
+            </div>
+            <div class="promo__form">
+              <label class="input__wrapper">
+                <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
+                <span class="input__label">Номер телефона</span>
+              </label>
+              <button class="button main size-l">Участвовать в акции</button>
+              <div class="promo__form__license">
+                <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
+                <a class="regular-text-s" href="#">пользовательского соглашения</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="trade-in__section">
+      <h2 class="header-text-xl trade-in__title">
+        Обменять свой автомобиль на Haval Jolion
+      </h2>
+
+      <div class="trade-in__wrapper container">
+        <div class="trade-in__container">
+          <div class="trade-in__old-car">
+            <div class="trade-in__image">
+              <img src="./images/icons/car-template.svg" alt="car-trade-in">
+              <div class="trade-in__icon">
+                <span class="trade-in-icon"></span>
+              </div>
+            </div>
+            <div class="trade-in__text">
+              <h3 class="trade-in__text__title header-text-m">Ваш автомобиль</h3>
+              <h3 class="trade-in__text__desc regular-text-m">Мы уточним у вас параметры авто</h3>
+            </div>
+          </div>
+          <div class="trade-in__new-car">
+            <div class="trade-in__image">
+              <img src="./images/content/car.png" alt="car-trade-in">
+            </div>
+            <div class="trade-in__text">
+              <h3 class="trade-in__text__title header-text-m">от 7 070 000 ₽</h3>
+              <h3 class="trade-in__text__desc regular-text-m">Haval Jolion</h3>
+            </div>
+          </div>
+        </div>
+        <form action="" class="trade-in__form">
+          <h3 class="header-text-l trade-in__form__title">Контактные данные</h3>
+          <div class="trade-in__form__fields">
+            <label class="input__wrapper">
+              <input type="text" class="input" placeholder="Имя">
+              <span class="input__label">Имя</span>
+            </label>
+            <label class="input__wrapper">
+              <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
+              <span class="input__label">Телефон</span>
+            </label>
+          </div>
+          <div class="trade-in__actions">
+            <div class="trade-in__license">
+              <span class="regular-text-s">Отправляя заявку, я соглашаюсь <br>  
+                с условиями</span>
+              <a href="#" class="regular-text-s">пользовательского соглашения</a>
+            </div>
+            <div class="button main size-l">Отправить заявку</div>
+          </div>
+        </form>
       </div>
     </section>
     <section class="container new-cars__container">

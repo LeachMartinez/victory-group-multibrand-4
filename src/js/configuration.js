@@ -32,6 +32,10 @@ const configuration = {
         fill: 'row',
       },
     },
+    carGallerySwiper: {
+      slidesPerView: 2,
+      spaceBetween: 12,
+    },
   },
 };
 
