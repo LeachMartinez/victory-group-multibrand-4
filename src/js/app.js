@@ -7,7 +7,7 @@ import {
 } from 'swiper/modules';
 
 import './ui/range.js';
-import './ui/select.js';
+import Select from './ui/select.js';
 
 import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
@@ -157,6 +157,23 @@ const app = {
   },
   runTabs: () => new Tab('.most-popular__tabs-container'),
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
+  runSelects: () => {
+    const catalogSortSelect = new Select('#catalog-sort-select');
+    const callbackSelectDate = new Select('#callback-select-date');
+    const catalogFilterMarksSelect = new Select('#catalog-filter-marks-select');
+    const catalogFilterCarbodySelect = new Select('#catalog-filter-carbody-select');
+    const catalogFilterDriveTypeSelect = new Select('#catalog-filter-drive-type-select');
+    const catalogFilterTransmissionTypeSelect = new Select('#catalog-filter-transmission-type-select');
+
+    return {
+      catalogSortSelect,
+      callbackSelectDate,
+      catalogFilterMarksSelect,
+      catalogFilterCarbodySelect,
+      catalogFilterDriveTypeSelect,
+      catalogFilterTransmissionTypeSelect,
+    };
+  },
 };
 
 app.runTabs();
@@ -165,3 +182,4 @@ app.runSwiper();
 app.runTimers();
 app.runListeners();
 app.runFindByMark();
+app.runSelects();

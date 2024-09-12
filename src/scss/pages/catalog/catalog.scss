@@ -7,6 +7,10 @@
     }
   }
 
+  &__model-row__tabs {
+    background: $light-grey;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -31,14 +35,22 @@
       }
 
       .input {
-        top: 50%;
+        top: 60%;
         transform: translateY(-50%);
+      }
+
+      .input:focus + .input__label, .input:not(:placeholder-shown) + .input__label {
+        top: 10px;
       }
     }
   }
 
   &__container {
     margin-top: 40px;
+
+    .pagination {
+      height: 56px;
+    }
   }
 }
 

@@ -5,6 +5,15 @@
   width: fit-content;
   padding: 8px;
   gap: 4px;
+  margin-bottom: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &__wrapper {
+    overflow-x: auto;
+  }
 
   &__item {
     background: $grey-2;

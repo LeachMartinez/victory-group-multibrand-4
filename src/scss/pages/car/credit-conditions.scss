@@ -1,0 +1,254 @@
+.credit-conditions {
+  background: $accent-color-light;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 40px;
+
+  &__title {
+    text-align: center;
+    line-height: 44px;
+    font-size: 36px;
+    color: $black;
+    margin-bottom: 40px;
+  }
+
+  &__settings {
+    width: 1108px;
+    background: #F3F6FB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: $border-radius;
+    gap: 40px;
+
+    .range__wrapper {
+      height: 2px;
+      display: flex;
+      margin-bottom: 9px;
+    }
+
+    &__range {
+      display: flex;
+      flex-direction: column;
+
+      .range__top {
+        display: flex;
+        border-radius: $border-radius $border-radius 0 0;
+        padding: 10px 16px;
+        background: $white;
+        flex-direction: column;
+      }
+
+      .range__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        line-height: 20px;
+        color: $text-color-darkGray;
+      }
+
+      .range__title {
+        font-size: 14px;
+        line-height: 20px;
+        color: $text-color-darkGray;
+        margin-bottom: 4px;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+  }
+
+  &__offer {
+    width: 50%;
+    padding: 20px 24px;
+    background: $white;
+    border-radius: $border-radius;
+  
+    &__title {
+      text-align: center;
+      line-height: 28px;
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    &__payment {
+      color: $accent-color;
+      line-height: 32px;
+      font-size: 24px;
+
+      &__actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        button {
+          border: 1px solid $border-color-gray;
+          padding: 0;
+          width: 24px;
+          height: 24px;
+          border-radius: $border-radius;
+          cursor: pointer;
+        }
+      }
+
+      &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+
+      &__title {
+        line-height: 24px;
+        color: $black;
+        font-size: 16px;
+      }
+
+      &__info {
+        display: flex;
+        padding: 8px 12px;
+        gap: 8px;
+        border-radius: $border-radius;
+        background: #F3F6FB;
+        margin-bottom: 24px;
+
+        &__text {
+          line-height: 20px;
+          font-size: 14px;
+          color: $text-color-darkGray
+        }
+
+        .alert-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &__btn {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          padding: 14px 24px;
+        }
+      }
+    }
+  }
+
+  &__calculator {
+    width: 50%;
+    height: 270px;
+
+    &__total {
+      font-size: 20px;
+      line-height: 28px;
+      color: $accent-color;
+
+      &__wrapper {
+        margin-bottom: 22px;
+        margin-top: -2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &__name {
+        line-height: 24px;
+        font-size: 16px;
+        color: $icon-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 1331px) {
+  .credit-conditions {
+    &__settings {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    &__calculator {
+      width: 100%;
+    }
+
+    &__offer {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 554px) {
+  .credit-conditions {
+    padding: 40px 0;
+    border-radius: 22px;
+
+    &__title {
+      margin-left: -20px;
+      font-size: 28px;
+      line-height: 34px;
+      margin-bottom: 23px;
+    }
+  
+    &__calculator__total__wrapper {
+      margin-bottom: 15px;
+    }
+  
+    &__settings__range .range__top {
+      border-radius: 13px 13px 0 0;
+    }
+  
+    &__settings__range__wrapper {
+      gap: 17px;
+    }
+  
+    &__offer__title {
+      display: none;
+    }
+  
+    &__offer__payment__wrapper {
+      flex-direction: column;
+      gap: 11px;
+    }
+  
+    &__offer__payment__wrapper__bottom {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  
+    &__offer__payment__info {
+      display: none;
+  
+      &.info__mobile {
+        display: block !important;
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        margin-bottom: 0;
+      }
+    }
+  
+    &__offer__payment__btn {
+      button {
+        width: 100%;
+      }
+    }
+  
+    &__offer {
+      padding: 20px 12px;
+    }
+  
+    &__settings {
+      gap: 1px;
+      padding: 0;
+      background: transparent;
+    }
+  }
+}

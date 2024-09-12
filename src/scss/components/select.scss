@@ -5,6 +5,12 @@
 
   .input__wrapper {
     z-index: 2;
+    cursor: pointer;
+
+    .input {
+      cursor: pointer;
+    }
+
     .arrow-icon {
       background-color: $grey-3;
       position: absolute;
