@@ -18,26 +18,18 @@
     
     &__badge {
       position: relative;
-      color: $text-color-darkGray;
+      color: $black;
       line-height: 20px;
       font-size: 14px;
       border-radius: $border-radius;
       display: flex;
       align-items: center;
       height: 28px;
-      background: $text-color-light;
-      padding: 0 12px 0 27px;
+      background: $grey-2;
+      padding: 0 12px;
 
-      &::before {
-        content: "";
-        width: 4px;
-        height: 4px;
-        border-radius: 100%;
-        background: $accent-color;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 12px;
+      .red-text {
+        color: $red;
       }
     }
 
@@ -50,8 +42,8 @@
 
     &__text {
       display: flex;
-      gap: 16px;
-      align-items: center;
+      flex-direction: column;
+      gap: 12px;
     }
   }
 
@@ -307,7 +299,7 @@
 
     &__title__wrapper {
       flex-direction: column;
-      gap: 7px;
+      gap: 16px;
       margin-bottom: 20px;
     }
   
@@ -325,11 +317,6 @@
     &__title__desc {
       font-size: 20px;
       line-height: 28px;
-    }
-  
-    &__title__badge {
-      width: 195px;
-      padding: 0 11px 0 27px;
     }
   }
 }

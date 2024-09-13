@@ -25,3 +25,24 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .gallery {
+    &__section {
+      margin-top: 40px;
+    }
+
+    &__item {
+      max-height: auto;
+
+      img {
+        max-height: auto;
+      }
+    }
+
+    &__title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  }
+}

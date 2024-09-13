@@ -26,6 +26,7 @@
   align-items: center;
   background: $grey-2;
   opacity: 1;
+  cursor: default;
   @include button-text;
 
   &-active {

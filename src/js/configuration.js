@@ -36,6 +36,11 @@ const configuration = {
       slidesPerView: 2,
       spaceBetween: 12,
     },
+    carCatalogSwiper: {
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+      spaceBetween: 12,
+    },
   },
 };
 

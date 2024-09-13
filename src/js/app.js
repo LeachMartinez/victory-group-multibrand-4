@@ -45,17 +45,36 @@ const app = {
   },
   runSwiper: () => {
     const slides = configuration.sliders;
-    const defaultSwiperBullets = (index, className) => '<span class="' + className + '">' + (index + 1) + '</span>';
+    const defaultSwiperBullets = (index, className) => `<span class="${className}">${index}</span>`;
     const defaultNavigation = {
       enabled: true,
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     };
-
     const defaultPagination = {
       el: '.swiper-pagination',
-      clickable: true,
+      clickable: false,
+      type: 'custom',
       renderBullet: defaultSwiperBullets,
+      renderCustom: (_, current, total) => {
+        let paginationHtml = '';
+        const maxVisible = total < 4 ? total : 4;
+        let visibledIndex = 1;
+
+        while (visibledIndex <= total) {
+          if (visibledIndex === maxVisible - 1 && total > maxVisible) {
+            paginationHtml += defaultSwiperBullets('...', `swiper-pagination-bullet ${(current >= maxVisible - 1 && current !== total) && 'swiper-pagination-bullet-active'}`);
+          } else if (visibledIndex < maxVisible) {
+            paginationHtml += defaultSwiperBullets(visibledIndex, `swiper-pagination-bullet ${visibledIndex === current && 'swiper-pagination-bullet-active'}`);
+          } else if (visibledIndex === total) {
+            paginationHtml += defaultSwiperBullets(visibledIndex, `swiper-pagination-bullet ${visibledIndex === current && 'swiper-pagination-bullet-active'}`);
+          }
+
+          visibledIndex++;
+        }
+
+        return paginationHtml;
+      },
     };
 
     if (window.outerWidth <= 1332) {
@@ -68,6 +87,12 @@ const app = {
       slides.mostPopular.grid.rows = 4;
       slides.mostPopular.slidesPerView = 1;
       slides.catalogSwiper.slidesPerView = 1;
+      slides.carCatalogSwiper.slidesPerView = 1;
+      slides.carCatalogSwiper.slidesPerGroup = 1;
+    }
+
+    if (window.outerWidth <= 699) {
+      slides.carGallerySwiper.slidesPerView = 1;
     }
 
     const newCarsSwiper = new Swiper('.new-cars-swiper', {
@@ -124,7 +149,15 @@ const app = {
       navigation: defaultNavigation,
     });
 
+    const carCatalogSwiper = new Swiper('.car-catalog-swiper', {
+      ...slides.carCatalogSwiper,
+      modules: [Pagination, Navigation],
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
     return {
+      carCatalogSwiper,
       carGallerySwiper,
       newCarsSwiper,
       mostPopularSwiper,

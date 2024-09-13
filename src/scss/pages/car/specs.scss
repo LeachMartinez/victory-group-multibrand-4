@@ -4,6 +4,10 @@
     margin-bottom: 80px;
   }
 
+  &__button-mobile {
+    display: none;
+  }
+
   &__title {
     text-align: center;
     margin-bottom: 24px;
@@ -54,6 +58,41 @@
         color: $black;
         width: calc(50% - 6px);
       }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .specs {
+    &__section {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__container {
+      display: none;
+    }
+
+    &__select {
+      &__container {
+        flex-direction: column;
+        
+        .select {
+          margin-bottom: 0;
+          max-width: none;
+          width: 100%;
+        }
+      }
+    }
+
+    &__button-mobile {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
     }
   }
 }

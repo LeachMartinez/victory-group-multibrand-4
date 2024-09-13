@@ -9,6 +9,10 @@
     background: linear-gradient(79deg, $black 15.88%, #382A8E 95.81%);
   }
 
+  &__timer-mobile {
+    display: none;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -61,8 +65,37 @@
 
   &__timer {
     width: calc(50% - 6px);
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+  }
+}
+
+@media (max-width: 1100px) {
+  .car-offer {
+    &__section {
+      padding: 24px 16px;
+      flex-direction: column;
+    }
+
+    &__timer-mobile {
+      display: flex;
+    }
+
+    &__form {
+      width: 100%;
+
+
+      &__actions {
+        gap: 12px;
+        flex-direction: column-reverse;
+        text-align: center;
+        
+        .button {
+          width: 100%;
+        }
+      }
+    }
+
+    &__timer {
+      display: none;
+    }
   }
 }

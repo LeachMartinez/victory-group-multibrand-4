@@ -37,4 +37,8 @@
     color: $text-color-darkGray;
   }
 
+  &__section {
+    overflow: hidden;
+    overflow-x: auto;
+  }
 }

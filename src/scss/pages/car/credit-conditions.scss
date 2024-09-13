@@ -227,10 +227,9 @@
       display: none;
   
       &.info__mobile {
-        display: block !important;
+        display: flex !important;
         margin-top: 20px;
         width: 100%;
-        display: flex;
         margin-bottom: 0;
       }
     }
