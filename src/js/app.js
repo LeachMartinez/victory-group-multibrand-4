@@ -196,7 +196,10 @@ const app = {
       $('.mobile-menu').removeClass('active');
     });
   },
-  runTabs: () => new Tab('.most-popular__tabs-container'),
+  runTabs: () => {
+    const mostPopularTabs = new Tab('.most-popular__tabs-container');
+    const specTabs = new Tab('.specs__container');
+  },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
   runSelects: () => {
     const catalogSortSelect = new Select('#catalog-sort-select');
