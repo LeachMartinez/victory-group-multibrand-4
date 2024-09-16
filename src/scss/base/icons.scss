@@ -108,6 +108,34 @@
   background-color: $accent-color;
 }
 
+.calendar-icon {
+  mask-image: url("../images/icons/calendar-icon.svg");
+  -webkit-mask-image: url("../images/icons/calendar-icon.svg");
+  background-color: $accent-color;
+}
+
+.clock-icon {
+  mask-image: url("../images/icons/clock-icon.svg");
+  -webkit-mask-image: url("../images/icons/clock-icon.svg");
+  background-color: $accent-color;
+}
+
+.coins-icon {
+  mask-image: url("../images/icons/coins-icon.svg");
+  -webkit-mask-image: url("../images/icons/coins-icon.svg");
+  background-color: $accent-color;
+}
+
+.credit-card-icon {
+  mask-image: url("../images/icons/credit-card-icon.svg");
+  -webkit-mask-image: url("../images/icons/credit-card-icon.svg");
+  background-color: $accent-color;
+}
+
+.clock-icon,
+.coins-icon,
+.credit-card-icon,
+.calendar-icon,
 .trade-in-icon,
 .help-icon,
 .user-icon,

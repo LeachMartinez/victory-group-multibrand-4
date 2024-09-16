@@ -156,6 +156,16 @@ const app = {
       navigation: defaultNavigation,
     });
 
+    const howToSwiper = new Swiper('.how-to-swiper', {
+      ...slides.howToSwiper,
+      modules: [Pagination, Navigation],
+      pagination: {
+        type: 'fraction',
+        el: '.swiper-pagination',
+      },
+      navigation: defaultNavigation,
+    });
+
     return {
       carCatalogSwiper,
       carGallerySwiper,
@@ -163,6 +173,7 @@ const app = {
       mostPopularSwiper,
       bannerSwiper,
       catalogSwiper,
+      howToSwiper,
     };
   },
   runTimers: () => {

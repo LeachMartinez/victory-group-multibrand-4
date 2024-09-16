@@ -1,0 +1,30 @@
+.partners {
+  &__section {
+    background: $sky-blue;
+    padding-bottom: 80px;
+    border-radius: 0px 0px 40px 40px;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  &__item {
+    display: flex;
+    min-width: 180px;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    border-radius: $border-radius;
+    padding: 10px;
+    height: 100px;
+  }
+}

@@ -41,6 +41,11 @@ const configuration = {
       slidesPerGroup: 4,
       spaceBetween: 12,
     },
+    howToSwiper: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 12,
+    },
     marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',
   },
 };

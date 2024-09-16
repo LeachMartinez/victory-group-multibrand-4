@@ -1,0 +1,54 @@
+.how-to {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__pagination {
+    margin: 0;
+    margin-top: 40px;
+  }
+
+  &__nav {
+    border: none;
+  }
+
+  &__slider {
+    &__item {
+      width: 100% !important;
+      border-radius: $border-radius;
+      display: flex;
+
+      &__text {
+        max-width: 468px;
+        border-radius: $border-radius 0 0 $border-radius;
+        width: 100%;
+        background: $white;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &__image {
+        border-radius: 0 $border-radius $border-radius 0;
+        width: 50%;
+        background: $grey-2;
+        max-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          max-height: 200px;
+        }
+      }
+    }
+  }
+}
