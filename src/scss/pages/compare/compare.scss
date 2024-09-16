@@ -1,5 +1,5 @@
 .compare {
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -44,7 +44,14 @@
   &__title {
     font-size: 36px;
     line-height: 44px;
-    margin-bottom: 60px;
+    
+    &__wrapper {
+      width: 100%;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &__count {
       color: $text-color-gray;
@@ -131,6 +138,66 @@
       }
     }
   }
+
+  .parameters {
+    display: flex;
+    flex-direction: column;
+    margin-top: 23px;
+    gap: 24px;
+  
+    &__name {
+      color: $text-color-darkGray;
+    }
+  
+    .parameter {
+  
+      &__list {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+      }
+  
+      &__item {
+        margin-top: 9px;
+        width: 324px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        border-radius: $border-radius;
+        background: #F3F6FB;
+  
+        &.hidden {
+          display: none;
+        }
+  
+        .icon-wrapper {        
+          border-radius: $border-radius;
+          background-color: $black;
+  
+          &.minus {
+            background: $text-color-gray;
+          }
+        }
+  
+        .plus-icon, .minus-icon {
+          width: 24px;
+          height: 24px;
+          background: $white;
+        }
+  
+        .plus-icon {
+          mask-image: url("../images/icons/plus.svg");
+          -webkit-mask-image: url("../images/icons/plus.svg");
+        }
+  
+        .minus-icon {
+          mask-image: url("../images/icons/minus.svg");
+          -webkit-mask-image: url("../images/icons/minus.svg");
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 1331px) {
@@ -146,6 +213,17 @@
       overflow-x: auto;
       width: 100%;
     }
+
+    .parameters .parameter__item {
+      width: 300px;
+    }
+  
+    .parameters__name {
+      &.mobile-width {
+        width: 22%;
+        line-height: 24px;
+      }
+    }
   }
 }
 
@@ -156,8 +234,11 @@
     &__title {
       font-size: 28px;
       line-height: 34px;
-      width: 91%;
-      margin-bottom: 21px;
+      
+      &__wrapper {
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
     }
 
     & .slider {

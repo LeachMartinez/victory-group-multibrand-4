@@ -219,12 +219,38 @@
       <section class="container find-by-marks-desktop">
       </section>
     </header>
+    <section class="container breadcrumbs__section">
+      <nav>
+        <ul class="breadcrumbs">
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__text" href="#">Главная</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__text" href="#">Каталог</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__text" href="#">Haval</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__text" href="#">Jolion</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__text" href="#">Сравнение комплектаций Haval Jolion </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
     <section class="compare">
-      <h2 class="compare__title">
-        Сравнение комплектаций Haval Jolion 
-        <b class="compare__title__count">(12)</b>
-      </h2>
-
+      <div class="container compare__title__wrapper">
+        <h2 class="compare__title">
+          Сравнение комплектаций Haval Jolion 
+          <b class="compare__title__count">(12)</b>
+        </h2>
+        <div class="toggle">
+          <input type="checkbox" name="toggle" id="compare-only" class="toggle__button">
+          <label for="compare-only" class="toggle__text">Только различия</label>
+        </div>
+      </div>
       <div class="compare__wrapper">
         <div class="slider">
           <button class="slider__left slider__button prev">
@@ -622,36 +648,6 @@
       </div>
     </section>
     <footer class="footer">
-      <div class="footer__form">
-        <div class="container footer__form__content">
-          <div class="footer__form__text">
-            <h2 class="header-text-xl footer__form__text__title">
-              Ответим на все <br>
-              ваши вопросы
-            </h2>
-            <span class="regular-text-m footer__form__text__desc">
-              Для этого вам нужно заполнить и отправить заявку. <br>
-              Мы свяжемся в ближайшее время
-            </span>
-          </div>
-          <form class="footer__form__wrapper" action="">
-            <label class="input__wrapper">
-              <input type="text" class="input" placeholder="Имя">
-              <span class="input__label">Имя</span>
-            </label>
-            <label class="input__wrapper input-default">
-              <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
-            </label>
-            <div class="footer__form__action">
-              <div class="footer__form__license">
-                <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
-                <a class="regular-text-s" href="#">пользовательского соглашения</a>
-              </div>
-              <button class="button main size-l">Отправить заявку</button>
-            </div>
-          </form>
-        </div>
-      </div>
       <div class="footer__contents">
         <div class="container">
           <div class="footer__contents__info">
