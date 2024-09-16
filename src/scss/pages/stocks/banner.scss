@@ -1,0 +1,30 @@
+.stocks-banner {
+  position: relative;
+  overflow: hidden;
+
+  .percent-1 {
+    top: -52px;
+    right: 48px;
+    position: absolute;
+    width: 232px;
+    height: 232px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/content/percent_1.png");
+  }
+
+  .percent-2 {
+    bottom: -113px;
+    right: 200px;
+    position: absolute;
+    width: 326px;
+    height: 326px;
+    -webkit-transform: rotate(-16deg);
+    transform: rotate(-20deg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/content/percent_2.png");
+  }
+}
