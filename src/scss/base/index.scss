@@ -6,7 +6,12 @@
 
 * {
   font-family: 'PTRootUI', sans-serif;
-  @include transition;
+}
+
+a,
+div,
+button {
+ @include transition;
 }
 
 body {

@@ -47,7 +47,8 @@ const configuration = {
       spaceBetween: 12,
     },
     contactsGallerySwiper: {
-      slidesPerView: 1,
+      slidesPerView: 2,
+      slidesPerGrou: 2,
       spaceBetween: 12,
     },
     marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',

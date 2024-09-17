@@ -64,6 +64,7 @@
     "jquery-lazy": "^1.7.11",
     "jquery-validation": "^1.21.0",
     "jquery.inputmask": "^3.3.4",
+    "select2": "^4.1.0-rc.0",
     "swiper": "^11.1.12"
   }
 }

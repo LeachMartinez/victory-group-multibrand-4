@@ -234,20 +234,61 @@
   <section class="container filter__section">
     <h1 class="filter__title header-text-xl">Новые автомобили в Новосибирске</h1>
     <form action="" class="filter__container" id="catalog-filter-form">
-      <div class="select filter__item">
-        <label class="input__wrapper" id="catalog-filter-marks-select">
-          <input type="text" class="input" placeholder="Марка" readonly>
-          <span class="input__label">Марка</span>
-          <span class="arrow-icon"></span>
-          <select class="select-values">
-          </select>
-        </label>
-        <div class="select-list-wrapper">
-          <div class="select-list">
-          </div>
-        </div>
-        <div class="select-backdrop"></div>
-      </div>
+      <select class="select filter__item" data-placeholder="Марка">
+        <option></option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+      </select>
       <label class="input__wrapper filter__item">
         <input type="text" class="input" placeholder="1 000 000 ₽">
         <span class="input__label">Цена от, ₽</span>
@@ -256,48 +297,12 @@
         <input type="text" class="input" placeholder="1 000 000 ₽">
         <span class="input__label">Цена до, ₽</span>
       </label>
-      <div class="select filter__item">
-        <label class="input__wrapper">
-          <input type="text" class="input" placeholder="Кузов" readonly>
-          <span class="input__label">Кузов</span>
-          <span class="arrow-icon"></span>
-          <select class="select-values">
-          </select>
-        </label>
-        <div class="select-list-wrapper">
-          <div class="select-list">
-          </div>
-        </div>
-        <div class="select-backdrop"></div>
-      </div>
-      <div class="select filter__item">
-        <label class="input__wrapper">
-          <input type="text" class="input" placeholder="Привод" readonly>
-          <span class="input__label">Привод</span>
-          <span class="arrow-icon"></span>
-          <select class="select-values">
-          </select>
-        </label>
-        <div class="select-list-wrapper">
-          <div class="select-list">
-          </div>
-        </div>
-        <div class="select-backdrop"></div>
-      </div>
-      <div class="select filter__item">
-        <label class="input__wrapper">
-          <input type="text" class="input" placeholder="Коробка передач" readonly>
-          <span class="input__label">Коробка передач</span>
-          <span class="arrow-icon"></span>
-          <select class="select-values">
-          </select>
-        </label>
-        <div class="select-list-wrapper">
-          <div class="select-list">
-          </div>
-        </div>
-        <div class="select-backdrop"></div>
-      </div>
+      <select class="select filter__item" data-placeholder="Кузов">
+      </select>
+      <select class="select filter__item" data-placeholder="Привод">
+      </select>
+      <select class="select filter__item" data-placeholder="Коробка передач">
+      </select>
     </form>
     <div class="filter__actions">
       <button class="button outline dark size-l">Сбросить фильтр</button>
@@ -308,23 +313,11 @@
     <div class="container">
       <div class="catalog__header">
         <h2 class="header-text-l">Все автомобили</h2>
-        <div class="select" id="catalog-sort-select">
-          <label class="input__wrapper">
-            <input type="text" class="input" value="Рекомендуемое" placeholder="Сортировка" readonly>
-            <span class="input__label">Сортировка</span>
-            <span class="arrow-icon"></span>
-            <select class="select-values">
-              <option value="Рекомендуемое">Рекомендуемое</option>
-              <option value="Цена по возрастанию">Цена по возрастанию</option>
-              <option value="Цена по убыванию">Цена по убыванию</option>
-            </select>
-          </label>
-          <div class="select-list-wrapper">
-            <div class="select-list">
-            </div>
-          </div>
-          <div class="select-backdrop"></div>
-        </div>
+        <select class="select">
+          <option value="Рекомендуемое">Рекомендуемое</option>
+          <option value="Цена по возрастанию">Цена по возрастанию</option>
+          <option value="Цена по убыванию">Цена по убыванию</option>
+        </select>
       </div>
       <div class="tabs__wrapper">
         <div class="tabs catalog__model-row__tabs">

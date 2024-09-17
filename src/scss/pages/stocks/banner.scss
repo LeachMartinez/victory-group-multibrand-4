@@ -2,6 +2,14 @@
   position: relative;
   overflow: hidden;
 
+  .main__banner {
+    padding-bottom: 24px;
+
+    &::after {
+      background-image: none;
+    }
+  }
+
   .percent-1 {
     top: -52px;
     right: 48px;
@@ -26,5 +34,25 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url("../images/content/percent_2.png");
+  }
+}
+
+@media (max-width: 1100px) {
+  .stocks-banner {
+    .desktop-br {
+      display: none;
+    }
+
+    .percent-1 {
+      top: -23px;
+      right: -31px;
+      position: absolute;
+      width: 122px;
+      height: 122px;
+    }
+
+    .main__banner {
+      gap: 20px;
+    }
   }
 }

@@ -2,6 +2,9 @@ import 'jquery.inputmask';
 import 'jquery-lazy';
 import $ from 'jquery';
 
+import 'select2/dist/js/select2.full.js';
+import 'select2/dist/css/select2.min.css';
+
 import Swiper from 'swiper';
 import {
   Autoplay, Grid, Navigation, Pagination,
@@ -55,7 +58,7 @@ const app = {
     const defaultPagination = {
       el: '.swiper-pagination',
       clickable: false,
-      type: 'custom',
+      type: 'bullet',
       renderBullet: defaultSwiperBullets,
       renderCustom: (_, current, total) => {
         let paginationHtml = '';
@@ -90,6 +93,8 @@ const app = {
       slides.catalogSwiper.slidesPerView = 1;
       slides.carCatalogSwiper.slidesPerView = 1;
       slides.carCatalogSwiper.slidesPerGroup = 1;
+      slides.contactsGallerySwiper.slidesPerGroup = 1;
+      slides.contactsGallerySwiper.slidesPerView = 1;
     }
 
     if (window.outerWidth <= 699) {
@@ -112,7 +117,6 @@ const app = {
 
     const carGallerySwiper = new Swiper('.car-gallery-swiper', {
       ...slides.carGallerySwiper,
-      modules: [Grid, Pagination, Navigation],
       pagination: defaultPagination,
       navigation: defaultNavigation,
     });
@@ -158,8 +162,8 @@ const app = {
     });
 
     const contactsGallerySwiper = new Swiper('.contacts-gallery-swiper', {
-      ...slides.carCatalogSwiper,
-      modules: [Pagination, Navigation],
+      ...slides.contactsGallerySwiper,
+      modules: [Pagination, Navigation, Grid],
       pagination: defaultPagination,
       navigation: defaultNavigation,
     });
@@ -247,10 +251,16 @@ const app = {
     $('.lazy').Lazy({
       threshold: 0,
       visibleOnly: true,
+      combined: true,
       afterLoad: function(element) {
         element.addClass('loaded');
       },
     });
+  },
+  runSelect2: () => {
+    console.log($('.select').select2());
+
+    $('.select').select2();
   },
 };
 
@@ -260,5 +270,5 @@ app.runSwiper();
 app.runTimers();
 app.runListeners();
 app.runFindByMark();
-app.runSelects();
 app.runLazy();
+app.runSelect2();
