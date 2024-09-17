@@ -142,10 +142,9 @@ module.exports = {
       'inputmask.dependencyLib': ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask.dependencyLib'),
       // Core library (order of these aliases shouldn't matter FYI)
       inputmask: ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask'),
-      // Allows use of jquery input mask via jquery chaining api/$('selector').inputmask(...)
       'jquery.inputmask': ppath('node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask'),
-      // Add extensions following the pattern below remember to import them as necessary in your .js files
       'inputmask.numeric.extensions': ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask.numeric.extensions'),
+      'jquery.Lazy': ppath('node_modules/jquery-lazy/jquery.lazy'),
     },
   },
   plugins: [

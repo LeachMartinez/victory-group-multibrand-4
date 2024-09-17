@@ -26,6 +26,11 @@
   position: relative;
   border: 1px solid $grey-2;
   border-radius: $border-radius;
+  width: 324px;
+
+  &.swiper-slide {
+    margin-right: 12px;
+  }
 
   &__sale-badge {
     position: absolute;
@@ -110,6 +115,17 @@
 
     .help-icon{
       background: $black;
+    }
+  }
+
+  &__image {
+    height: 243px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 100%;
     }
   }
 }

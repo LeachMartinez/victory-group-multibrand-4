@@ -61,6 +61,7 @@
     "@fancyapps/ui": "^5.0.14",
     "jquery": "^3.7.1",
     "jquery-fancybox": "^3.1.0",
+    "jquery-lazy": "^1.7.11",
     "jquery-validation": "^1.21.0",
     "jquery.inputmask": "^3.3.4",
     "swiper": "^11.1.12"

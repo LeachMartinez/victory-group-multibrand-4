@@ -5085,6 +5085,13 @@ jquery-fancybox@^3.1.0:
   resolved "https://registry.yarnpkg.com/jquery-fancybox/-/jquery-fancybox-3.1.0.tgz#7e438bcb58539bcd4a4262f8d87d6c448ea3cf68"
   integrity sha512-zV9Mnwv7Vc2RqkY41g3cXibmtMdo28kEYt77ccut1x5rS0thPQRE4Jol9iNGFUJa8fCejW9zCOgjIp0s3pkuKw==
 
+jquery-lazy@^1.7.11:
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/jquery-lazy/-/jquery-lazy-1.7.11.tgz#f4146501ba64cad95cc5c20f184ac1b1d3712fe5"
+  integrity sha512-jNAOMwfgf+lYaOCc/atBVjbOzAIRW5BUyjQ4b4jJPkQM6I0zGZd4m/Y73ekfAlrQQDg3/Dge3YNhW7Cqjgi0UA==
+  dependencies:
+    jquery ">=1.7.2"
+
 jquery-validation@^1.21.0:
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.21.0.tgz#78fc05ab76020912a246af3661b3f54a438bca93"
@@ -5095,7 +5102,7 @@ jquery.inputmask@^3.3.4:
   resolved "https://registry.yarnpkg.com/jquery.inputmask/-/jquery.inputmask-3.3.4.tgz#ff4a8fd196f9fe28a17fd77a2da579c15a78a606"
   integrity sha512-HEhTAOGntIBPSoBU+HdyJCGV/Us16/TirRL7c+cJD9yC8tsDxLWIvNLJpaHJQcVw/e3n3lg1tAGgnMxYlGCMrw==
 
-jquery@^3.7.1:
+jquery@>=1.7.2, jquery@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
   integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==

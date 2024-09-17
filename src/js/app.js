@@ -1,4 +1,5 @@
 import 'jquery.inputmask';
+import 'jquery-lazy';
 import $ from 'jquery';
 
 import Swiper from 'swiper';
@@ -8,7 +9,6 @@ import {
 
 import './ui/range.js';
 import Select from './ui/select.js';
-
 import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
@@ -17,6 +17,7 @@ import '../scss/app.scss';
 import MarkSearch from './header/MarkSearch.js';
 import configuration from './configuration.js';
 
+window.$ = $;
 const app = {
   runMasks: () => {
     $('.js-phone-mask').inputmask({
@@ -156,6 +157,13 @@ const app = {
       navigation: defaultNavigation,
     });
 
+    const contactsGallerySwiper = new Swiper('.contacts-gallery-swiper', {
+      ...slides.carCatalogSwiper,
+      modules: [Pagination, Navigation],
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
     const howToSwiper = new Swiper('.how-to-swiper', {
       ...slides.howToSwiper,
       modules: [Pagination, Navigation],
@@ -167,6 +175,7 @@ const app = {
     });
 
     return {
+      contactsGallerySwiper,
       carCatalogSwiper,
       carGallerySwiper,
       newCarsSwiper,
@@ -210,6 +219,11 @@ const app = {
   runTabs: () => {
     const mostPopularTabs = new Tab('.most-popular__tabs-container');
     const specTabs = new Tab('.specs__container');
+
+    return {
+      specTabs,
+      mostPopularTabs,
+    };
   },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
   runSelects: () => {
@@ -229,6 +243,15 @@ const app = {
       catalogFilterTransmissionTypeSelect,
     };
   },
+  runLazy: () => {
+    $('.lazy').Lazy({
+      threshold: 0,
+      visibleOnly: true,
+      afterLoad: function(element) {
+        element.addClass('loaded');
+      },
+    });
+  },
 };
 
 app.runTabs();
@@ -238,3 +261,4 @@ app.runTimers();
 app.runListeners();
 app.runFindByMark();
 app.runSelects();
+app.runLazy();

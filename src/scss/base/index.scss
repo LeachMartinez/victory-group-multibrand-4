@@ -30,6 +30,15 @@ a {
   color: $black;
 }
 
+.lazy {
+  opacity: 0;
+  @include transition;
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
 @media(max-width: 1332px) {
   .container {
     max-width: auto;
