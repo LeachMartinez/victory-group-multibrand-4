@@ -8,12 +8,6 @@
   font-family: 'PTRootUI', sans-serif;
 }
 
-a,
-div,
-button {
- @include transition;
-}
-
 body {
   background: $body-background-color;
 }

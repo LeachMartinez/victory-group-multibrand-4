@@ -1,9 +1,14 @@
 import 'jquery.inputmask';
 import 'jquery-lazy';
+import 'jquery-modal';
 import $ from 'jquery';
 
+import 'jquery-modal/jquery.modal.min.css';
 import 'select2/dist/js/select2.full.js';
 import 'select2/dist/css/select2.min.css';
+
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 import Swiper from 'swiper';
 import {
@@ -11,7 +16,6 @@ import {
 } from 'swiper/modules';
 
 import './ui/range.js';
-import Select from './ui/select.js';
 import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
@@ -230,23 +234,6 @@ const app = {
     };
   },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
-  runSelects: () => {
-    const catalogSortSelect = new Select('#catalog-sort-select');
-    const callbackSelectDate = new Select('#callback-select-date');
-    const catalogFilterMarksSelect = new Select('#catalog-filter-marks-select');
-    const catalogFilterCarbodySelect = new Select('#catalog-filter-carbody-select');
-    const catalogFilterDriveTypeSelect = new Select('#catalog-filter-drive-type-select');
-    const catalogFilterTransmissionTypeSelect = new Select('#catalog-filter-transmission-type-select');
-
-    return {
-      catalogSortSelect,
-      callbackSelectDate,
-      catalogFilterMarksSelect,
-      catalogFilterCarbodySelect,
-      catalogFilterDriveTypeSelect,
-      catalogFilterTransmissionTypeSelect,
-    };
-  },
   runLazy: () => {
     $('.lazy').Lazy({
       threshold: 0,
@@ -257,13 +244,13 @@ const app = {
       },
     });
   },
-  runSelect2: () => {
-    console.log($('.select').select2());
-
-    $('.select').select2();
+  runSelect2: () => $('.select').select2(),
+  runFancybox: () => {
+    Fancybox.bind('[data-fancybox]', {});
   },
 };
 
+app.runFancybox();
 app.runTabs();
 app.runMasks();
 app.runSwiper();
