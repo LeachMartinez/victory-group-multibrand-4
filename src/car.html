@@ -335,7 +335,7 @@
             <b class="total__desc">Цена без учета скидки: от 7 400 000 ₽</b>
           </div>
           <div class="total__actions">
-            <button class="button outline dark size-l">Забронировать</button>
+            <a href="#reserve-car-modal" rel="modal:open" class="button outline dark size-l">Забронировать</a>
             <button class="button main size-l">Купить в кредит</button>
           </div>
         </div>
@@ -1345,6 +1345,37 @@
       </div>
       <div class="modal-specs__compare">
         <a href="#" class="button main size-l">Сравнить все комплектации Haval Jolion</a>
+      </div>
+    </div>
+    <div id="reserve-car-modal" class="modal">
+      <div class="modal-custom">
+        <div class="modal-custom__image">
+          <img data-src="./images/content/car.webp" class="lazy" src="./images/icons/loader.svg" alt="car">
+        </div>
+        <form class="modal-custom__form">
+          <div class="modal-custom__title">
+            <h2 class="header-text-xl">Забронировать автомобиль</h2>
+            <span class="header-text-l">Haval Jolion</span>
+          </div>
+          <span class="regular-text-m modal-custom__desc">
+            Заполните форму и отправьте заявку. Мы свяжемся с вами
+            в ближайшее время для подтверждения брони
+          </span>
+          <label class="input__wrapper">
+            <input type="text" class="input" placeholder="Имя">
+            <span class="input__label">Имя</span>
+          </label>
+          <label class="input__wrapper input-default">
+            <input type="text" class="input" placeholder="+7 (900) 000-00-00">
+          </label>
+          <div class="footer__form__action">
+            <div class="footer__form__license">
+              <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
+              <a class="regular-text-s" href="#">пользовательского соглашения</a>
+            </div>
+            <button class="button main size-l">Отправить заявку</button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
