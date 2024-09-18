@@ -36,3 +36,15 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .advantages-cards {
+    &__section {
+      overflow: hidden;
+    }
+
+    &__item {
+      width: 100%;
+    }
+  }
+}
