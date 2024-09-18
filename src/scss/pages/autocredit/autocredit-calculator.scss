@@ -1,3 +1,13 @@
 .autocredit-calculator {
   border-radius: 40px 40px 0 0;
 }
+
+@media (max-width: 1100px) {
+  .autocredit-calculator {
+    border-radius: 20px;
+
+    .credit-conditions__calculator {
+      height: 230px;
+    }
+  }
+}

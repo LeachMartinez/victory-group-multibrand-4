@@ -21,12 +21,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: $black;
   }
 
   &__image {
     object-fit: cover;
     max-height: 180px;
     width: 100%;
+    height: 180px;
+    // max-width: 324px;
     border-radius: $border-radius $border-radius 0 0;
   }
 

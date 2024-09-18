@@ -166,7 +166,7 @@ header {
 
         .mobile-menu__backdrop {
           opacity: 0.5;
-          z-index: 2;
+          z-index: 4;
         }
       }
 
@@ -222,7 +222,7 @@ header {
         width: 360px;
         height: 100vh;
         background: #f0f1f6;
-        z-index: 3;
+        z-index: 5;
         transition: 0.3s left;
         display: flex;
         flex-direction: column;

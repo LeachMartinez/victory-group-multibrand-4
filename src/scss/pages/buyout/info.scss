@@ -1,7 +1,20 @@
 .buyout-info {
-  background: url("../images/content/bg-info-buyout.png");
+  background: url("../images/content/bg-info-buyout.webp");
   
   .about-info__image {
-    background: url("../images/content/bg-info-buyout.png");
+    background: url("../images/content/bg-info-buyout.webp");
   } 
+}
+
+@media (max-width: 1100px) {
+  .buyout-info {
+    background: none;
+  
+    .about-info__image {
+      object-fit: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
 }

@@ -1,7 +1,20 @@
 .autocredit-info {
-  background: url("../images/content/bg-info-autocredit.png");
+  background: url("../images/content/bg-info-autocredit.webp");
   
   .about-info__image {
-    background: url("../images/content/bg-info-autocredit.png");
+    background: url("../images/content/bg-info-autocredit.webp");
   } 
+}
+
+@media (max-width: 1100px) {
+  .autocredit-info {
+    background: none;
+  
+    .about-info__image {
+      object-fit: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
 }

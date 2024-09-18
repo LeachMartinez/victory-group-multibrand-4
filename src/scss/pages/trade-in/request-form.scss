@@ -40,3 +40,31 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .request-form {
+    &__section {
+      padding: 40px 0;
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__desc {
+      text-align: left;
+    }
+
+    &__container {
+      padding: 20px 16px;
+    }
+
+    .input__wrapper {
+      width: 100%;
+    }
+
+    .footer__form__action {
+      gap: 12px;
+    }
+  }
+}

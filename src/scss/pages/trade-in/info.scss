@@ -1,7 +1,20 @@
 .trade-in-info {
-  background: url("../images/content/bg-info-trade-in.png");
+  background: url("../images/content/bg-info-trade-in.webp");
   
   .about-info__image {
-    background: url("../images/content/bg-info-trade-in.png");
+    background: url("../images/content/bg-info-trade-in.webp");
   } 
+}
+
+@media (max-width: 1100px) {
+  .trade-in-info {
+    background: none;
+
+    .about-info__image {
+      object-fit: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+  }
 }

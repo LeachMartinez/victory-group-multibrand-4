@@ -80,6 +80,10 @@ const app = {
       slides.carCatalogSwiper.slidesPerGroup = 1;
       slides.contactsGallerySwiper.slidesPerGroup = 1;
       slides.contactsGallerySwiper.slidesPerView = 1;
+      slides.howToSwiper.pagination = {
+        type: 'fraction',
+        el: '.how-to__pagination__mobile .swiper-pagination',
+      };
     }
 
     if (window.outerWidth <= 699) {
@@ -154,13 +158,13 @@ const app = {
     });
 
     const howToSwiper = new Swiper('.how-to-swiper', {
-      ...slides.howToSwiper,
       modules: [Pagination, Navigation],
       pagination: {
         type: 'fraction',
         el: '.swiper-pagination',
       },
       navigation: defaultNavigation,
+      ...slides.howToSwiper,
     });
 
     return {
@@ -219,8 +223,7 @@ const app = {
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
   runLazy: () => {
     $('.lazy').Lazy({
-      threshold: 0,
-      visibleOnly: true,
+      // visibleOnly: true,
       combined: true,
       afterLoad: function(element) {
         element.addClass('loaded');

@@ -4,6 +4,10 @@
   grid-template-columns: 1fr 2fr;
   gap: 12px;
 
+  .br-desktop {
+    display: block;
+  }
+
   &__main {
     display: flex;
     flex-direction: column;
@@ -13,6 +17,10 @@
   &__pagination {
     margin: 0;
     margin-top: 40px;
+
+    &__mobile {
+      display: none;
+    }
   }
 
   &__nav {
@@ -47,6 +55,56 @@
         
         img {
           max-height: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .how-to {
+    margin-top: 40px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    .br-desktop {
+      display: none;
+    }
+
+    &__main {
+      .pagination {
+        display: none;
+      }
+    }
+
+    &__pagination__mobile {
+      display: flex;
+      width: 100% !important;
+      justify-content: space-between;
+      margin-top: 0;
+    }
+
+    &__slider {
+      width: 100%;
+    }
+
+    &__slider__item {
+      flex-direction: column;
+
+      &__text {
+        height: 188px;
+        border-radius: 16px 16px 0 0;
+        padding: 16px;
+        max-width: none;
+      }
+
+      &__image {
+        width: 100%;
+        height: 180px;
+        border-radius: 0 0 16px 16px;
+
+        img {
+          border-radius: 0 0 16px 16px;
         }
       }
     }

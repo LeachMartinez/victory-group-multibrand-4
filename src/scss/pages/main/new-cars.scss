@@ -122,10 +122,12 @@
     height: 243px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    background-color: $light-grey;
+    border-radius: 15px 15px 0 0;
 
     img {
-      width: 80%;
+      width: 90%;
       height: auto;
     }
   }
