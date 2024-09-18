@@ -407,85 +407,67 @@
     <section class="container specs__section">
       <h2 class="specs__title header-text-xl">Технические характеристики и опции</h2>
       <div class="specs__select__container">
-        <div class="select filter__item">
-          <label class="input__wrapper" id="car-modification-select">
-            <input type="text" class="input" placeholder="Модификация" readonly>
-            <span class="input__label">Модификация</span>
-            <span class="arrow-icon"></span>
-            <select class="select-values">
-            </select>
-          </label>
-          <div class="select-list-wrapper">
-            <div class="select-list">
-            </div>
-          </div>
-          <div class="select-backdrop"></div>
-        </div>
-        <div class="select filter__item">
-          <label class="input__wrapper" id="car-complectation-select">
-            <input type="text" class="input" placeholder="Комплектация" readonly>
-            <span class="input__label">Комплектация</span>
-            <span class="arrow-icon"></span>
-            <select class="select-values">
-            </select>
-          </label>
-          <div class="select-list-wrapper">
-            <div class="select-list">
-            </div>
-          </div>
-          <div class="select-backdrop"></div>
-        </div>
+        <select class="select filter__item" data-placeholder="Модификация">
+        </select>
+        <select class="select filter__item" data-placeholder="Комплектация">
+          <option value="1">1</option>
+        </select>
       </div>
-      <button class="specs__button-mobile button outline size-l dark">Подробнее</button>
+      <a class="specs__button-mobile button outline size-l dark" href="#mobile-specs-modal" rel="modal:open">Подробнее</a>
       <div class="specs__container">
         <div class="tabs__wrapper">
           <div class="tabs">
-            <div class="tabs__item" data-id="tech-spec">
+            <div class="tabs__item active" data-id="tech-spec">
               Технические характеристики
             </div>
-            <div class="tabs__item active" data-id="options-spec">
+            <div class="tabs__item" data-id="options-spec">
               Опции комплектации
             </div>
           </div>
         </div>
         <div class="tabs__content" data-content-id="tech-spec">
-          <div class="specs__list">
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+          <div class="specs__select specs__select__tech">
+            <div class="specs__select__header">
+              <div class="specs__select__title header-text-m">Безопасность</div>
+              <div class="arrow-icon specs__select__arrow"></div>
             </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Рабочий объем двигателя см³</div>
-              <div class="specs__list__item__value regular-text-m">1392</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Максимальная мощность кВт/л.с. (мин.-1) 110/150 (5500)</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
-            </div>
-            <div class="specs__list__item">
-              <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
-              <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+            <div class="specs__list">
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Рабочий объем двигателя см³</div>
+                <div class="specs__list__item__value regular-text-m">1392</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Максимальная мощность кВт/л.с. (мин.-1) 110/150 (5500)</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="tabs__content active" data-content-id="options-spec">
+        </div>   
+        <div class="tabs__content" data-content-id="options-spec">
           <div class="specs__select">
             <div class="specs__select__header">
               <div class="specs__select__title header-text-m">Безопасность</div>
@@ -1249,5 +1231,121 @@
         </div>
       </div>
     </footer>
+
+    <div id="mobile-specs-modal" class="modal modal-fade">
+      <div class="modal-specs__header">
+        <h3 class="header-text-s">Технические характеристики и опции</h3>
+      </div>
+      <h3 class="modal-specs__complectation header-text-l">
+        Комплектация Comfort
+      </h3>
+      <div class="modal-specs__tabs-container">
+        <div class="tabs__wrapper">
+          <div class="tabs">
+            <div class="tabs__item active" data-id="mobile-tech-spec">
+              Технические характеристики
+            </div>
+            <div class="tabs__item" data-id="mobile-options-spec">
+              Опции комплектации
+            </div>
+          </div>
+        </div>
+        <div class="tabs__content active" data-content-id="mobile-tech-spec">
+          <div class="specs__select specs__select__tech">
+            <div class="specs__select__header">
+              <div class="specs__select__title header-text-m">Двигатель</div>
+              <div class="arrow-icon specs__select__arrow"></div>
+            </div>
+            <div class="specs__list">
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Рабочий объем двигателя см³</div>
+                <div class="specs__list__item__value regular-text-m">1392</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Максимальная мощность кВт/л.с. (мин.-1) 110/150 (5500)</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+              <div class="specs__list__item">
+                <div class="specs__list__item__name regular-text-m">Тип двигателя</div>
+                <div class="specs__list__item__value regular-text-m">рядный, 4-х цилиндровый с турбонагнетателем</div>
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="tabs__content" data-content-id="mobile-options-spec">
+          <div class="specs__select">
+            <div class="specs__select__header">
+              <div class="specs__select__title header-text-m">Безопасность</div>
+              <div class="arrow-icon specs__select__arrow"></div>
+            </div>
+            <ul class="specs__select__body">
+              <li class="specs__select__item">Система предупреждения бокового столкновения при выезде с парковки задним ходом (RCCW)</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+              <li class="specs__select__item">Крепления для детского кресла ISOFIX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-specs__compare">
+        <a href="#" class="button main size-l">Сравнить все комплектации Haval Jolion</a>
+      </div>
+    </div>
   </body>
 </html>

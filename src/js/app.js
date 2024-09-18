@@ -53,7 +53,7 @@ const app = {
   },
   runSwiper: () => {
     const slides = configuration.sliders;
-    const defaultSwiperBullets = (index, className) => `<span class="${className}">${index}</span>`;
+    const defaultSwiperBullets = (index, className) => `<span class="${className}">${index + 1}</span>`;
     const defaultNavigation = {
       enabled: true,
       nextEl: '.swiper-button-next',
@@ -61,28 +61,9 @@ const app = {
     };
     const defaultPagination = {
       el: '.swiper-pagination',
-      clickable: false,
-      type: 'bullet',
+      clickable: true,
+      type: 'bullets',
       renderBullet: defaultSwiperBullets,
-      renderCustom: (_, current, total) => {
-        let paginationHtml = '';
-        const maxVisible = total < 4 ? total : 4;
-        let visibledIndex = 1;
-
-        while (visibledIndex <= total) {
-          if (visibledIndex === maxVisible - 1 && total > maxVisible) {
-            paginationHtml += defaultSwiperBullets('...', `swiper-pagination-bullet ${(current >= maxVisible - 1 && current !== total) && 'swiper-pagination-bullet-active'}`);
-          } else if (visibledIndex < maxVisible) {
-            paginationHtml += defaultSwiperBullets(visibledIndex, `swiper-pagination-bullet ${visibledIndex === current && 'swiper-pagination-bullet-active'}`);
-          } else if (visibledIndex === total) {
-            paginationHtml += defaultSwiperBullets(visibledIndex, `swiper-pagination-bullet ${visibledIndex === current && 'swiper-pagination-bullet-active'}`);
-          }
-
-          visibledIndex++;
-        }
-
-        return paginationHtml;
-      },
     };
 
     if (window.outerWidth <= 1332) {
@@ -227,10 +208,12 @@ const app = {
   runTabs: () => {
     const mostPopularTabs = new Tab('.most-popular__tabs-container');
     const specTabs = new Tab('.specs__container');
+    const mobileSpecTabs = new Tab('.modal-specs__tabs-container');
 
     return {
       specTabs,
       mostPopularTabs,
+      mobileSpecTabs,
     };
   },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),

@@ -30,6 +30,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 40px;
 
     .tabs__wrapper {
       margin-bottom: 40px;
@@ -45,6 +46,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+
+    &__tech {
+      .specs__select__header {
+        margin-bottom: 20px;
+      }
+    }
 
     &__header {
       cursor: pointer;
@@ -139,5 +146,82 @@
       width: 100%;
       margin-top: 12px;
     }
+  }
+
+  #mobile-specs-modal {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    background: $light-grey;
+    overflow: hidden;
+    overflow-y: auto;
+   
+    a.close-modal {
+      position: fixed;
+      top: 20px;
+      right: 16px;
+      background-image: url("../images/icons/cross.svg");
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal-specs {
+      &__header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 16px;
+        background: $white;
+      }
+
+      &__complectation {
+        padding: 84px 16px 12px 16px;
+      }
+
+      &__tabs-container {
+        padding: 0 16px 16px 16px;
+
+        .tabs__content {
+          margin-top: 40px;
+          margin-bottom: 30px;
+          overflow: hidden;
+        }
+
+        .specs__list__item {
+          flex-direction: column;
+        } 
+
+        .specs__list__item__value  {
+          width: 100%;
+        }
+
+        .specs__list__item__name {
+          width: 100%;
+        }
+
+        .specs__select__item {
+          max-width: none;
+          width: 100%;
+        }
+        
+        .specs__select__body {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      &__compare {
+        padding: 16px;
+        background: $white;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .jquery-modal.blocker.current {
+    padding: 0;
   }
 }

@@ -88,6 +88,19 @@
     &__section {
       padding: 24px 16px;
       flex-direction: column;
+
+      &.container {
+        margin: 0;
+      }
+
+      .percent-2 {
+        left: auto;
+        top: -8px;
+        right: -40px;
+        width: 144px;
+        height: 144px;
+        transform: rotate(3deg) ;
+      }
     }
 
     &__timer-mobile {

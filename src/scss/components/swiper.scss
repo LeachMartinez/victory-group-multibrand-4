@@ -37,7 +37,7 @@
   align-items: center;
   background: $grey-2;
   opacity: 1;
-  cursor: default;
+  cursor: pointer;
   @include button-text;
 
   &-active {
