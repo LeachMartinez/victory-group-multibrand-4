@@ -1,31 +1,43 @@
+/* eslint-disable no-eval */
+// JQuery modules
 import 'jquery.inputmask';
 import 'jquery-lazy';
 import 'jquery-modal';
+import 'jquery-validation';
 import $ from 'jquery';
 
-import 'jquery-modal/jquery.modal.min.css';
+// Select2
 import 'select2/dist/js/select2.full.js';
-import 'select2/dist/css/select2.min.css';
 
+// Fancybox
 import { Fancybox } from '@fancyapps/ui';
-import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
+// Swiper modules
 import Swiper from 'swiper';
 import {
   Autoplay, Grid, Navigation, Pagination,
 } from 'swiper/modules';
 
+// self
+import MarkSearch from './header/MarkSearch.js';
 import './ui/range.js';
 import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
+// config file
+// import configuration from './configuration.js';
+
+// import styles
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
+import 'select2/dist/css/select2.min.css';
+import 'jquery-modal/jquery.modal.min.css';
 import 'swiper/css/bundle';
 import '../scss/app.scss';
-import MarkSearch from './header/MarkSearch.js';
-import configuration from './configuration.js';
+import CreditCalculator from './calculator/index.js';
 
 window.$ = $;
-const app = {
+// window.configuration = configuration;
+window.app = {
   runMasks: () => {
     $('.js-phone-mask').inputmask({
       mask: '+7 (*99) 999-99-99',
@@ -58,11 +70,13 @@ const app = {
       enabled: true,
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
+      lockClass: 'swiper-hide-pagination',
     };
     const defaultPagination = {
       el: '.swiper-pagination',
       clickable: true,
       type: 'bullets',
+      lockClass: 'swiper-hide-pagination',
       renderBullet: defaultSwiperBullets,
     };
 
@@ -106,6 +120,7 @@ const app = {
 
     const carGallerySwiper = new Swiper('.car-gallery-swiper', {
       ...slides.carGallerySwiper,
+      modules: [Pagination, Navigation],
       pagination: defaultPagination,
       navigation: defaultNavigation,
     });
@@ -179,8 +194,7 @@ const app = {
     };
   },
   runTimers: () => {
-    // "2024/10/07"
-    const timer = new Timer(new Date(2024, 9, 9), '.timer');
+    const timer = new Timer(configuration.timerDate, '.timer');
     timer.countdownTimer();
     const timerUpdateAction = timer.countdownTimer.bind(timer);
     timer.timerId = setInterval(timerUpdateAction, 1000);
@@ -234,14 +248,122 @@ const app = {
   runFancybox: () => {
     Fancybox.bind('[data-fancybox]', {});
   },
+  runColors: () => {
+    const $colorLinks = $('[data-color-link]');
+    const $currentColorName = $('[data-current-color-name]');
+    const $activeColorImage = $('[data-current-color-src]');
+
+    $colorLinks.on('click', (event) => {
+      $colorLinks.removeClass('active');
+      $activeColorImage.attr('src', $(event.currentTarget).addClass('active').attr('data-color-link'));
+      $currentColorName.text($(event.currentTarget).attr('data-color-name'));
+    });
+  },
+  runFormsValidation: () => {
+    jQuery.validator.addMethod('ruPhone', function(phoneNumber) {
+      function countDigits(str) {
+        const regex = /\d/g;
+        const matches = str.match(regex);
+
+        if (matches) {
+          return matches.length;
+        }
+        return 0;
+      }
+
+      return countDigits(phoneNumber) >= 11;
+    });
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+      },
+    });
+    $('.js-form-validator').each(function() {
+      $(this).validate({
+        rules: {
+          name: {
+            required: true,
+            minlength: 2,
+          },
+          telephone: {
+            required: true,
+            minlength: 18,
+            ruPhone: true,
+          },
+          agreement: {
+            required: true,
+          },
+        },
+        messages: {
+          name: 'Поле должно быть заполнено',
+          agreement: 'Поле должно быть заполнено',
+          telephone: 'Номер телефона должен содержать 11 цифр',
+        },
+        submitHandler: function(form) {
+          const $form = $(form);
+          const formData = $form.serialize();
+          $.ajax({
+            url: $form.data('action'),
+            type: $form.data('method'),
+            data: formData,
+            success: function(response) {
+              eval(response.reachgoal);
+
+              // Очистим форму
+              $form.trigger('reset');
+
+              const modal = $('#success-modal');
+              if (modal.length > 0) {
+                $.modal.close();
+              }
+
+              // Всплывашка спасибо за заявку
+              modal.modal({
+                fadeDuration: 100,
+              });
+            },
+            error: function(xhr, status, error) {
+              console.log('Error:', status, error);
+            },
+          });
+          return false;
+        },
+        errorElement: 'span',
+      });
+    });
+  },
+  runCalculator: () => new CreditCalculator(),
+  runSpecsSelects: () => {
+    $('.specs__select__header').each((index, el) => {
+      $(el).on('click', (event) => {
+        const header = $(event.currentTarget);
+        let activeMethod = 'hide';
+
+        if (header.hasClass('hidden')) {
+          activeMethod = 'show';
+          header.removeClass('hidden');
+        } else {
+          activeMethod = 'hide';
+          header.addClass('hidden');
+        }
+
+        header.closest('.specs__select').find('.specs__list__item').each((_, item) => $(item)[activeMethod]());
+        header.closest('.specs__select').find('.specs__select__item').each((_, item) => $(item)[activeMethod]());
+      });
+    });
+  },
 };
 
-app.runFancybox();
-app.runTabs();
-app.runMasks();
-app.runSwiper();
-app.runTimers();
-app.runListeners();
-app.runFindByMark();
-app.runLazy();
-app.runSelect2();
+window.app.runCalculator();
+window.app.runFormsValidation();
+window.app.runColors();
+window.app.runFancybox();
+window.app.runTabs();
+window.app.runMasks();
+window.app.runSwiper();
+window.app.runTimers();
+window.app.runListeners();
+window.app.runFindByMark();
+window.app.runLazy();
+window.app.runSelect2();
+window.app.runSpecsSelects();

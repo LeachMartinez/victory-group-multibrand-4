@@ -34,6 +34,7 @@ const configuration = {
     },
     carGallerySwiper: {
       slidesPerView: 2,
+      slidesPerGroup: 2,
       spaceBetween: 12,
     },
     carCatalogSwiper: {
@@ -51,8 +52,9 @@ const configuration = {
       slidesPerGrou: 2,
       spaceBetween: 12,
     },
-    marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',
   },
+  marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',
+  timerDate: '2024/09/21',
 };
 
 export default configuration;

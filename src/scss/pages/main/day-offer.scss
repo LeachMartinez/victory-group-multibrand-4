@@ -174,7 +174,7 @@
     z-index: 1;
   }
 
-  &__hours {
+  &__hours, &__days {
     .timer__border {
       position: absolute;
       width: 100px;

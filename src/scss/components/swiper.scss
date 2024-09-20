@@ -78,6 +78,10 @@
   width: fit-content !important;
   padding: 7px 12px;
   gap: 16px;
+
+  &:has(.swiper-hide-pagination) {
+    display: none;
+  }
 }
 
 .swiper-button-prev, .swiper-button-next  {
@@ -115,3 +119,8 @@
     transform: rotate(180deg);
   }
 }
+
+.swiper-hide-pagination {
+  display: none;
+}
+

@@ -258,15 +258,15 @@
             <span class="discount-badge">-30%</span>
             <div class="preview-info">
               <span class="preview-info__title">Цвет</span>
-              <span class="preview-info__desc">Благородный агат</span>
+              <span class="preview-info__desc" data-current-color-name>Благородный агат</span>
             </div>
           </div>
           <ul class="car-main__info__preview__colors">
-            <li class="car-main__info__preview__color gray active"></li>
-            <li class="car-main__info__preview__color black"></li>
-            <li class="car-main__info__preview__color white"></li>
-            <li class="car-main__info__preview__color blue"></li>
-            <li class="car-main__info__preview__color red"></li>
+            <li class="car-main__info__preview__color active" data-color-link="" data-color-name=""></li>
+            <li class="car-main__info__preview__color" data-color-link="" data-color-name=""></li>
+            <li class="car-main__info__preview__color" data-color-link="" data-color-name=""></li>
+            <li class="car-main__info__preview__color" data-color-link="" data-color-name=""></li>
+            <li class="car-main__info__preview__color" data-color-link="" data-color-name=""></li>
           </ul>
         </div>
         <div class="car-main__info__settings car-main__info__item">
@@ -353,6 +353,11 @@
         <div class="car-offer__timer-mobile">
           <h3 class="header-text-m day-offer__timer__title">До конца акции осталось:</h3>
           <div class="timer">
+            <div class="timer__item timer__days">
+              <div class="timer__border"></div>
+              <span class="header-text-l">00</span>
+              <span class="regular-text-m">дней</span>
+            </div>
             <div class="timer__item timer__hours">
               <div class="timer__border"></div>
               <span class="header-text-l">00</span>
@@ -386,6 +391,11 @@
       <div class="car-offer__timer">
         <h3 class="header-text-m day-offer__timer__title">До конца акции осталось:</h3>
         <div class="timer">
+          <div class="timer__item timer__days">
+            <div class="timer__border"></div>
+            <span class="header-text-l">00</span>
+            <span class="regular-text-m">дней</span>
+          </div>
           <div class="timer__item timer__hours">
             <div class="timer__border"></div>
             <span class="header-text-l">00</span>
@@ -530,7 +540,7 @@
           <div class="credit-conditions__calculator">
             <div class="credit-conditions__calculator__total__wrapper">
               <b class="credit-conditions__calculator__total__name">Сумма кредита</b>
-              <b class="credit-conditions__calculator__total" id="credit-sum-value">7 070 000 ₽</b>
+              <b class="credit-conditions__calculator__total" data-value="7070000" id="credit-sum-value">7 070 000 ₽</b>
             </div>
             <div class="credit-conditions__settings__range__wrapper">
               <div class="credit-conditions__settings__range">

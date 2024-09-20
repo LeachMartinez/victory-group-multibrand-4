@@ -14,15 +14,41 @@
     @include transition;
   }
 
+  &.error {
+    &::placeholder {
+      color: transparent;
+      @include transition;
+    }
+  }
+
   &:focus, &:not(:placeholder-shown) {
     color: $black;
+
+    &+span.error {
+      display: none !important;
+    }
 
     &::placeholder {
       color: $grey-3;
     }
   }
 
-  &:focus + .input__label, &:not(:placeholder-shown) + .input__label {
+  &.error + .error + .input__label {
+    position: absolute;
+    top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $dark-grey
+  }
+
+  &.error + .error {
+    position: absolute;
+    top: 26px;
+    transform: none;
+  }
+ 
+  &:focus + .input__label, &:not(:placeholder-shown) + .input__label,
+  &:focus + .error + .input__label, &:not(:placeholder-shown) + .error + .input__label {
     position: absolute;
     top: 10px;
     font-size: 14px;
@@ -53,6 +79,17 @@
     cursor: text;
     @include transition;
 
+    span.error {
+      left: 16px;
+      color: #D02D2D;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px; /* 142.857% */
+    }
+
     &:hover {
       .input__label {
         color: $dark-grey
@@ -67,10 +104,27 @@
       border-color: $blue-main;
     }
 
+    &:has(.input.error) {
+      border-color: $red;
+    }
+
     &.input-default {
+      span.error {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
       .input {
         top: 50%;
         transform: translateY(-50%);
+
+        &.error {
+          &::placeholder {
+            color: transparent;
+            @include transition;
+          }
+        }
+        
         &::placeholder {
           color: $grey-3;
         }

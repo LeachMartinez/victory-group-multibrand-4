@@ -87,6 +87,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 494px;
 
         .discount-badge {
           color: $white;
@@ -148,6 +149,7 @@
         border-radius: $border-radius;
         align-items: center;
         border: 1px solid $text-color-light;
+        height: 56px;
         padding: 11px 15px;
         display: flex;
         gap: 6px;

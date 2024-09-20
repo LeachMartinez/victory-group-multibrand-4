@@ -14,6 +14,18 @@
   }
 
   &__select {
+    &__header {
+      &.hidden {
+        .specs__select__title {
+          color: $black
+        }
+
+        .specs__select__arrow {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
     &__container {
       display: flex;
       justify-content: center;
