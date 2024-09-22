@@ -77,6 +77,56 @@
   }
 }
 
+.feedback-modal {
+  padding: 40px;
+  flex-direction: column;
+  max-width: 1108px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__about {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__user {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: fit-content;
+
+    .feedback__user__avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__rating {
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__title {
+      color: $grey-3;
+    }
+
+    &__value {
+      color: $green;
+    }
+  }
+
+  &__text {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width: 1100px) {
   .modal-custom {
     max-width: 328px;

@@ -409,7 +409,20 @@
               </div>
             </div>
             <div class="feedback__footer">
-              <button class="button outline dark size-s">Читать отзыв</button>
+              <button
+                class="button outline dark size-s js-open-modal"
+                data-modal-template="feedback-modal"
+                data-modal-text="Купили машину в автосалоне!! Мы счастливы!!!! Очень хороший салон, обслуживание на высшем уровне!!! Менеджер отдела продаж Павлов Владимир отличный специалист!!! Всë оформил быстро, качественно, отношение к нам уважительное, это ООООЧЕНЬ приятно!!! Большая благодарность салону, и персоналу!!!!!!!!!!!!!!!!!!!!!"
+                data-modal-model="Chery Tiggo 4 Pro 18 YEARS EDITION"
+                data-modal-user="User Name"
+                data-modal-date="12 августа 2024"
+                data-modal-attacment-photo="./images/content/musk__feedback.jpg"
+                data-modal-attacment-video="./images/content/musk__feedback.jpg"
+                data-modal-type="feedback"
+                data-modal-rating="4,9"
+              >
+                Читать отзыв
+              </button>
               <span class="regular-text-s feedback__date">12 августа 2024</span>
             </div>
           </div>
@@ -430,7 +443,7 @@
             </div>
             <div class="feedback__content">
               <div class="feedback__type-image regular-text-m">
-                <img src="./images/content/musk__feedback.jpg" alt="feed">
+                <img data-fancybox src="./images/content/musk__feedback.jpg" alt="feed">
               </div>
             </div>
             <div class="feedback__footer">
@@ -481,7 +494,7 @@
             </div>
             <div class="feedback__content feedback__type-text">
               <div class="feedback__type-image regular-text-m">
-                <img src="./images/content/musk__feedback.jpg" alt="feed">
+                <img data-fancybox src="./images/content/musk__feedback.jpg" alt="feed">
               </div>
             </div>
             <div class="feedback__footer">
@@ -798,5 +811,28 @@
         </div>
       </div>
     </footer>
+    
+    <div id="feedback-modal" class="modal">
+      <div class="modal-custom feedback-modal">
+        <div class="feedback-modal__header">
+          <span class="modal-title header-text-xl"></span>
+          <div class="feedback-modal__header__about">
+            <div class="feedback-modal__user">
+              <div class="feedback__user__avatar">
+                <span class="user-icon"></span>
+              </div>
+              <span class="header-text-l modal-user"></span>
+            </div>
+            <div class="feedback-modal__rating">
+              <span class="header-text-l feedback-modal__rating__title">Оценка</span>
+              <span class="header-text-l feedback-modal__rating__value modal-rating"></span>
+            </div>
+          </div>
+        </div>
+        <div class="feedback-modal__attachments"></div>
+        <div class="feedback-modal__text regular-text-m modal-text"></div>
+        <div class="feedback-modal__date modal-date regular-text-s"></div>
+      </div>
+    </div>
   </body>
 </html>

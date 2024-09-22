@@ -317,7 +317,6 @@ window.app = {
             success: function(response) {
               eval(response.reachgoal);
 
-              // Очистим форму
               $form.trigger('reset');
 
               const modal = $('#success-modal');
@@ -325,7 +324,6 @@ window.app = {
                 $.modal.close();
               }
 
-              // Всплывашка спасибо за заявку
               modal.modal({
                 fadeDuration: 100,
               });
@@ -360,6 +358,28 @@ window.app = {
       });
     });
   },
+  runModals: () => {
+    $('.js-open-modal').each((_, el) => {
+      $(el).on('click', (event) => {
+        event.preventDefault();
+        const $target = $(event.currentTarget);
+        const modalId = $target.data('modal-template');
+
+        const modalBody = $(`#${modalId}`).modal({
+          fadeDuration: 100,
+        });
+
+        if ($target.data('modal-type') === 'feedback') {
+          modalBody.find('.modal-title').text($target.data('modal-model'));
+          modalBody.find('.modal-user').text($target.data('modal-user'));
+          modalBody.find('.modal-rating').text($target.data('modal-rating'));
+          modalBody.find('.modal-text').text($target.data('modal-text'));
+          modalBody.find('.modal-date').text($target.data('modal-date'));
+          modalBody.find('.modal-attachments');
+        }
+      });
+    });
+  },
 };
 
 window.app.runCalculator();
@@ -375,3 +395,4 @@ window.app.runFindByMark();
 window.app.runLazy();
 window.app.runSelect2();
 window.app.runSpecsSelects();
+window.app.runModals();
