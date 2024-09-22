@@ -1,0 +1,27 @@
+.feedback-form {
+  &__section {
+    background: $sky-blue;
+    border-radius: 40px 40px 0 0;
+    padding: 80px 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__section .request-form {
+    &__container {
+      margin: 0 auto;
+      max-width: 1108px;
+    }
+
+    &__fields {
+      &__container {
+        .input__wrapper.input-textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -108,6 +108,27 @@
       border-color: $red;
     }
 
+    &.input-textarea {
+      flex-direction: row;
+      justify-content: flex-start;
+      height: 120px;
+      
+      .input {
+        resize: none;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding: 0;
+        position: inherit;
+        border: none;
+
+        &::placeholder {
+          color: $grey-3;
+        }
+      }
+    }
+
     &.input-default {
       span.error {
         top: 50%;

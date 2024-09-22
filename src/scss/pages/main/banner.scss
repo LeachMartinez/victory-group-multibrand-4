@@ -8,6 +8,48 @@
   color: $white;
   background: linear-gradient(90deg, rgba(22,22,22,1) 0%, rgba(54,33,185,1) 100%);
   
+  &#banner-autocredit {
+    &::after {
+      background-image: url("../images/content/banner_main_1.webp");
+    }
+  }
+
+  &#banner-payment {
+    &::after {
+      background-image: url("../images/content/banner-payment.webp");
+    }
+  }
+
+  &#banner-promo {
+    &::after {
+      background-image: url("../images/content/banner-promo.webp");
+    }
+  }
+
+  &#banner-trade-in {
+    &::after {
+      background-image: url("../images/content/banner-trade-in.webp");
+    }
+  }
+
+  &#banner-trade-in-promo {
+    &::after {
+      background-image: url("../images/content/banner-trade-in-promo.webp");
+    }
+  }
+
+  &#banner-trade-in-payment {
+    &::after {
+      background-image: url("../images/content/banner-trade-in-payment.webp");
+    }
+  }
+
+  &#banner-buyout {
+    &::after {
+      background-image: url("../images/content/banner-buyout.webp");
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -17,7 +59,6 @@
     top: 0;
     z-index: -1;
     border-radius: $border-radius;
-    background-image: url("../images/content/banner_main_1.webp");
     background-size: 74%;
     background-position: right 28%;
     background-repeat: no-repeat;

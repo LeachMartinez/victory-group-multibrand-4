@@ -52,6 +52,14 @@ const configuration = {
       slidesPerGrou: 2,
       spaceBetween: 12,
     },
+    allFeedbacksSwiper: {
+      slidesPerView: 3,
+      spaceBetween: 12,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+    },
   },
   marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',
   timerDate: '2024/09/21',

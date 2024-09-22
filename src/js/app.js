@@ -25,7 +25,7 @@ import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 // config file
-// import configuration from './configuration.js';
+import configuration from './configuration.js';
 
 // import styles
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
@@ -182,7 +182,15 @@ window.app = {
       ...slides.howToSwiper,
     });
 
+    const allFeedbacksSwiper = new Swiper('.all-feedbacks-swiper', {
+      ...slides.allFeedbacksSwiper,
+      modules: [Pagination, Grid, Navigation],
+      pagination: defaultPagination,
+      navigation: defaultNavigation,
+    });
+
     return {
+      allFeedbacksSwiper,
       contactsGallerySwiper,
       carCatalogSwiper,
       carGallerySwiper,

@@ -1,0 +1,21 @@
+.feedback-banner {
+  &__section {
+    padding: 32px 80px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(86deg, #151515 14.88%, #382A8E 99.03%);
+    border-radius: $border-radius;
+    color: $white;
+
+    .footer__contents__rating {
+      border-color: $sky-blue;
+
+      .footer__contents__rating__desc {
+        color: $sky-blue;
+      }
+    }
+  }
+}
