@@ -10,6 +10,17 @@
   z-index: 3;
 }
 
+.modal-contacts {
+  .br-mobile {
+    display: none;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+}
+
 .modal-custom {
   display: flex;
 
@@ -150,5 +161,17 @@
         gap: 12px;
       }
     }
+  }
+
+  .modal-contacts {
+    .br-mobile {
+      display: block;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 12px;
+    gap: 12px;
   }
 }

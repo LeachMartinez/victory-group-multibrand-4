@@ -49,7 +49,7 @@ const configuration = {
     },
     contactsGallerySwiper: {
       slidesPerView: 2,
-      slidesPerGrou: 2,
+      slidesPerGroup: 2,
       spaceBetween: 12,
     },
     allFeedbacksSwiper: {
@@ -58,6 +58,16 @@ const configuration = {
       grid: {
         rows: 2,
         fill: 'row',
+      },
+    },
+    compireSwiper: {
+      slidesPerView: 4,
+      spaceBetween: 12,
+      navigation: {
+        enabled: true,
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        lockClass: 'swiper-hide-pagination',
       },
     },
   },

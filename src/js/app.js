@@ -98,6 +98,8 @@ window.app = {
         type: 'fraction',
         el: '.how-to__pagination__mobile .swiper-pagination',
       };
+      $('.compare-navigation-prev').remove();
+      $('.compare-navigation-next').remove();
     }
 
     if (window.outerWidth <= 699) {
@@ -189,6 +191,30 @@ window.app = {
       navigation: defaultNavigation,
     });
 
+    const compareBodySwipers = [];
+    const compareSwiper = new Swiper('.compareSwiper', {
+      modules: [Pagination, Navigation],
+      ...slides.compireSwiper,
+      on: {
+        slideChange() {
+          compareBodySwipers.forEach((swiper) => {
+            swiper.slideToLoop(this.realIndex);
+          });
+        },
+      },
+    });
+
+    $('.compareSwiper-body').each((index, el) => {
+      $(el).addClass(`compareSwiper-body-${index}`);
+      compareBodySwipers.push(new Swiper(`.compareSwiper-body-${index}`, {
+        ...slides.compireSwiper,
+        allowTouchMove: false,
+        modules: [Pagination, Navigation],
+        pagination: defaultPagination,
+        navigation: defaultNavigation,
+      }));
+    });
+
     return {
       allFeedbacksSwiper,
       contactsGallerySwiper,
@@ -199,6 +225,7 @@ window.app = {
       bannerSwiper,
       catalogSwiper,
       howToSwiper,
+      compareSwiper,
     };
   },
   runTimers: () => {
@@ -288,6 +315,7 @@ window.app = {
     });
     $('.js-form-validator').each(function() {
       $(this).validate({
+        focusInvalid: false,
         rules: {
           name: {
             required: true,
@@ -380,8 +408,19 @@ window.app = {
       });
     });
   },
+  runVideoSelect: () => {
+    $('.feedback-video__item').each((_, el) => {
+      $(el).on('click', (event) => {
+        $('.feedback-video__item').removeClass('selected');
+        $(event.currentTarget).addClass('selected');
+        $('.feedback-video__desc .feedback__user__name').text($(event.currentTarget).find('.feedback-video__item__username').text());
+        $('.feedback-video__desc .feedback__user__desc').text($(event.currentTarget).find('.feedback-video__model-name').text());
+      });
+    });
+  },
 };
 
+window.app.runVideoSelect();
 window.app.runCalculator();
 window.app.runFormsValidation();
 window.app.runColors();
