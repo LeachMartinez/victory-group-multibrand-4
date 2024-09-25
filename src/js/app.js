@@ -34,6 +34,8 @@ import 'jquery-modal/jquery.modal.min.css';
 import 'swiper/css/bundle';
 import '../scss/app.scss';
 import CreditCalculator from './calculator/index.js';
+import ReviewForm from './customForm/ReviewForm.js';
+import TimerOffer from './ui/offerTimer.js';
 
 window.$ = $;
 // window.configuration = configuration;
@@ -321,23 +323,46 @@ window.app = {
             required: true,
             minlength: 2,
           },
+          model: {
+            required: true,
+            minlength: 2,
+          },
+          mark: {
+            required: true,
+            minlength: 2,
+          },
           telephone: {
             required: true,
             minlength: 18,
             ruPhone: true,
+          },
+          textarea: {
+            required: true,
+            minlength: 2,
+            maxlength: 1024,
           },
           agreement: {
             required: true,
           },
         },
         messages: {
+          textarea: 'Поле должно быть заполнено',
+          mark: 'Поле должно быть заполнено',
+          model: 'Поле должно быть заполнено',
           name: 'Поле должно быть заполнено',
           agreement: 'Поле должно быть заполнено',
           telephone: 'Номер телефона должен содержать 11 цифр',
         },
-        submitHandler: function(form) {
+        submitHandler: function(form, event) {
           const $form = $(form);
           const formData = $form.serialize();
+
+          if ($form.attr('id') === 'review-first-form') {
+            event.preventDefault();
+            const secForm = new ReviewForm($form);
+            return secForm;
+          }
+
           $.ajax({
             url: $form.data('action'),
             type: $form.data('method'),
@@ -346,7 +371,10 @@ window.app = {
               eval(response.reachgoal);
 
               $form.trigger('reset');
-
+              if ($form.attr('id') === 'review-second-form') {
+                $('#review-first-form')[0].reset();
+                $.modal.close();
+              }
               const modal = $('#success-modal');
               if (modal.length > 0) {
                 $.modal.close();
@@ -418,6 +446,23 @@ window.app = {
       });
     });
   },
+  runOfferBanner: () => {
+    const isHidden = window.sessionStorage.getItem('isOfferBannerHidden');
+
+    const timer = new TimerOffer(configuration.timerDate, '.offer-banner__timer');
+    timer.countdownTimer();
+    const timerUpdateAction = timer.countdownTimer.bind(timer);
+    timer.timerId = setInterval(timerUpdateAction, 1000);
+
+    if (!isHidden) {
+      $('.offer-banner__section').show();
+    }
+
+    $('.offer-banner__close').on('click', () => {
+      window.sessionStorage.setItem('isOfferBannerHidden', 'true');
+      $('.offer-banner__section').hide();
+    });
+  },
 };
 
 window.app.runVideoSelect();
@@ -435,3 +480,4 @@ window.app.runLazy();
 window.app.runSelect2();
 window.app.runSpecsSelects();
 window.app.runModals();
+window.app.runOfferBanner();

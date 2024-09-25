@@ -109,18 +109,18 @@ module.exports = {
     },
   },
   plugins: [
-    new ImageminWebpWebpackPlugin({
-      config: [{
-        test: /\.(png|gif|jpe?g)$/i,
-        options: {
-          quality: 90,
-        },
-      }],
-      overrideExtension: true,
-      detailedLogs: false,
-      silent: false,
-      strict: true,
-    }),
+    // new ImageminWebpWebpackPlugin({
+    //   config: [{
+    //     test: /\.(png|gif|jpe?g)$/i,
+    //     options: {
+    //       quality: 90,
+    //     },
+    //   }],
+    //   overrideExtension: true,
+    //   detailedLogs: false,
+    //   silent: false,
+    //   strict: true,
+    // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),

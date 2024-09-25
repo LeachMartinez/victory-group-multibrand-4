@@ -16,18 +16,24 @@
 
   &#banner-payment {
     &::after {
+      background-size: 50.5%;
+      background-position: right 56%;
       background-image: url("../images/content/banner-payment.webp");
     }
   }
 
   &#banner-promo {
     &::after {
+      background-size: 54.5%;
+      background-position: right 45.5%;
       background-image: url("../images/content/banner-promo.webp");
     }
   }
 
   &#banner-trade-in {
     &::after {
+      background-size: 54.5%;
+      background-position: 97% 73%;
       background-image: url("../images/content/banner-trade-in.webp");
     }
   }
@@ -94,6 +100,36 @@
 
     &__buttons {
       margin-bottom: 120px;
+    }
+  }
+}
+
+@media( max-width: 813px) {
+  .main__banner {
+    &#banner-trade-in {
+      &::after {
+        background-size: 64.5%;
+        background-position: right bottom;
+      }
+    }
+  }
+}
+
+@media( max-width: 613px) {
+  .main__banner {
+    &#banner-promo {
+      &::after {
+        background-size: 61.5%;
+        background-position: 100% 112%;
+      }
+    }
+  }
+  .main__banner {
+    &#banner-payment {
+      &::after {
+        background-size: 70.5%;
+        background-position: right bottom;
+      }
     }
   }
 }

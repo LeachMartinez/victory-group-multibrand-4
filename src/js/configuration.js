@@ -72,7 +72,7 @@ const configuration = {
     },
   },
   marksListRoute: 'https://multi-4.vitmp.ru/api/auto/new/mark/list',
-  timerDate: '2024/09/21',
+  timerDate: '2024/09/29',
 };
 
 export default configuration;

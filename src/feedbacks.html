@@ -568,22 +568,22 @@
     <section class="feedback-form__section">
       <div class="container">
         <h2 class="feedback-form__title header-text-xl">Оставьте ваш отзыв</h2>
-        <form action="" class="request-form__container">
+        <form id="review-first-form" class="request-form__container js-form-validator">
           <div class="request-form__fields">
             <h3 class="header-text-l request-form__fields__title">
               Поделитесь вашими впечатлениями о покупке автомобиля <br> и работе нашего автосалона
             </h3>
             <div class="request-form__fields__container">
               <label class="input__wrapper">
-                <input type="text" class="input" placeholder="Марка">
+                <input type="text" class="input" name="mark" placeholder="Марка">
                 <span class="input__label">Марка</span>
               </label>
               <label class="input__wrapper">
-                <input type="text" class="input" placeholder="Модель">
+                <input type="text" class="input" name="model" placeholder="Модель">
                 <span class="input__label">Модель</span>
               </label>
               <label class="input__wrapper input-textarea">
-                <textarea type="text" class="input" placeholder="Напишите отзыв"></textarea>
+                <textarea type="text" class="input" name="textarea" placeholder="Напишите отзыв"></textarea>
               </label>
             </div>
           </div>
@@ -593,11 +593,11 @@
             </h3>
             <div class="request-form__fields__container">
               <label class="input__wrapper">
-                <input type="text" class="input" placeholder="Имя">
+                <input type="text" class="input" name="name" placeholder="Имя">
                 <span class="input__label">Имя</span>
               </label>
               <label class="input__wrapper input-default">
-                <input type="text" class="input js-phone-mask" placeholder="+7 (900) 000-00-00">
+                <input type="text" class="input js-phone-mask" name="telephone" placeholder="+7 (900) 000-00-00">
               </label>
             </div>
           </div>
@@ -811,7 +811,130 @@
         </div>
       </div>
     </footer>
-    
+    <div id="review-second-form-modal" class="modal">
+      <form class="modal-custom review-modal js-form-validator" id="review-second-form">
+        <h2 class="header-text-xl">Оцените автосалон</h2>
+        <div class="review-modal__rating">
+          <div class="review-modal__rating__item">
+            <span class="header-text-s review-modal__rating__item__title">
+              Оцените ваш опыт обращения в автосалон CarShopMame
+            </span>
+            <div class="review-modal__rating__item__raido__container">
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="request" class="review-modal__rating__item__radio">
+                <span class="review-modal__rating__item__raido__rating header-text-s">1</span>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="request" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">2</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="request" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">3</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="request" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">4</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="request" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">5</div>
+              </label>
+            </div>
+          </div>
+          <div class="review-modal__rating__item">
+            <span class="header-text-s review-modal__rating__item__title">
+              Оцените, насколько вы удовлетворены покупкой
+            </span>
+            <div class="review-modal__rating__item__raido__container">
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="buy" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">1</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="buy" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">2</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="buy" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">3</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="buy" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">4</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="buy" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">5</div>
+              </label>
+            </div>
+          </div>
+          <div class="review-modal__rating__item">
+            <span class="header-text-s review-modal__rating__item__title">
+              Оцените, насколько вы будете рекомендовать автосалон
+            </span>
+            <div class="review-modal__rating__item__raido__container">
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="recomnedation" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">1</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="recomnedation" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">2</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="recomnedation" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">3</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="recomnedation" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">4</div>
+              </label>
+              <label class="review-modal__rating__item__raido__label">
+                <input type="radio" name="recomnedation" class="review-modal__rating__item__radio">
+                <div class="review-modal__rating__item__raido__rating header-text-s">5</div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="review-modal__attachment">
+          <div class="review-modal__attachment__title header-text-s">Добавьте медиафайлы</div>
+          <div class="review-modal__attachment__desc regular-text-s">
+            Вы можете загрузить 1 фото в формате JPG или PNG <br>
+            от 300х300 пикселей, весом не более 6 МБ и 1 видео в формате...
+          </div>
+          <div class="review-modal__attachment__container">
+            <label class="review-modal__attachment__label">
+              <input type="file" class="review-modal__attachment__input" accept="image/png, image/jpeg, image/jpg">
+              <span class="review-modal__attachment__label__icon photo-icon"></span>
+              <span class="regular-text-m review-modal__attachment__label__text">
+                Добавить фото
+              </span>
+              <div class="close-icon__wrapper">
+                <span class="cross-icon"></span>
+              </div>
+            </label>
+            <label class="review-modal__attachment__label">
+              <input type="file" class="review-modal__attachment__input" accept="video/mp4,video/x-m4v,video/*">
+              <span class="review-modal__attachment__label__icon video-icon"></span>
+              <span class="regular-text-m review-modal__attachment__label__text">
+                Добавить видео
+              </span>
+              <div class="close-icon__wrapper">
+                <span class="cross-icon"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="footer__form__action">
+          <div class="footer__form__license">
+            <span class="regular-text-s">Отправляя заявку, я соглашаюсь с условиями</span>
+            <a class="regular-text-s" href="#">пользовательского соглашения</a>
+          </div>
+          <button class="button main size-l">Отправить отзыв</button>
+        </div>
+      </form>
+    </div>
     <div id="feedback-modal" class="modal">
       <div class="modal-custom feedback-modal">
         <div class="feedback-modal__header">

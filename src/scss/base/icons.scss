@@ -132,6 +132,21 @@
   background-color: $accent-color;
 }
 
+.photo-icon {
+  mask-image: url("../images/icons/photo-icon.svg");
+  -webkit-mask-image: url("../images/icons/photo-icon.svg");
+  background-color: $accent-color;
+}
+
+.video-icon {
+  mask-image: url("../images/icons/video-icon.svg");
+  -webkit-mask-image: url("../images/icons/video-icon.svg");
+  background-color: $accent-color;
+}
+
+
+.video-icon,
+.photo-icon,
 .clock-icon,
 .coins-icon,
 .credit-card-icon,

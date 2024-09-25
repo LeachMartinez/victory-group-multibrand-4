@@ -1,0 +1,190 @@
+.offer-banner {
+  &__section {
+    display: none;
+    background: radial-gradient(4367.33% 80.71% at 40.13% 50%, rgba(255, 255, 255, 0.20) 0%, rgba(103, 0, 0, 0.20) 100%) #D72121;
+    overflow: hidden;
+  }
+
+  &__container {
+    position: relative;
+    padding: 16px 0;
+    display: flex;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px; /* 123.077% */
+    text-transform: uppercase
+  }
+
+  &__desc {
+    color: $white;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px; /* 166.667% */
+    position: relative;
+  }
+
+  &__timer {
+    width: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background: $black;
+    color: $white;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 20px; /* 71.429% */
+    padding: 10px 22px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    &__text {
+      color: $white;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 20px; /* 100% */
+      
+      .br-mobile {
+        display: none;
+      }
+    }
+
+    &__container {
+      margin-left: 23%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+  }
+
+  &__close {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $white;
+    border-radius: 16px;
+    right: 0;
+    top: 16px;
+    cursor: pointer;
+
+    .cross-icon {
+      background: $white;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__bg-1 {
+    position: absolute;
+    background-image: url("../images/content/offer-banner-1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 216px;
+    top: -50px;
+    height: 214px;
+    left: 83.2%;
+  }
+  
+  &__bg-2 {
+    background-image: url("../images/content/offer-banner-2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 308px;
+    height: 105px;
+    top: 8px;
+    left: 67.8%;
+    position: absolute;
+  }
+  
+  &__bg-3 {
+    position: absolute;
+    background-image: url("../images/content/offer-banner-3.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 250px;
+    top: -33px;
+    height: 250px;
+    left: 25.9%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .offer-banner {
+    &__container {
+      padding: 12px 0;
+      flex-direction: column;
+    }
+
+    &__text {
+      gap: 8px;
+
+      .br-mobile {
+        display: block;
+      }
+    }
+
+    &__title {
+      position: relative;
+      font-size: 20px;
+      line-height: 24px; /* 120% */
+    }
+
+    &__desc {
+      font-size: 12px;
+      line-height: 16px; /* 133.333% */
+    }
+
+    &__timer {
+      width: max-content;
+      font-size: 16px;
+      line-height: 20px; /* 125% */
+      padding: 4px 13px;
+
+      &__text {
+        font-size: 16px;
+        line-height: 14px; /* 87.5% */
+      }
+
+      &__container {
+        justify-content: start;
+        margin: 0;
+        margin-top: 8px;
+        flex-direction: row;
+        gap: 8px;
+      }
+    }
+
+    &__bg-2, &__bg-1 {
+      display: none;
+    }
+
+    &__bg-3 {
+      width: 218px;
+      top: 23px;
+      height: 210px;
+      left: auto;
+      right: -40px;
+    }
+  }
+}

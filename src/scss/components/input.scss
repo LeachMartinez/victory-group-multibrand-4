@@ -112,6 +112,10 @@
       flex-direction: row;
       justify-content: flex-start;
       height: 120px;
+
+      span.error {
+        top: 16px;
+      }
       
       .input {
         resize: none;
@@ -122,6 +126,12 @@
         padding: 0;
         position: inherit;
         border: none;
+
+        &.error {
+          &::placeholder {
+            color: transparent;
+          }
+        }
 
         &::placeholder {
           color: $grey-3;
