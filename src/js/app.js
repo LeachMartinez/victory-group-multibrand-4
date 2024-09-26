@@ -25,7 +25,7 @@ import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 // config file
-import configuration from './configuration.js';
+// import configuration from './configuration.js';
 
 // import styles
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
@@ -197,6 +197,7 @@ window.app = {
     const compareSwiper = new Swiper('.compareSwiper', {
       modules: [Pagination, Navigation],
       ...slides.compireSwiper,
+      navigation: defaultNavigation,
       on: {
         slideChange() {
           compareBodySwipers.forEach((swiper) => {
@@ -258,6 +259,13 @@ window.app = {
 
     $('.mobile-menu__content .cross').on('click', () => {
       $('.mobile-menu').removeClass('active');
+    });
+
+    $('.compare__item__cross').each((_, el) => {
+      $(el).on('click', (event) => {
+        const compareItemId = $(event.currentTarget).closest('.compare__item').data('complectation-id');
+        $(`[data-complectation-id="${compareItemId}"]`).remove();
+      });
     });
   },
   runTabs: () => {

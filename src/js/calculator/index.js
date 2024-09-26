@@ -38,8 +38,8 @@ export default class CreditCalculator {
   }
 
   monthPaymentListeners() {
-    $('#minus-month-payment').on('click', () => this.changeMonthPayment(-this.monthPaymentGap));
-    $('#plus-month-payment').on('click', () => this.changeMonthPayment(+this.monthPaymentGap));
+    $('#minus-month-payment').on('click', () => this.changeMonthPayment(+this.monthPaymentGap));
+    $('#plus-month-payment').on('click', () => this.changeMonthPayment(-this.monthPaymentGap));
   }
 
   sumListeners() {

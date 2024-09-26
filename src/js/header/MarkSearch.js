@@ -151,7 +151,7 @@ export default class MarkSearch {
     const { value } = event.currentTarget;
     const filteredCarbrands = this.carbrands.filter((carbrand) => {
       const brand = Object.keys(carbrand)[0].toLocaleLowerCase();
-      return brand.includes(value);
+      return brand.includes(value.toLocaleLowerCase());
     });
 
     this.fillBrandsList(filteredCarbrands);

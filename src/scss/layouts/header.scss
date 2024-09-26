@@ -237,7 +237,7 @@ header {
           height: 100%;
           flex-direction: column;
           justify-content: center;
-          gap: 24px;
+          gap: 12px;
           padding: 16px;
 
           &__item {
@@ -246,6 +246,7 @@ header {
           }
 
           &__text {
+            width: 100%;
             text-align-last: left;
           }
         }

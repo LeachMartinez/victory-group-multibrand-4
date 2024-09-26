@@ -175,6 +175,11 @@
     flex-direction: column;
     margin-top: 23px;
     gap: 24px;
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   
     &__name {
       color: $text-color-darkGray;
