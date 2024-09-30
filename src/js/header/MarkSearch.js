@@ -31,7 +31,6 @@ export default class MarkSearch {
     $('.competitors__container'),
     $('.about-info__container'),
     $('.contacts__container'),
-    $('.footer__form'),
   ];
 
   mobileMissingNodes = [
@@ -102,12 +101,14 @@ export default class MarkSearch {
   }
 
   #hideMissingNodes (type) {
+    $('section:not(.find-by-marks-desktop, .header, .info)').hide();
     type.forEach((el) => {
       el.hide();
     });
   }
 
   #showMissingNodes (type) {
+    $('section:not(.mobile-header, .find-by-marks-desktop)').show();
     type.forEach((el) => {
       el.show();
     });
@@ -179,7 +180,7 @@ export default class MarkSearch {
 
   static async getMarks () {
     try {
-      return await $.ajax('https://multi-4.vitmp.ru/api/auto/new/mark/list');
+      return await $.ajax(window.configuration.marksListRoute);
     } catch (error) {
       return [];
     }

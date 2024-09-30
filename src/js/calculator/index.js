@@ -30,11 +30,30 @@ export default class CreditCalculator {
     this.creditTotal = +$('#credit-sum-value').data('value');
     this.type = Number.isNaN(this.carPrice) ? 'CreditOnly' : 'CreditCar';
 
+    this.sumRange.attr('min', this[`setupSumRangeMin${this.type}`]());
+    this.sumRange.attr('max', this[`setupSumRangeMax${this.type}`]());
+
     this.creditPeriodEvent(this.periodRange.val());
     this.creditSumEvent(+this.sumRange.val());
     this.monthPaymentListeners();
     this.creditPeriodListener();
     this.sumListeners();
+  }
+
+  setupSumRangeMinCreditOnly() {
+    return 100000;
+  }
+
+  setupSumRangeMinCreditCar() {
+    return 0;
+  }
+
+  setupSumRangeMaxCreditOnly() {
+    return 5000000;
+  }
+
+  setupSumRangeMaxCreditCar() {
+    return this.carPrice * 0.9;
   }
 
   monthPaymentListeners() {
@@ -44,6 +63,15 @@ export default class CreditCalculator {
 
   sumListeners() {
     this.sumRange.on('input', (event) => this.creditSumEvent(event.currentTarget.value));
+    this.sumValue.on('change', (event) => {
+      const target = $(event.currentTarget);
+      const value = target.val().replace(/[^\d.]/g, '');
+      const currentValue = this.validateValue(value);
+      target.val(currentValue);
+
+      this.sumRange.val(currentValue);
+      this.sumRange.trigger('input');
+    });
   }
 
   creditSumEvent(val) {
@@ -80,8 +108,23 @@ export default class CreditCalculator {
     this.monthPaymentValue.text(this.convertPrice(this.monthPayment));
   }
 
+  validateValue(value) {
+    const min = +this.sumRange.attr('min');
+    const max = +this.sumRange.attr('max');
+
+    if (value > max) {
+      return max;
+    }
+
+    if (value < min) {
+      return min;
+    }
+
+    return value;
+  }
+
   calculatePeriodValueCreditCar() {
-    return Math.round((this.carPrice - this.firstPayment) / this.monthPayment);
+    return (this.carPrice - this.firstPayment) / this.monthPayment;
   }
 
   calculatePeriodValueCreditOnly() {
@@ -97,13 +140,12 @@ export default class CreditCalculator {
   }
 
   calculateSumValueCreditOnly(val) {
-    return val * 1000;
+    return val;
   }
 
   calculateSumValueCreditCar(val) {
-    const total = Math.round((this.carPrice * val) / 100);
-    $('#credit-sum-value').text(this.convertPrice(this.creditTotal - total));
-    return total;
+    $('#credit-sum-value').text(this.convertPrice(this.creditTotal - val));
+    return val;
   }
 
   updateCreditPeriod() {
@@ -111,6 +153,6 @@ export default class CreditCalculator {
   }
 
   updateSumValue() {
-    this.sumValue.text(this.convertPrice(this.creditSum));
+    this.sumValue.val(this.creditSum);
   }
 }

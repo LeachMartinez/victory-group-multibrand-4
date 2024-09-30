@@ -546,10 +546,10 @@
               <div class="credit-conditions__settings__range">
                 <div class="range__top">
                   <span class="range__title">Первоначальный взнос</span>
-                  <b class="range__value" id="first-payment-value">4 000 000 ₽</b>
+                  <input class="range__value js-digits-mask" id="first-payment-value" value="1000000" type="text" data-inputmask-suffix=" ₽" inputmode="decimal"/>
                 </div>
                 <div class="range__wrapper">
-                  <input class="range" id="first-payment-input" type="range" min="0" max="90" value="40">
+                  <input class="range" id="first-payment-input" type="range" min="0" max="7000000" value="100000">
                   <div class="range__progress"></div>
                 </div>
                 <div class="range__bottom">

@@ -56,7 +56,10 @@
         color: $text-color-darkGray;
         margin-bottom: 4px;
       }
-
+      
+      .range__value {
+        @include button-text;
+      }
       &__wrapper {
         display: flex;
         flex-direction: column;

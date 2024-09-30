@@ -1,6 +1,8 @@
 /* eslint-disable no-eval */
 // JQuery modules
 import 'jquery.inputmask';
+import 'inputmask.numeric.extensions';
+
 import 'jquery-lazy';
 import 'jquery-modal';
 import 'jquery-validation';
@@ -25,7 +27,7 @@ import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 // config file
-// import configuration from './configuration.js';
+import configuration from './configuration.js';
 
 // import styles
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
@@ -57,6 +59,7 @@ window.app = {
       digits: '0',
       groupSeparator: ' ',
       rightAlign: false,
+      prefix: '',
     });
 
     $('.js-numeric-mask').inputmask({
