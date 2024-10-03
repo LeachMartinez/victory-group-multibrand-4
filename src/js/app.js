@@ -1,11 +1,13 @@
 /* eslint-disable no-eval */
 // JQuery modules
 import 'jquery.inputmask';
-import 'inputmask.numeric.extensions';
-
 import 'jquery-lazy';
 import 'jquery-modal';
 import 'jquery-validation';
+import 'jquery.cookie';
+
+import 'inputmask.numeric.extensions';
+
 import $ from 'jquery';
 
 // Select2
@@ -27,7 +29,7 @@ import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 // config file
-import configuration from './configuration.js';
+// import configuration from './configuration.js';
 
 // import styles
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
@@ -38,6 +40,7 @@ import '../scss/app.scss';
 import CreditCalculator from './calculator/index.js';
 import ReviewForm from './customForm/ReviewForm.js';
 import TimerOffer from './ui/offerTimer.js';
+import CallbackWidget from './callback/index.js';
 
 window.$ = $;
 // window.configuration = configuration;
@@ -105,6 +108,8 @@ window.app = {
       };
       $('.compare-navigation-prev').remove();
       $('.compare-navigation-next').remove();
+      slides.allFeedbacksSwiper.grid.rows = 3;
+      slides.allFeedbacksSwiper.slidesPerView = 1;
     }
 
     if (window.outerWidth <= 699) {
@@ -263,7 +268,6 @@ window.app = {
     $('.mobile-menu__content .cross').on('click', () => {
       $('.mobile-menu').removeClass('active');
     });
-
     $('.compare__item__cross').each((_, el) => {
       $(el).on('click', (event) => {
         const compareItemId = $(event.currentTarget).closest('.compare__item').data('complectation-id');
@@ -474,6 +478,86 @@ window.app = {
       $('.offer-banner__section').hide();
     });
   },
+  runCallbackWidget: () => new CallbackWidget('var(--blue-main)', () => $('#callback-modal').modal({ fadeDuration: 100 })),
+  runCompare: () => {
+    $('#clear-compare-list').on('click', () => {
+      $('.compare__item').remove();
+      $('.parameter__item').remove();
+      $('#compare-list-count').text(0);
+      $.cookie('compare', []);
+    });
+
+    $('.redirect-to-compare').on('click', () => {
+      window.location.href = '/compare';
+    });
+
+    $('.compare__item__cross').on('click', (event) => {
+      const target = $(event.currentTarget);
+      const carItem = target.closest('.compare__item');
+      const compareId = carItem.data('compare-id');
+      let compare = $.cookie('compare') == null ? $.cookie('compare', []) : $.cookie('compare').split(',');
+
+      compare = compare.filter((el) => +el !== +compareId);
+      $(`[data-compare-id="${compareId}"]`).remove();
+
+      $('#compare-list-count').text(compare.length);
+      $.cookie('compare', compare);
+    });
+
+    $(document).on('click', (event) => {
+      event.stopPropagation();
+      if (!$(event.target).closest('.car-item__compare__icon').length) {
+        $('.car-item__compare__info').removeClass('active');
+      }
+    });
+
+    $('.car-item__compare__info').on('click', (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+    });
+
+    if ($.cookie('compare') == null) {
+      $.cookie('compare', []);
+    }
+
+    $('.remove-from-compare').on('click', (event) => {
+      const target = $(event.currentTarget);
+      const icon = target.closest('.car-item__compare__icon');
+      const id = icon.data('compare-id');
+
+      let compare = $.cookie('compare').split(',');
+      compare = $.grep(compare, function(n) { return (n === 0 || n) && n !== ''; });
+      compare = new Set(compare);
+      compare.delete(String(id));
+
+      icon.removeClass('active');
+      $('.compare-added-count').text(`${compare.size} авто`);
+
+      $.cookie('compare', Array.from(compare));
+    });
+
+    $('.car-item__compare__icon').on('click', (event) => {
+      event.preventDefault();
+      const target = $(event.currentTarget);
+      const compareItemInfo = target.find('.car-item__compare__info');
+      const id = target.data('compare-id');
+      let compare = $.cookie('compare').split(',');
+      compare = $.grep(compare, function(n) { return (n === 0 || n) && n !== ''; });
+      compare = new Set(compare);
+      $('.car-item__compare__info').removeClass('active');
+
+      if (target.hasClass('active') && compareItemInfo.hasClass('active')) {
+        compareItemInfo.removeClass('active');
+      } else {
+        compare.add(String(id));
+        $('.compare-added-count').text(`${compare.size} авто`);
+        target.addClass('active');
+        compareItemInfo.addClass('active');
+      }
+
+      $.cookie('compare', Array.from(compare));
+    });
+  },
 };
 
 window.app.runVideoSelect();
@@ -492,3 +576,5 @@ window.app.runSelect2();
 window.app.runSpecsSelects();
 window.app.runModals();
 window.app.runOfferBanner();
+window.app.runCallbackWidget();
+window.app.runCompare();

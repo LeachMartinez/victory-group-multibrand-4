@@ -144,7 +144,13 @@
   background-color: $accent-color;
 }
 
+.compare-icon {
+  mask-image: url("../images/icons/compare-icon.svg");
+  -webkit-mask-image: url("../images/icons/compare-icon.svg");
+  background-color: $dark-grey;
+}
 
+.compare-icon,
 .video-icon,
 .photo-icon,
 .clock-icon,

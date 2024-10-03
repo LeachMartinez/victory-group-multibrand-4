@@ -25,3 +25,24 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .feedback-form {
+    &__section {
+      padding-top: 40px;
+
+      .request-form__fields__container {
+        flex-direction: column;
+
+        .input__wrapper {
+          width: 100%;
+        }
+      }
+    }
+
+    &__title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  }
+}
