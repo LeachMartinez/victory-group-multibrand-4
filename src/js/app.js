@@ -133,7 +133,6 @@ window.app = {
     const carGallerySwiper = new Swiper('.car-gallery-swiper', {
       ...slides.carGallerySwiper,
       modules: [Pagination, Navigation],
-      pagination: defaultPagination,
       navigation: defaultNavigation,
     });
 

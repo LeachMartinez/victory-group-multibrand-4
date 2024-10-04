@@ -252,6 +252,13 @@
       flex-direction: row;
       gap: 12px;
 
+      &__text {
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
       &__car-name {
         max-height: 68px;
         display: -webkit-box;
@@ -278,6 +285,10 @@
           height: 100%;
         }
       }
+    }
+
+    &__empty {
+      margin-bottom: 80px;
     }
   }
 }

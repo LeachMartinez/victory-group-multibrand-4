@@ -93,6 +93,10 @@
     gap: 16px;
     overflow: hidden;
 
+    &.swiper-slide {
+      max-height: 340px;
+    }
+
     &__container.container {
       margin-top: 0;
       margin: 0;
