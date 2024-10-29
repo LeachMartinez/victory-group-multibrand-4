@@ -29,7 +29,7 @@ import Timer from './ui/timer.js';
 import Tab from './ui/tabs.js';
 
 // config file
-// import configuration from './configuration.js';
+import configuration from './configuration.js';
 
 // import styles
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
@@ -557,8 +557,112 @@ window.app = {
       $.cookie('compare', Array.from(compare));
     });
   },
+  complectationModal: () => {
+    let isComplectationForm = false;
+    const $activeTab = $('.complectation__modal__tabs__content.active');
+
+    if ($activeTab.find('.complectation__modal__model__item').length > 1) {
+      $activeTab.find('.complectatiom__modal__model__pagination').addClass('shown');
+    } else {
+      $activeTab.find('.complectatiom__modal__model__pagination').removeClass('shown');
+    }
+
+    $('.js-complectation-modal-swiper').each((index, el) => {
+      $(el).addClass(`js-complectation-modal-swiper-${index}`);
+      return new Swiper(`.js-complectation-modal-swiper-${index}`, {
+        slidesPerView: 1,
+        spaceBetween: 36,
+        modules: [Pagination, Navigation],
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type: 'bullets',
+          lockClass: 'swiper-hide-pagination',
+        },
+        navigation: {
+          enabled: true,
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+          lockClass: 'swiper-hide-pagination',
+        },
+      });
+    });
+    $('.js-open-complectation-modal').on('click', () => {
+      $('.complectation__modal__container').fadeIn();
+      $('.complectation__model__step').css('display', 'none');
+      $('.complectation__model__step-1').css('display', 'flex');
+    });
+
+    $('.js-choose-complectation').on('click', () => {
+      $('.complectation__model__step').css('display', 'none');
+      $('.complectation__model__step-2').css('display', 'flex');
+    });
+    $('.complectation__modal__button-next-2').on('click', () => {
+      $('.complectation__model__step').css('display', 'none');
+      $('.complectation__model__step-3').css('display', 'flex');
+      isComplectationForm = true;
+    });
+    $('.complectation__modal__button-prev-2').on('click', () => {
+      $('.complectation__model__step').css('display', 'none');
+      $('.complectation__model__step-1').css('display', 'flex');
+    });
+    $(document).on('ajaxSuccess', () => {
+      if (isComplectationForm) {
+        $('.complectation__model__step').css('display', 'none');
+        $('.complectation__model__step-4').css('display', 'flex');
+        isComplectationForm = false;
+      }
+    });
+    $('.complectation__modal__button-prev-3').on('click', (event) => {
+      event.preventDefault();
+      $('.complectation__model__step').css('display', 'none');
+      $('.complectation__model__step-2').css('display', 'flex');
+    });
+    $('.complectation__modal__confirm').on('click', () => {
+      $('.complectation__modal__container').fadeOut();
+    });
+    $('.complectation__backdrop').on('click', () => {
+      $('.complectation__modal__container').fadeOut();
+    });
+
+    $('.complectation__modal__tabs__item').on('click', (event) => {
+      $('.complectation__modal__tabs__item').removeClass('active');
+      $('.complectation__modal__tabs__content').removeClass('active');
+      const tabId = $(event.currentTarget).data('tab-id');
+      $(event.currentTarget).addClass('active');
+
+      const currentTab = $(`[data-tab-id='${tabId}']`);
+      currentTab.addClass('active');
+      if (currentTab.find('.complectation__modal__model__item').length > 1) {
+        currentTab.find('.complectatiom__modal__model__pagination').addClass('shown');
+      } else {
+        currentTab.find('.complectatiom__modal__model__pagination').removeClass('shown');
+      }
+    });
+
+    $('.complectation__modal__model__info-button').on('click', (event) => {
+      const target = event.currentTarget;
+      const slideId = $(target).data('slide-id');
+      const infoContainer = $(`div[data-slide-id="${slideId}"]`);
+
+      if (!infoContainer.hasClass('active')) {
+        infoContainer.addClass('active');
+        const targetRect = target.getBoundingClientRect();
+        const containerRect = infoContainer[0].getBoundingClientRect();
+
+        infoContainer.css({
+          top: `${targetRect.y - containerRect.height - (targetRect.height * 2) - containerRect.y - 12}px`,
+          left: `${targetRect.x - containerRect.x}px`,
+        });
+      } else {
+        infoContainer.removeClass('active');
+        infoContainer.css({ top: '0', left: '0' });
+      }
+    });
+  },
 };
 
+window.app.complectationModal();
 window.app.runVideoSelect();
 window.app.runCalculator();
 window.app.runFormsValidation();
