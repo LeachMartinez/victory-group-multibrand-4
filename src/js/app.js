@@ -38,7 +38,6 @@ import 'jquery-modal/jquery.modal.min.css';
 import 'swiper/css/bundle';
 import '../scss/app.scss';
 import CreditCalculator from './calculator/index.js';
-import ReviewForm from './customForm/ReviewForm.js';
 import TimerOffer from './ui/offerTimer.js';
 import CallbackWidget from './callback/index.js';
 
@@ -239,10 +238,8 @@ window.app = {
     };
   },
   runTimers: () => {
-    const timer = new Timer(configuration.timerDate, '.timer');
-    timer.countdownTimer();
-    const timerUpdateAction = timer.countdownTimer.bind(timer);
-    timer.timerId = setInterval(timerUpdateAction, 1000);
+    const timer = new Timer('.timer');
+    timer.start(); // Вызовет countdownTimer() и начнет обновление каждую секунду
   },
   runListeners: () => {
     $('#show-more-btn').on('click', (event) => {
@@ -311,7 +308,7 @@ window.app = {
     });
   },
   runFormsValidation: () => {
-    jQuery.validator.addMethod('ruPhone', function(phoneNumber) {
+    jQuery.validator.addMethod('ruPhone', function(phone_number, element) {
       function countDigits(str) {
         const regex = /\d/g;
         const matches = str.match(regex);
@@ -322,26 +319,81 @@ window.app = {
         return 0;
       }
 
-      return countDigits(phoneNumber) >= 11;
+      return countDigits(phone_number) >= 11;
     });
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-      },
-    });
+
+    // Получение CSRF токена из метатега
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    // Универсальная функция для выполнения AJAX-запросов
+    function ajaxRequest(url, method, data, onSuccess, onError) {
+      $.ajax({
+        url: url,
+        type: method,
+        contentType: 'application/json',
+        headers: { 'X-CSRF-TOKEN': csrfToken },
+        data: JSON.stringify(data),
+        success: onSuccess,
+        error: onError || function(xhr, status, error) {
+          console.error('Error:', status, error);
+        },
+      });
+    }
+
+    // Открытие капчи в модальном окне
+    function openCaptchaModal(formData, formElement) {
+      const captcha = $('#captcha-modal');
+
+      captcha.modal({
+        fadeDuration: 100,
+      });
+
+      if (window.smartCaptcha) {
+        const container = $('.smart-captcha')[0];
+        window.smartCaptcha.render(container, {
+          sitekey: window.sitekey,
+          hl: 'ru',
+          callback: function(token) {
+            ajaxRequest('/form/send/captcha', 'POST', { captcha: token }, function(data) {
+              if (data.success) {
+                submitForm(formData, formElement);
+              } else {
+                alert('Капча не прошла проверку: ' + data.message);
+              }
+            });
+          },
+        });
+      }
+    }
+
+    function submitForm(formData, formElement) {
+      ajaxRequest($(formElement).data('action'), $(formElement).data('method'), formData, function(response) {
+        eval(response.reachgoal);
+
+        if ($(formElement).data('calculate-form-modal') !== undefined) {
+          $(formElement).find('input[name="name"], input[name="telephone"]').val('');
+        } else {
+          $(formElement).trigger('reset');
+        }
+
+        $.modal.close();
+
+        const modal = $('#success-modal');
+
+        if (modal.length > 0) {
+          $.modal.close();
+        }
+
+        modal.modal({
+          fadeDuration: 100,
+        });
+      });
+    }
+
     $('.js-form-validator').each(function() {
       $(this).validate({
-        focusInvalid: false,
         rules: {
           name: {
-            required: true,
-            minlength: 2,
-          },
-          model: {
-            required: true,
-            minlength: 2,
-          },
-          mark: {
             required: true,
             minlength: 2,
           },
@@ -350,58 +402,32 @@ window.app = {
             minlength: 18,
             ruPhone: true,
           },
-          textarea: {
-            required: true,
-            minlength: 2,
-            maxlength: 1024,
-          },
           agreement: {
             required: true,
           },
         },
         messages: {
-          textarea: 'Поле должно быть заполнено',
-          mark: 'Поле должно быть заполнено',
-          model: 'Поле должно быть заполнено',
           name: 'Поле должно быть заполнено',
           agreement: 'Поле должно быть заполнено',
           telephone: 'Номер телефона должен содержать 11 цифр',
         },
-        submitHandler: function(form, event) {
+        submitHandler: function(form) {
           const $form = $(form);
-          const formData = $form.serialize();
 
-          if ($form.attr('id') === 'review-first-form') {
-            event.preventDefault();
-            const secForm = new ReviewForm($form);
-            return secForm;
+          // Сбор данных формы в объект
+          const formData = {};
+          $form.serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+          });
+
+          if (window.captcha === true) {
+            // Открытие капчи перед отправкой формы
+            openCaptchaModal(formData, form);
+          } else {
+            // Отправка формы без капчи
+            submitForm(formData, form);
           }
 
-          $.ajax({
-            url: $form.data('action'),
-            type: $form.data('method'),
-            data: formData,
-            success: function(response) {
-              eval(response.reachgoal);
-
-              $form.trigger('reset');
-              if ($form.attr('id') === 'review-second-form') {
-                $('#review-first-form')[0].reset();
-                $.modal.close();
-              }
-              const modal = $('#success-modal');
-              if (modal.length > 0) {
-                $.modal.close();
-              }
-
-              modal.modal({
-                fadeDuration: 100,
-              });
-            },
-            error: function(xhr, status, error) {
-              console.log('Error:', status, error);
-            },
-          });
           return false;
         },
         errorElement: 'span',
@@ -463,10 +489,8 @@ window.app = {
   runOfferBanner: () => {
     const isHidden = window.sessionStorage.getItem('isOfferBannerHidden');
 
-    const timer = new TimerOffer(configuration.timerDate, '.offer-banner__timer');
-    timer.countdownTimer();
-    const timerUpdateAction = timer.countdownTimer.bind(timer);
-    timer.timerId = setInterval(timerUpdateAction, 1000);
+    const timer = new TimerOffer('.offer-banner__timer');
+    timer.start(); // Это вызовет countdownTimer() и начнет обновление каждую секунду
 
     if (!isHidden) {
       $('.offer-banner__section').show();

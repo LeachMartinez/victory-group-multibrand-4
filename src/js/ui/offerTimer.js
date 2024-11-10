@@ -1,11 +1,11 @@
 export default class TimerOffer {
-  constructor(deadline, selector) {
-    this.deadline = new Date(deadline);
+  constructor(selector) {
+    this.deadline = new Date(configuration.timerDate);
     this.timer = $(selector);
-    this.timerId = Math.random() * new Date();
+    this.timerId = null; // Меняем на null, чтобы было проще управлять таймером
   }
 
-  declensionNum (num, words) {
+  declensionNum(num, words) {
     return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
   }
 
@@ -13,6 +13,8 @@ export default class TimerOffer {
     const diff = this.deadline - new Date();
     if (diff <= 0) {
       clearInterval(this.timerId);
+      this.timer.text('Акция завершена');
+      return; // Останавливаем выполнение, если время истекло
     }
 
     const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
@@ -25,7 +27,11 @@ export default class TimerOffer {
     seconds = seconds < 10 ? '0' + seconds : seconds;
 
     const daysText = this.declensionNum(days, ['день', 'дня', 'дней']);
-
     this.timer.text(`${days} ${daysText} ${hours}:${minutes}:${seconds}`);
+  }
+
+  start() {
+    this.countdownTimer(); // Первый запуск таймера
+    this.timerId = setInterval(() => this.countdownTimer(), 1000); // Обновление каждую секунду
   }
 }
