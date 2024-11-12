@@ -647,7 +647,8 @@ window.app = {
     $(document).on('click', '.complectation__modal__confirm', () => {
       $('.complectation__modal__container').fadeOut();
     });
-    $('.complectation__modal__close').on('click', () => {
+
+    $(document).on('click', '.complectation__modal__close', () => {
       $('.complectation__modal__container').fadeOut();
     });
 
