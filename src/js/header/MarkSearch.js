@@ -180,7 +180,10 @@ export default class MarkSearch {
 
   static async getMarks () {
     try {
-      return await $.ajax(window.configuration.marksListRoute);
+      const res = await $.ajax(window.configuration.marksListRoute);
+
+
+      return res;
     } catch (error) {
       return [];
     }
