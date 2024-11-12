@@ -389,6 +389,9 @@ window.app = {
         modal.modal({
           fadeDuration: 100,
         });
+
+        $('.complectation__modal__container').fadeOut();
+        $('.complectation__backdrop').hide();
       });
     }
 
@@ -593,9 +596,11 @@ window.app = {
       $activeTab.find('.complectatiom__modal__model__pagination').removeClass('shown');
     }
 
-    $('.js-complectation-modal-swiper').each((index, el) => {
-      $(el).addClass(`js-complectation-modal-swiper-${index}`);
-      return new Swiper(`.js-complectation-modal-swiper-${index}`, {
+    // Делегирование для swiper
+    $(document).on('click', '.js-complectation-modal-swiper', (event) => {
+      const index = $(event.currentTarget).index();
+      $(event.currentTarget).addClass(`js-complectation-modal-swiper-${index}`);
+      new Swiper(`.js-complectation-modal-swiper-${index}`, {
         slidesPerView: 1,
         spaceBetween: 36,
         modules: [Pagination, Navigation],
@@ -613,45 +618,41 @@ window.app = {
         },
       });
     });
-    $('.js-open-complectation-modal').on('click', () => {
-      $('.complectation__modal__container').fadeIn();
-      $('.complectation__model__step').css('display', 'none');
-      $('.complectation__model__step-1').css('display', 'flex');
-    });
 
-    $('.js-choose-complectation').on('click', () => {
+    // Кнопка выбора комплектации
+    $(document).on('click', '.js-choose-complectation', () => {
       $('.complectation__model__step').css('display', 'none');
       $('.complectation__model__step-2').css('display', 'flex');
     });
-    $('.complectation__modal__button-next-2').on('click', () => {
+
+    // Кнопки навигации
+    $(document).on('click', '.complectation__modal__button-next-2', () => {
       $('.complectation__model__step').css('display', 'none');
       $('.complectation__model__step-3').css('display', 'flex');
       isComplectationForm = true;
     });
-    $('.complectation__modal__button-prev-2').on('click', () => {
+
+    $(document).on('click', '.complectation__modal__button-prev-2', () => {
       $('.complectation__model__step').css('display', 'none');
       $('.complectation__model__step-1').css('display', 'flex');
     });
-    $(document).on('ajaxSuccess', () => {
-      if (isComplectationForm) {
-        $('.complectation__model__step').css('display', 'none');
-        $('.complectation__model__step-4').css('display', 'flex');
-        isComplectationForm = false;
-      }
-    });
-    $('.complectation__modal__button-prev-3').on('click', (event) => {
+
+    $(document).on('click', '.complectation__modal__button-prev-3', (event) => {
       event.preventDefault();
       $('.complectation__model__step').css('display', 'none');
       $('.complectation__model__step-2').css('display', 'flex');
     });
-    $('.complectation__modal__confirm').on('click', () => {
+
+    // Кнопка подтверждения
+    $(document).on('click', '.complectation__modal__confirm', () => {
       $('.complectation__modal__container').fadeOut();
     });
     $('.complectation__modal__close').on('click', () => {
       $('.complectation__modal__container').fadeOut();
     });
 
-    $('.complectation__modal__tabs__item').on('click', (event) => {
+    // Обработка табов
+    $(document).on('click', '.complectation__modal__tabs__item', (event) => {
       $('.complectation__modal__tabs__item').removeClass('active');
       $('.complectation__modal__tabs__content').removeClass('active');
       const tabId = $(event.currentTarget).data('tab-id');
@@ -666,7 +667,8 @@ window.app = {
       }
     });
 
-    $('.complectation__modal__model__info-button').on('click', (event) => {
+    // Информация о модели
+    $(document).on('click', '.complectation__modal__model__info-button', (event) => {
       const target = event.currentTarget;
       const slideId = $(target).data('slide-id');
       const infoContainer = $(`div.complectation__modal__model__info-container[data-slide-id="${slideId}"]`);

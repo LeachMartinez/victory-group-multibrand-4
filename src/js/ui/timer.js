@@ -40,7 +40,7 @@ export default class Timer {
   }
 
   start() {
-    this.countdownTimer(); // Начальный запуск
+    this.countdownTimer(); // Начальный запуск тест
     this.timerId = setInterval(() => this.countdownTimer(), 1000);
   }
 }
