@@ -71,5 +71,22 @@
     &__wrapper {
       grid-template-columns: repeat(1, 1fr);
     }
+
+    &__container {
+        .pagination {
+            gap: 4px;
+
+            .swiper-pagination-bullet {
+                width: 28px;
+                height: 28px;
+                min-height: 28px;
+            }
+
+            .swiper-pagination-bullet-active {
+                width: 32px;
+                height: 32px
+            } 
+        }
+    }
   }
 } 
