@@ -286,6 +286,7 @@ window.app = {
   runLazy: () => {
     $('.lazy').Lazy({
       // visibleOnly: true,
+      threshold: 800, // изображения начнут загружаться за 500 пикселей до того, как они окажутся видимыми
       combined: true,
       afterLoad: function(element) {
         element.addClass('loaded');
@@ -647,7 +648,8 @@ window.app = {
     $(document).on('click', '.complectation__modal__confirm', () => {
       $('.complectation__modal__container').fadeOut();
     });
-    $('.complectation__modal__close').on('click', () => {
+
+    $(document).on('click', '.complectation__modal__close', () => {
       $('.complectation__modal__container').fadeOut();
     });
 
