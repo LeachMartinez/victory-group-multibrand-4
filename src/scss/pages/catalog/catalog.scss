@@ -11,6 +11,10 @@
     grid-template-columns: repeat(4, 1fr);
     display: grid;
     gap: 12px;
+
+    .car-item {
+        max-width: 324px;
+    }
   }
 
   &__model-row__tabs {
@@ -70,6 +74,11 @@
 
     &__wrapper {
       grid-template-columns: repeat(1, 1fr);
+    
+      .car-item {
+        width: 100%;
+        max-width: none;
+      }
     }
 
     &__container {

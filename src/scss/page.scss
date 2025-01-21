@@ -105,7 +105,10 @@
   }
 
   
-
+  .discount__option__value {
+    font-size: 14px;
+  }
+    
   .discount__option {
     &:first-child {
       display: none;

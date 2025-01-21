@@ -1,5 +1,6 @@
 export default class Tab {
   constructor(initialSelector) {
+    this.initialClassname = initialSelector;
     this.initialSelector = $(initialSelector);
     this.activateTabContent();
     this.addListeners();
@@ -26,8 +27,8 @@ export default class Tab {
     const target = $(event.currentTarget);
     const targetDataId = target.data('id');
     const targetContent = this.initialSelector.find(`.tabs__content[data-content-id="${targetDataId}"]`);
-    this.initialSelector.find('.tabs__content').removeClass('active');
-    this.initialSelector.find('.tabs__item').removeClass('active');
+    target.closest(`${this.initialClassname}`).find('.tabs__content').removeClass('active');
+    target.closest(`${this.initialClassname}`).find('.tabs__item').removeClass('active');
     targetContent.addClass('active');
     target.addClass('active');
   }

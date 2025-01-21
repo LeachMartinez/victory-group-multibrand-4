@@ -1,7 +1,6 @@
 /* eslint-disable no-eval */
 // JQuery modules
 import 'jquery.inputmask';
-import 'jquery-lazy';
 import 'jquery-modal';
 import 'jquery-validation';
 import 'jquery.cookie';
@@ -171,7 +170,10 @@ window.app = {
     const carCatalogSwiper = new Swiper('.car-catalog-swiper', {
       ...slides.carCatalogSwiper,
       modules: [Pagination, Navigation],
-      pagination: defaultPagination,
+      pagination: {
+        type: 'fraction',
+        el: '.swiper-pagination',
+      },
       navigation: defaultNavigation,
     });
 
@@ -283,16 +285,6 @@ window.app = {
     };
   },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
-  runLazy: () => {
-    $('.lazy').Lazy({
-      // visibleOnly: true,
-      threshold: 800, // изображения начнут загружаться за 500 пикселей до того, как они окажутся видимыми
-      combined: true,
-      afterLoad: function(element) {
-        element.addClass('loaded');
-      },
-    });
-  },
   runSelect2: () => {
     $('.select').select2();
   },
@@ -690,8 +682,16 @@ window.app = {
       }
     });
   },
+  runSummary: () => {
+    $('.js-open-summary').on('click', (event) => {
+      event.stopPropagation();
+      const target = $(event.currentTarget);
+      target.closest('.modification-details').find('.specs__container').toggleClass('active');
+    });
+  },
 };
 
+window.app.runSummary();
 window.app.complectationModal();
 window.app.runVideoSelect();
 window.app.runCalculator();
@@ -704,7 +704,6 @@ window.app.runSwiper();
 window.app.runTimers();
 window.app.runListeners();
 window.app.runFindByMark();
-window.app.runLazy();
 window.app.runSelect2();
 window.app.runSpecsSelects();
 window.app.runModals();

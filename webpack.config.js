@@ -79,33 +79,34 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // получает имя, то есть node_modules/packageName/not/this/part.js
-            // или node_modules/packageName
-            let packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/);
+    usedExports: true, // <- remove unused function
+    // splitChunks: {
+    //   chunks: 'all',
+    //   maxInitialRequests: Infinity,
+    //   minSize: 0,
+    //   cacheGroups: {
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name(module) {
+    //         // получает имя, то есть node_modules/packageName/not/this/part.js
+    //         // или node_modules/packageName
+    //         let packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/);
 
-            if (packageName) {
-              packageName = packageName[1];
-            } else {
-              console.log(packageName);
+    //         if (packageName) {
+    //           packageName = packageName[1];
+    //         } else {
+    //           console.log(packageName);
 
-              packageName = 'package';
-            }
+    //           packageName = 'package';
+    //         }
 
-            // имена npm-пакетов можно, не опасаясь проблем, использовать
-            // в URL, но некоторые серверы не любят символы наподобие @
-            return `${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },
+    //         // имена npm-пакетов можно, не опасаясь проблем, использовать
+    //         // в URL, но некоторые серверы не любят символы наподобие @
+    //         return `${packageName.replace('@', '')}`;
+    //       },
+    //     },
+    //   },
+    // },
   },
   resolve: {
     alias: {
@@ -114,7 +115,6 @@ module.exports = {
       inputmask: ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask'),
       'jquery.inputmask': ppath('node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask'),
       'inputmask.numeric.extensions': ppath('node_modules/jquery.inputmask/dist/inputmask/inputmask.numeric.extensions'),
-      'jquery.Lazy': ppath('node_modules/jquery-lazy/jquery.lazy'),
     },
   },
   plugins: [
