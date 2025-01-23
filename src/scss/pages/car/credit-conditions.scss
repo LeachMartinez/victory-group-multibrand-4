@@ -242,6 +242,10 @@
     }
   
     &__offer__payment__btn {
+      .button {
+        width: calc(50% - 15px);
+      }
+
       button {
         width: 100%;
       }

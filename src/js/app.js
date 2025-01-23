@@ -517,7 +517,6 @@ window.app = {
       const carItem = target.closest('.compare__item');
       const compareId = carItem.data('compare-id');
       let compare = $.cookie('compare') == null ? $.cookie('compare', []) : $.cookie('compare').split(',');
-
       compare = compare.filter((el) => +el !== +compareId);
       $(`[data-compare-id="${compareId}"]`).remove();
 
@@ -643,6 +642,7 @@ window.app = {
 
     $(document).on('click', '.complectation__modal__close', () => {
       $('.complectation__modal__container').fadeOut();
+      $('body').css('overflow', 'auto');
     });
 
     // Обработка табов
