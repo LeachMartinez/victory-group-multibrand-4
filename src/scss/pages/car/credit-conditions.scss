@@ -192,6 +192,24 @@
   }
 }
 
+@media (max-width: 1100px) {
+    .credit-conditions {
+
+        &__offer__payment__btn {
+            justify-content: center;
+            gap: 12px;
+
+            .outline {
+                width: 40%;
+            }
+
+            .main {
+                width: 60%;
+            }
+        }
+    }
+}
+
 @media (max-width: 554px) {
   .credit-conditions {
     padding: 40px 0;
@@ -242,10 +260,6 @@
     }
   
     &__offer__payment__btn {
-      .button {
-        width: calc(50% - 15px);
-      }
-
       button {
         width: 100%;
       }

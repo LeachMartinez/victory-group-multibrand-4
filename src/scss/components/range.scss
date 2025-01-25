@@ -13,6 +13,7 @@
   }
 
   &__progress {
+    pointer-events: none;
     background: $accent-color;
     position: absolute;
     height: 2px;

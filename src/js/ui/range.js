@@ -17,5 +17,5 @@ function setProgress(rangeInput) {
 
   if (!progress.hasClass('range__progress')) return;
   const width = ((value - min) * 100) / (max - min);
-  progress.css('width', `${width}%`);
+  progress.css('width', `calc(${width}%)`);
 }

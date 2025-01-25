@@ -57,7 +57,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 548px;
 
     background: $white;
     border-radius: $border-radius;
@@ -300,12 +299,19 @@
 }
 
 @media (max-width: 1100px) {
+
+  .modal {
+    max-width: calc(100vw - 128px);
+    min-width: 340px;
+    width: 100%;
+  }
+
   .modal-custom {
-    max-width: 328px;
     flex-direction: column;
   
     &__image {
       max-height: 200px;
+      min-width: none;
 
       img {
         max-height: 200px;
@@ -315,7 +321,8 @@
     }
 
     &__form {
-      padding: 24px 12px;
+      max-width: none;
+      padding: 24px;
       gap: 16px;
 
       .footer__form__action {
