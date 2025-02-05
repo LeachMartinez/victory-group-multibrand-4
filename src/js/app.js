@@ -374,50 +374,50 @@ window.app = {
       const captcha = $('#captcha-number');
 
       // Получаем CSRF токен из мета-тега
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      if (!csrfToken) {
-          console.error('CSRF токен не найден');
-          return;
+      const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      if (!csrf) {
+        console.error('CSRF токен не найден');
+        return;
       }
 
-      const phone =  formData['telephone'];
+      const phone = formData.telephone;
       const cleanPhone = phone.replace(/[^\d]/g, '');
       const dataIdView = formElement.getAttribute('data-id');
 
-      if (cleanPhone && cleanPhone.length == 11) {
-          const formattedPhone = `+${cleanPhone.slice(7)}****`; //TODO
-          document.querySelector('.captcha-number_text b').textContent = formattedPhone;
-          // Отправка запроса для получения кода подтверждения через GET
-          const url = `/form/call/send?phone=${encodeURIComponent(cleanPhone)}`;
+      if (cleanPhone && cleanPhone.length === 11) {
+        const formattedPhone = `+7 (${cleanPhone.slice(1, 4)}) ${cleanPhone.slice(4, 7)}-**-**`;
+        document.querySelector('.captcha-number_text b').textContent = formattedPhone;
+        // Отправка запроса для получения кода подтверждения через GET
+        const url = `/form/call/send?phone=${encodeURIComponent(cleanPhone)}`;
 
-          fetch(url, {
-              method: 'GET',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-Requested-With': 'XMLHttpRequest',
-                  'X-XSRF-TOKEN': csrfToken
-              }
-          })
-          .then(response => response.json())
-          .then(data => {							
-              if (data.success) {
-                  console.log('Success');
-              } else {
-                  console.log('Error');
-              }
+        fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-XSRF-TOKEN': csrfToken,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              console.log('Success');
+            } else {
+              console.log('Error');
+            }
 
-              captcha.find('form').attr('data-view', dataIdView);
-              
-              captcha.modal({
-                fadeDuration: 100,
-              });
+            captcha.find('form').attr('data-view', dataIdView);
+            captcha.modal({
+              fadeDuration: 100,
+            });
+            $('#captcha-number input:first').trigger('focus');
           })
-          .catch(error => {
-              console.log('Error Call:', error);
+          .catch((error) => {
+            console.log('Error Call:', error);
           });
       } else {
-        console.log('Номер телефона не заполнен')
-          //form.querySelector('input[name="telephone"]').classList.add('has-error');
+        console.log('Номер телефона не заполнен');
+        // form.querySelector('input[name="telephone"]').classList.add('has-error');
       }
     }
 
@@ -478,17 +478,14 @@ window.app = {
             formData[field.name] = field.value;
           });
 
-          if(window.verification === true) {
+          if (window.verification === true) {
             openVerificate(formData, form);
-            //TODO
+          } else if (window.captcha === true) {
+            // Открытие капчи перед отправкой формы
+            openCaptchaModal(formData, form);
           } else {
-            if (window.captcha === true) {
-              // Открытие капчи перед отправкой формы
-              openCaptchaModal(formData, form);
-            } else {
-              // Отправка формы без капчи
-              submitForm(formData, form);
-            }
+            // Отправка формы без капчи
+            submitForm(formData, form);
           }
 
           return false;
