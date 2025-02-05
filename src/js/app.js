@@ -1,6 +1,7 @@
 /* eslint-disable no-eval */
 // JQuery modules
 import 'jquery.inputmask';
+import 'jquery-lazy';
 import 'jquery-modal';
 import 'jquery-validation';
 import 'jquery.cookie';
@@ -170,10 +171,7 @@ window.app = {
     const carCatalogSwiper = new Swiper('.car-catalog-swiper', {
       ...slides.carCatalogSwiper,
       modules: [Pagination, Navigation],
-      pagination: {
-        type: 'fraction',
-        el: '.swiper-pagination',
-      },
+      pagination: defaultPagination,
       navigation: defaultNavigation,
     });
 
@@ -285,6 +283,16 @@ window.app = {
     };
   },
   runFindByMark: async () => new MarkSearch(await MarkSearch.getMarks()),
+  runLazy: () => {
+    $('.lazy').Lazy({
+      // visibleOnly: true,
+      threshold: 800, // изображения начнут загружаться за 500 пикселей до того, как они окажутся видимыми
+      combined: true,
+      afterLoad: function(element) {
+        element.addClass('loaded');
+      },
+    });
+  },
   runSelect2: () => {
     $('.select').select2();
   },
@@ -361,6 +369,58 @@ window.app = {
       }
     }
 
+    // Открытие капчи в модальном окне
+    function openVerificate(formData, formElement) {
+      const captcha = $('#captcha-number');
+
+      // Получаем CSRF токен из мета-тега
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      if (!csrfToken) {
+          console.error('CSRF токен не найден');
+          return;
+      }
+
+      const phone =  formData['telephone'];
+      const cleanPhone = phone.replace(/[^\d]/g, '');
+      const dataIdView = formElement.getAttribute('data-id');
+
+      if (cleanPhone && cleanPhone.length == 11) {
+          const formattedPhone = `+${cleanPhone.slice(7)}****`; //TODO
+          document.querySelector('.captcha-number_text b').textContent = formattedPhone;
+          // Отправка запроса для получения кода подтверждения через GET
+          const url = `/form/call/send?phone=${encodeURIComponent(cleanPhone)}`;
+
+          fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-Requested-With': 'XMLHttpRequest',
+                  'X-XSRF-TOKEN': csrfToken
+              }
+          })
+          .then(response => response.json())
+          .then(data => {							
+              if (data.success) {
+                  console.log('Success');
+              } else {
+                  console.log('Error');
+              }
+
+              captcha.find('form').attr('data-view', dataIdView);
+              
+              captcha.modal({
+                fadeDuration: 100,
+              });
+          })
+          .catch(error => {
+              console.log('Error Call:', error);
+          });
+      } else {
+        console.log('Номер телефона не заполнен')
+          //form.querySelector('input[name="telephone"]').classList.add('has-error');
+      }
+    }
+
     function submitForm(formData, formElement) {
       ajaxRequest($(formElement).data('action'), $(formElement).data('method'), formData, function(response) {
         eval(response.reachgoal);
@@ -418,12 +478,17 @@ window.app = {
             formData[field.name] = field.value;
           });
 
-          if (window.captcha === true) {
-            // Открытие капчи перед отправкой формы
-            openCaptchaModal(formData, form);
+          if(window.verification === true) {
+            openVerificate(formData, form);
+            //TODO
           } else {
-            // Отправка формы без капчи
-            submitForm(formData, form);
+            if (window.captcha === true) {
+              // Открытие капчи перед отправкой формы
+              openCaptchaModal(formData, form);
+            } else {
+              // Отправка формы без капчи
+              submitForm(formData, form);
+            }
           }
 
           return false;
@@ -517,6 +582,7 @@ window.app = {
       const carItem = target.closest('.compare__item');
       const compareId = carItem.data('compare-id');
       let compare = $.cookie('compare') == null ? $.cookie('compare', []) : $.cookie('compare').split(',');
+
       compare = compare.filter((el) => +el !== +compareId);
       $(`[data-compare-id="${compareId}"]`).remove();
 
@@ -642,7 +708,6 @@ window.app = {
 
     $(document).on('click', '.complectation__modal__close', () => {
       $('.complectation__modal__container').fadeOut();
-      $('body').css('overflow', 'auto');
     });
 
     // Обработка табов
@@ -682,16 +747,8 @@ window.app = {
       }
     });
   },
-  runSummary: () => {
-    $('.js-open-summary').on('click', (event) => {
-      event.stopPropagation();
-      const target = $(event.currentTarget);
-      target.closest('.modification-details').find('.specs__container').toggleClass('active');
-    });
-  },
 };
 
-window.app.runSummary();
 window.app.complectationModal();
 window.app.runVideoSelect();
 window.app.runCalculator();
@@ -704,6 +761,7 @@ window.app.runSwiper();
 window.app.runTimers();
 window.app.runListeners();
 window.app.runFindByMark();
+window.app.runLazy();
 window.app.runSelect2();
 window.app.runSpecsSelects();
 window.app.runModals();
