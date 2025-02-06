@@ -423,28 +423,29 @@ window.app = {
 
     function submitForm(formData, formElement) {
       ajaxRequest($(formElement).data('action'), $(formElement).data('method'), formData, function(response) {
-        eval(response.reachgoal);
+        if (window.verification !== true) {
+          eval(response.reachgoal);
+          if ($(formElement).data('calculate-form-modal') !== undefined) {
+            $(formElement).find('input[name="name"], input[name="telephone"]').val('');
+          } else {
+            $(formElement).trigger('reset');
+          }
 
-        if ($(formElement).data('calculate-form-modal') !== undefined) {
-          $(formElement).find('input[name="name"], input[name="telephone"]').val('');
-        } else {
-          $(formElement).trigger('reset');
-        }
-
-        $.modal.close();
-
-        const modal = $('#success-modal');
-
-        if (modal.length > 0) {
           $.modal.close();
+
+          const modal = $('#success-modal');
+
+          if (modal.length > 0) {
+            $.modal.close();
+          }
+
+          modal.modal({
+            fadeDuration: 100,
+          });
+
+          $('.complectation__modal__container').fadeOut();
+          $('.complectation__backdrop').hide();
         }
-
-        modal.modal({
-          fadeDuration: 100,
-        });
-
-        $('.complectation__modal__container').fadeOut();
-        $('.complectation__backdrop').hide();
       });
     }
 
@@ -479,6 +480,7 @@ window.app = {
           });
 
           if (window.verification === true) {
+            submitForm(formData, form);
             openVerificate(formData, form);
           } else if (window.captcha === true) {
             // Открытие капчи перед отправкой формы
