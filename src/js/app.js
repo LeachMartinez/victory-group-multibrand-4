@@ -401,16 +401,20 @@ window.app = {
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              console.log('Success');
+              captcha.find('form').attr('data-view', dataIdView);
+              captcha.modal({
+                fadeDuration: 100,
+              });
+              $('#captcha-number input:first').trigger('focus');
             } else {
-              console.log('Error');
-            }
+              $.modal.close();
 
-            captcha.find('form').attr('data-view', dataIdView);
-            captcha.modal({
-              fadeDuration: 100,
-            });
-            $('#captcha-number input:first').trigger('focus');
+              const modal = $('#success-modal');
+    
+              modal.modal({
+                fadeDuration: 100,
+              });
+            }
           })
           .catch((error) => {
             console.log('Error Call:', error);
@@ -435,16 +439,9 @@ window.app = {
 
           const modal = $('#success-modal');
 
-          if (modal.length > 0) {
-            $.modal.close();
-          }
-
           modal.modal({
             fadeDuration: 100,
           });
-
-          $('.complectation__modal__container').fadeOut();
-          $('.complectation__backdrop').hide();
         }
       });
     }
