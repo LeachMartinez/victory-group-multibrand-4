@@ -410,7 +410,7 @@ window.app = {
               $.modal.close();
 
               const modal = $('#success-modal');
-    
+
               modal.modal({
                 fadeDuration: 100,
               });
@@ -743,8 +743,16 @@ window.app = {
       }
     });
   },
+  runSummary: () => {
+    $('.js-open-summary').on('click', (event) => {
+      event.stopPropagation();
+      const target = $(event.currentTarget);
+      target.closest('.modification-details').find('.specs__container').toggleClass('active');
+    });
+  },
 };
 
+window.app.runSummary();
 window.app.complectationModal();
 window.app.runVideoSelect();
 window.app.runCalculator();
