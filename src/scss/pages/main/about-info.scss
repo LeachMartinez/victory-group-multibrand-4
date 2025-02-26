@@ -22,14 +22,13 @@
       background: $black;
       border-radius: $border-radius;
       padding: 24px;
-      width: 324px;
+      width: calc(33% - 6px);
       height: 260px;
       margin-bottom: 20px;
     }
   }
 
   &__about {
-    width: 324px;
     height: 260px;
     display: flex;
     flex-direction: column;
@@ -38,12 +37,9 @@
     border-radius: $border-radius;
     justify-content: space-between;
 
-    &:first-child {
-      margin-right: 177px;
-    }
-
     &__wrapper {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
   }
@@ -75,7 +71,7 @@
       height: fit-content;
 
       &__wrapper {
-        flex-direction: column;
+        grid-template-columns: repeat(1, 1fr);
       }
     }
 
