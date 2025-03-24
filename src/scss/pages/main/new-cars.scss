@@ -27,6 +27,91 @@
   border: 1px solid $grey-2;
   border-radius: $border-radius;
   width: 324px;
+  transition: 0.3s all;
+
+  &.deal {
+    .car-item__image {
+        background: linear-gradient(0deg, #2E58DB -26.45%, #F3F6FB 50.15%)
+    }
+
+    &:hover {
+        border: 1px solid var(--Blue-Dark, #1641BC);
+    }
+
+    .deal-badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 15px 0px;
+        background: var(--Blue-Dark, #1641BC);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 32px;
+
+        &__text {
+            color: var(--Sky-Blue, #E4ECF8);
+            font-size: 16px;
+        }
+    }
+
+    .deal-timer {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        justify-content: center;
+        align-items: center;
+        width: 140px;
+        height: 66px;
+        right: 0;
+        top: 0;
+
+        &__wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        &__circle {
+            width: 37px;
+            height: 37px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px dashed var(--Blue-Dark, #1641BC);
+        }
+
+        &__time {
+            color: var(--Blue-Dark, #1641BC);
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 12px; /* 100% */
+        }
+
+        &__text-sm {
+            color: var(--Blue-Main, #2E58DB);
+            font-size: 7px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 8px; /* 88.889% */
+        }
+
+        &__title {
+            color: var(--Blue-Dark, #1641BC);
+        }
+    }
+  }
+
+  &:hover {
+    border: 1px solid var(--Black, #151515);
+  }
 
   &.swiper-slide {
     margin-right: 12px;

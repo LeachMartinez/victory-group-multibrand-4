@@ -240,6 +240,81 @@ window.app = {
   runTimers: () => {
     const timer = new Timer('.timer');
     timer.start(); // Вызовет countdownTimer() и начнет обновление каждую секунду
+
+    const dealTimer = new Timer('.deal-timer');
+    dealTimer.start();
+  },
+  compareButtonInit: function() {
+    $('.compare__item__cross').each((_, el) => {
+      $(el).on('click', (event) => {
+        const countCar = $('.compareSwiper .swiper-wrapper').children().length;
+
+        if (countCar === 2) return;
+
+        $('.compare__title__count').text(`(${countCar - 1})`);
+        const compareItemId = $(event.currentTarget).closest('.compare__item').data('complectation-id');
+        $(`[data-complectation-id="${compareItemId}"]`).remove();
+      });
+
+      compareListener();
+    });
+
+    window.addEventListener('scroll', () => {
+      const image = $('.compare__item__image ');
+      image.toggleClass('scrolled', window.scrollY > 250);
+    });
+
+    function compareListener() {
+      $('#compare-only').off('change.compare').on('change.compare', (event) => {
+        const checked = $(event.currentTarget).is(':checked');
+        const countCar = $('.compareSwiper .swiper-wrapper').children().length;
+
+        if (checked) {
+          $('.compareSwiper-body').each((index, el) => {
+            if ($(el).find('.parameter__item[data-plus]').length === countCar) {
+              $(el).closest('.compareSwiper-body').hide();
+            }
+            if ($(el).find('.parameter__item[data-minus]').length === countCar) {
+              $(el).closest('.compareSwiper-body').hide();
+            }
+          });
+          const params = $('.parameters');
+
+          params.each((index, el) => {
+            const allParamsLen = $(el).find('.parameter').length;
+            const hiddenParamsLen = $(el).find('.parameter[style="display: none;"]').length;
+
+            if (allParamsLen === hiddenParamsLen) {
+              $(el).prev().hide();
+            }
+          });
+        } else {
+          $('.compareSwiper-body').show();
+          $('.compare__list__title__wrapper').show();
+        }
+      });
+    }
+
+    compareListener();
+
+    const $compareButton = $('.complectation__button');
+
+    if (!$compareButton.length) return;
+
+    $compareButton.on('click', () => {
+      const href = $compareButton.data('href');
+      const activeToggles = $('.compare-checkbox:enabled:checked');
+
+      if (!activeToggles.length) return window.location.href = href;
+
+      const complectationIds = [];
+
+      activeToggles.each((index, el) => {
+        complectationIds.push($(el).data('car-id'));
+      });
+
+      return window.location.href = href + '?prices=' + complectationIds;
+    });
   },
   runListeners: () => {
     $('#show-more-btn').on('click', (event) => {
@@ -263,12 +338,6 @@ window.app = {
 
     $('.mobile-menu__content .cross').on('click', () => {
       $('.mobile-menu').removeClass('active');
-    });
-    $('.compare__item__cross').each((_, el) => {
-      $(el).on('click', (event) => {
-        const compareItemId = $(event.currentTarget).closest('.compare__item').data('complectation-id');
-        $(`[data-complectation-id="${compareItemId}"]`).remove();
-      });
     });
   },
   runTabs: () => {
@@ -704,6 +773,7 @@ window.app = {
 
     $(document).on('click', '.complectation__modal__close', () => {
       $('.complectation__modal__container').fadeOut();
+      $('body').css('overflow', 'auto');
     });
 
     // Обработка табов
@@ -772,3 +842,4 @@ window.app.runModals();
 window.app.runOfferBanner();
 window.app.runCallbackWidget();
 window.app.runCompare();
+window.app.compareButtonInit();
