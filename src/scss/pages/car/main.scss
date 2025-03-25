@@ -130,8 +130,10 @@
             .carousel-model {
                 position: relative;
                 width: 100%;
-                height: 40px; /* Высота карусели */
+                height: 30px; /* Высота карусели */
                 overflow: hidden;
+                display: flex;
+                justify-content: flex-end;
             }
         
             .carousel-model-slide {
@@ -145,8 +147,8 @@
                 height: 30px;
                 font-weight: 600;
                 text-align: left;
-                background: #fff;
-                color: #176888;
+                background: $blue-main;
+                color: #fff;
                 display: flex;
                 width: 230px;
                 padding: 8px 16px;
@@ -156,7 +158,7 @@
             }
         
             .carousel-model-slide div {
-                background-color: #FFF;
+                background-color: transparent;
                 background-position: center -1.126px;
                 background-size: cover;
                 background-repeat: no-repeat;
